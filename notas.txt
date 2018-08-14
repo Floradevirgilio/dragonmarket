@@ -1,0 +1,4 @@
+- php artisan make:migration create_products_table:
+  Laravel detecta si después del make:migration pusiste 'CREATE_' sarasa '_TABLE'. Si pusiste ambas, te trae un par de funciones predefinidas
+
+O podés poner cualquier nombre y agregar --create=products: php artisan make:migration crear_tabla_productos --create=products
