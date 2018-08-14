@@ -1,0 +1,160 @@
+* { box-sizing: border-box; }
+
+body
+{
+  background-image: url(../images/bg_dragon.jpg);
+  background-repeat: repeat;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  justify-content: center;
+  padding-top: 20px;
+  margin: auto;
+}
+
+html, body { height: 100%; }
+
+header { margin-top: 4.95rem; }
+
+#registro_box { margin:auto; }
+
+.registro_titulo { text-align: center; }
+
+.titulos { text-align: center; }
+
+.navbar-custom
+{
+  background-color: #173a69;
+  background-image: url(../images/bg_dragon.jpg);
+  background-repeat: repeat;
+  background-blend-mode: color-burn;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text
+{  color: rgba(255,255,255,1); }
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link { color: rgba(255,255,255,1); }
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link
+{ color: rgba(255,255,255,0.5); }
+
+/* for dropdown only - change the color of dropdown */
+.navbar-custom .dropdown-menu
+{ color: rgba(255,255,255,1); }
+.navbar-custom .dropdown-item
+{ color: rgba(0,0,0,1); }
+
+.navbar-custom .dropdown-item:hover,
+.navbar-custom .dropdown-item:hover,
+.navbar-custom .dropdown-item:focus
+{
+  color: rgb(255,255,255);
+  background: rgba(0,0,0,0.25);
+}
+
+.navbar-custom .navbar-toggler { border-color: rgba(255,255,255, 1); }
+
+.navbar-custom .navbar-toggler-icon
+{
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-nav .nav-link { color: rgba(0,0,0,1); }
+
+.navbar-nav .nav-link:hover
+{
+  color: rgb(255,255,255);
+  background: rgba(0,0,0,0.25);
+}
+
+div.container
+{
+  justify-content: space-around;
+  max-width: 85%;
+}
+
+.productos { margin-top: 30px; }
+
+div.card-deck { margin: 0; }
+
+.renglon
+{
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin-top: 20px;
+}
+
+footer
+{
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin-top: 30px;
+  height: 100px;
+}
+
+.cajasFooter
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background-color: #173a69;
+  background-image: url(../images/bg_dragon.jpg);
+  background-repeat: repeat;
+  background-blend-mode: color-burn;
+}
+
+.cajasFooter>div { color: white; }
+
+div.container-fluid { margin: 0; }
+
+.redesLogos { display: inline-block; }
+
+.card ul li { line-height: 90%; }
+
+.img06
+{
+  width: 100%;
+  height: auto;
+}
+
+h5.card-title { font-size: 1em; }
+
+p.card-text { font-size: 1em; }
+
+.accordion .card-header:after
+{
+  font-family: 'FontAwesome';
+  content: "\f068";
+  float: right;
+}
+
+.accordion .card-header.collapsed:after
+{
+  /* symbol for "collapsed" panels */
+  content: "\f067";
+}
+
+.ingreso
+{
+  margin-top: 150px;
+  border: silver 10px solid;
+  border-radius: 3%;
+  padding: 10px;
+  /*width: 30rem;*/
+  background: rgba(13, 36, 67, 0.20);
+}
+
+#wrap { min-height: 78%; }
+
+#main
+{
+  overflow:auto;
+  padding-bottom:150px; /* this needs to be bigger than footer height*/
+}

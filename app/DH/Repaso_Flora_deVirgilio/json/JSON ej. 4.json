@@ -1,0 +1,66 @@
+{
+	"profesores" : 
+	[
+		{
+		"nombre":"Diego",
+		"comision" : "TN7"
+		},
+		{
+		"nombre":"Rodo",
+		"comision" : "TN7"
+		},
+		{
+		"nombre":"Nico",
+		"comision" : "TT2"
+		},
+		{
+		"nombre":"Gonzalo",
+		"comision" : "TM3"
+		},
+		{
+		"nombre":"Clara",
+		"comision" : "TN5"
+		},
+		{
+		"nombre":"Andy",
+		"comision" : "TM3"
+		},
+		{
+		"nombre":"Pedro",
+		"comision" : "TM1"
+		}
+	],
+	"alumnos": 
+	[
+		{
+		"nombre" : "Pablo",
+		"apellido" : "Gonzalez",
+		"email" : "pablo@gmail.com",
+		"comision" : "TN7"
+		},
+		{
+		"nombre" : "Juan",
+		"apellido" : "Calvo",
+		"email" : "juan@gmail.com",
+		"comision" : "TN7"
+		},
+		{
+		"nombre" : "Carlos",
+		"apellido" : "Perez",
+		"email" : "carlos@gmail.com",
+		"comision" : "TM1"
+		},
+		{
+		"nombre" : "Roxana",
+		"apellido" : "Martinez",
+		"email" : "roxana@gmail.com",
+		"comision" : "TT2"
+		},
+		{
+		"nombre" : "Gina",
+		"apellido" : "Lopez",
+		"email" : "gina@gmail.com",
+		"comision" : "TT2"
+		}
+	]
+}

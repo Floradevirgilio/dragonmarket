@@ -1,0 +1,16 @@
+{
+  "productos": [
+    {"id": 1, "nombre": "Accesorios"},
+    {"id": 2, "nombre": "Discos Rigidos"},
+    {"id": 3, "nombre": "Fuentes de Alimentación"},
+    {"id": 4, "nombre": "Gabinetes"},
+    {"id": 5, "nombre": "Memorias"},
+    {"id": 6, "nombre": "Monitores"},
+    {"id": 7, "nombre": "Mothers"},
+    {"id": 8, "nombre": "Mouse y teclados"},
+    {"id": 9, "nombre": "Placas de audio"},
+    {"id":10, "nombre": "Placas de video"},
+    {"id":11, "nombre": "Procesadores"},
+    {"id":12, "nombre": "Ultimo ítem"}
+  ]
+}
