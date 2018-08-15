@@ -15,9 +15,11 @@ class Redirect extends Controller {
     }
 
     elseif ($direccion == 'mostrarProductos') {
-      $search = '%'.trim($_GET['txt']).'%'; // trim para sacar posibles espacios, % como comodines para una búsqueda eficiente
-      $searchResults = ProductController::searchProducts($search); // le paso al controlador lo que el cliente quiere buscar
-      return view('mostrarProductos', [ 'searchResults' => $searchResults ]); // muestro la view y le paso el resultado de la búsqueda
+      if (isset($_GET['txt'])) {
+        $search = '%'.trim($_GET['txt']).'%'; // trim para sacar posibles espacios, % como comodines para una búsqueda eficiente
+        $searchResults = ProductController::searchProducts($search); // le paso al controlador lo que el cliente quiere buscar
+        return view('mostrarProductos', [ 'searchResults' => $searchResults ]); // muestro la view y le paso el resultado de la búsqueda
+      }
     }
 
     else

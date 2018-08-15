@@ -33,8 +33,10 @@ Auth::routes(); // explicado en https://www.youtube.com/watch?v=coSV-njT1Gk
 // $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 // si un controlador tiene una sola funcion la podemos llamar __invoke y la ejecuta automaticamente. No hace falta agregar controlador@funcion.
+
 Route::get('{direccion?}', 'Redirect'); //le manda el get a Redirect para que redirija a esa pagina
 // el '?' en {login?} es porque puede no haber get, por ej 'localhost:8000', lo cual equivaldría a mostrar el home.
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/mostrarProductos/{id}', 'ProductController@show');
+// lasdhflajkdfhkasjdhfalkshflakhdflaksdf

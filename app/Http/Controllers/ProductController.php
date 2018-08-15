@@ -25,10 +25,6 @@ class ProductController extends Controller {
 
   public function show($id){
     $products = Product::where('category_id', '=', $id)->get(['id', 'description', 'price']);
-
     return view('/mostrarProductos', ['products' => $products]);
-
   }
-
-
 }

@@ -8,14 +8,20 @@
 		<div id="main" class="container">
 			<div class="container">
 
-			{{--@php $searchResults = $searchResults->toArray() @endphp--}} {{-- convierto en array la collection de datos que me da el Redirect.
-				Y además la filtra por los datos que el controller pidió en la query de búsqueda --}}
-				@if ($products) {{-- si el array tiene resultados --}}
+			@if (isset($searchResults))
+			@php $searchResults = $searchResults->toArray() @endphp
+			{{-- convierto en array la collection de datos que me da el Redirect.
+			Y además la filtra por los datos que el controller pidió en la query de búsqueda --}}
+		@endif
+
+				{{-- {{ var_dump($_GET) }} --}}
+				@if (isset($products)) {{-- si el array tiene resultados --}}
 					<center><div style="margin-top: 3em; margin-bottom: 2em"> {{-- muestro titulo y tabla con resultados --}}
 						<h3><i class="fas fa-search-plus" style="font-size: 1em; margin-right: .5em"></i>RESULTADO DE LA BÚSQUEDA</h3>
 					</div></center>
 
 					<center>
+
 						<table class="jumbotron table table-striped shadow p-3 mb-5 rounded" border="3">
 							<thead>
 								<tr>
