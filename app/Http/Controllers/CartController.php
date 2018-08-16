@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class CartController extends Controller
 {
@@ -13,13 +14,13 @@ class CartController extends Controller
      */
     public function add($id)
     {
-      if (
-          !session()->has('products')
-          || !in_array($id, session()->get('products'))
-      ) {
-          session()->push('products', $id);
-      }
-
+      // if (
+      //     !session()->has('products')
+      //     || !in_array($id, session()->get('products'))
+      // ) {
+      session()->push('products', $id);
+      // }
+      //
       return redirect('carrito');
     }
 
@@ -50,14 +51,14 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-     public function show($id)
+     public function show($product)
      {
-         $products = [];
-
-         if (session()->has('products')) {
-             $cart = session()->get('products');
-             $products = \App\Models\Product::whereIn('id', $cart)->get();
-         }
+         // $product = [];
+         //
+         // if (session()->has('products')) {
+         //     $cart = session()->get('products');
+         //     $products = \App\Models\Product::whereIn('id', $cart)->get();
+         // }
 
          return view('carrito', ['products' => $products]);
      }

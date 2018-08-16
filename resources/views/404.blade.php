@@ -4,7 +4,7 @@
 
 @section('content')
   <div class="row justify-content-around">
-      <img src="images/404.png" alt="404">
+      <img src="/images/404.png" alt="404">
   </div>
 
   <br>

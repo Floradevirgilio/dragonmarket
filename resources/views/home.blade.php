@@ -28,22 +28,22 @@
 
 		@php $pcsArray = $pcs->toArray(); @endphp {{-- convierto en array la collection de datos que me da el Redirect.
 			Y además la filtra por los datos que el controller pidió en la búsqueda --}}
-		@foreach ($pcsArray as $key => $column) {{-- itero una tarjeta con cada resultado de pcs armadas --}}
+		@foreach ($pcsArray as $key => $product) {{-- itero una tarjeta con cada resultado de pcs armadas --}}
 			<div class="card text-center col-sm-12 col-md-6 col-lg-3 shadow-sm p-3 mb-5 bg-white rounded" style="margin-top: 10px;">
-				<form class="" action="/carrito/{{ $id }}" method="get">
-					<img class="card-img-top" src="/images/{{$column['id']}}.jpg" alt=""> {{-- Laravel se para autom. en la carpeta public --}}
+				<form class="" action="/carrito/" method="get">
+					<img class="card-img-top" src="/images/{{$product['id']}}.jpg" alt=""> {{-- Laravel se para autom. en la carpeta public --}}
 
 					<div  class="card-body hover">
-						<li> {{ $column['description'] }} </li>
+						<li> {{ $product['description'] }} </li>
 					</div>
 
 					<div class="card-body hover">
-						<h4 class="card-title">$ {{ number_format($column['price'], 2, ',', '.') }}</h4>
+						<h4 class="card-title">$ {{ number_format($product['price'], 2, ',', '.') }}</h4>
 					</div>
 
 					<div class="card-footer bg-transparent">
-						<input type="text" name="id" value="{{ $column['id'] }}" style="display:none">
-						<input type="text" name="description" value="{{ $column['description'] }}" style="display:none">
+						<input type="text" name="id" value="{{ $product['id'] }}" style="display:none">
+						<input type="text" name="description" value="{{ $product['description'] }}" style="display:none">
 						<input type="text" name="quantity" value="1" style="display:none">
 
 						<button class='btn btn-primary add-to-cart'>
@@ -59,22 +59,22 @@
 	<div class="row justify-content-center"> {{-- ROW DE PRODUCTOS --}}
 		@php $productsArray = $products->toArray(); @endphp {{-- convierto en array la collection de datos que me da el Redirect.
 			Y además la filtra por los datos que el controller pidió en la búsqueda --}}
-		@foreach ($productsArray as $key => $column) {{-- itero una tarjeta con cada resultado --}}
+		@foreach ($productsArray as $key => $product) {{-- itero una tarjeta con cada resultado --}}
 			<div class="card text-center col-sm-6 col-md-4 col-lg-2 shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem; margin-top: 10px;">
 
 				<div class="card-header bg-transparent">
-					<img src="/images/{{ $column['id'] }}.jpg" class="img06" alt="Video01"> {{-- Laravel se para autom. en la carpeta public --}}
+					<img src="/images/{{ $product['id'] }}.jpg" class="img06" alt="Video01"> {{-- Laravel se para autom. en la carpeta public --}}
 				</div>
 
 				<div class="card-body">
-					<li class="card-text">{{ $column['description'] }}</li><br>
-					<h5 class="card-title">${{ number_format($column['price'], 2, ',', '.') }}</h5>
+					<li class="card-text">{{ $product['description'] }}</li><br>
+					<h5 class="card-title">${{ number_format($product['price'], 2, ',', '.') }}</h5>
 				</div>
 
 				<div class="card-footer bg-transparent">
-					<form class="" action="/carrito/{{ $id }}" method="get">
+					<form class="" action="/carrito/" method="get">
 						<input type="text" name="id" value="" style="display:none">
-						<input type="text" name="descripcion" value="{{ $column['id'] }}" style="display:none">
+						<input type="text" name="descripcion" value="{{ $product['id'] }}" style="display:none">
 						<input type="text" name="cantidad" value="1" style="display:none">
 
 						<button class='btn btn-primary add-to-cart'>
