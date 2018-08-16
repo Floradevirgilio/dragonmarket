@@ -5,19 +5,27 @@ use Illuminate\Http\Request;
 
 class Redirect extends Controller {
 
-  public function __invoke($direccion = null) { //null por si no hay get, por ej 'localhost:8000', o dragon-market.com
+  public function __invoke($direccion = null, $id = null) { //null por si no hay get, por ej 'localhost:8000'
     if (is_null($direccion) || $direccion == 'home') { // si está en el home..
       $categories = CategoryController::showCategories(); // pido el listado de categorias para el aside
-      $pcs = ProductController::showPcs(); // pido 3 pcs armadas para mostrar
-      $products = ProductController::showProducts(); // pido 6 productos para mostrar
+      $pcs = ProductController::showPcs(); // pide 3 pcs armadas para mostrar
+      $products = ProductController::showProducts(); // pide 6 productos para mostrar
 
-      return view('home', [ 'pcs' => $pcs, 'categories' => $categories, 'products' => $products ]); // redirijo al home y paso los datos
+      return view('/home', [ 'pcs' => $pcs, 'categories' => $categories, 'products' => $products ]); // redirijo al home y paso los datos
     }
 
     elseif ($direccion == 'mostrarProductos') {
-      $search = '%'.trim($_GET['txt']).'%'; // trim para sacar posibles espacios, % como comodines para una búsqueda eficiente
-      $searchResults = ProductController::searchProducts($search); // le paso al controlador lo que el cliente quiere buscar
-      return view('mostrarProductos', [ 'searchResults' => $searchResults ]); // muestro la view y le paso el resultado de la búsqueda
+      if (!is_null($id)) {
+        $categoryProducts = ProductController::show($id);
+        return view('mostrarProductos', ['categoryProducts' => $categoryProducts]);
+      }
+
+      elseif (isset($_GET['txt'])) {
+        $search = '%'.trim($_GET['txt']).'%'; // trim para sacar posibles espacios, % como comodines para una búsqueda eficiente
+        $searchResults = ProductController::searchProducts($search); // le paso al controlador lo que el cliente quiere buscar
+        return view('mostrarProductos', [ 'searchResults' => $searchResults ]); // muestro la view y le paso el resultado de la búsqueda
+      }
+
     }
 
     else
