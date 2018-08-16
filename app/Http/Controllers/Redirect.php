@@ -25,7 +25,6 @@ class Redirect extends Controller {
         $searchResults = ProductController::searchProducts($search); // le paso al controlador lo que el cliente quiere buscar
         return view('mostrarProductos', [ 'searchResults' => $searchResults ]); // muestro la view y le paso el resultado de la búsqueda
       }
-
     }
 
     else
@@ -38,6 +37,7 @@ class Redirect extends Controller {
       'faq',
       // 'home', // ya la estamos usando arriba
       'ingreso',
+      'carrito',
       // 'auth/login',
       // 'logout',
       // 'passRecover',

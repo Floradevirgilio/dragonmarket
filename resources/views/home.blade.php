@@ -28,27 +28,29 @@
 
 		@foreach ($pcs as $pc) {{-- itero una tarjeta con cada resultado de pcs armadas --}}
 			<div class="card text-center col-sm-12 col-md-6 col-lg-3 shadow-sm p-3 mb-5 bg-white rounded" style="margin-top: 10px;">
-				<form class="" action="/carrito/" method="get">
-					<img class="card-img-top" src="/images/{{ $pc->id }}.jpg" alt=""> {{-- Laravel se para autom. en la carpeta public --}}
+				<img class="card-img-top" src="/images/{{ $pc->id }}.jpg" alt=""> {{-- Laravel se para autom. en la carpeta public --}}
 
-					<div  class="card-body hover">
-						<li> {{ $pc->description }} </li>
-					</div>
+				<div  class="card-body hover">
+					<li> {{ $pc->description }} </li>
+				</div>
 
-					<div class="card-body hover">
-						<h4 class="card-title">$ {{ number_format($pc->price, 2, ',', '.') }}</h4>
-					</div>
+				<div class="card-body hover">
+					<h4 class="card-title">$ {{ number_format($pc->price, 2, ',', '.') }}</h4>
+				</div>
 
-					<div class="card-footer bg-transparent">
-						<input type="text" name="id" value="{{ $pc->id }}" style="display:none">
-						<input type="text" name="description" value="{{ $pc->description }}" style="display:none">
-						<input type="text" name="quantity" value="1" style="display:none">
+				<div class="card-footer bg-transparent">
+					<form class="" action="/carrito" method="get">
+						@csrf
+						<input type="hidden" name="id" value="{{ $pc->id }}">
+						<label for="example-number-input" class="col-2 col-form-label row"><strong>Cantidad</strong></label>
+						<input class="form-control" type="number" name="quantity" value="1"><br>
 
-						<button class='btn btn-primary add-to-cart'>
-							<i class="fas fa-shopping-cart" style="font-size: 1em; margin-right: .5em"></i>Agregar<?php // // // echo ($auth->loginControl()) ? "Agregar" : "Comprar"?>
+						<button class='btn btn-primary add-to-cart' type="submit">
+							<i class="fas fa-shopping-cart" style="font-size: 1em; margin-right: .5em"></i>Agregar
+							{{-- echo ($auth->loginControl()) ? "Agregar" : "Comprar" --}}
 						</button>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		@endforeach
 	</div> <!-- Cierro el ROW -->
@@ -68,13 +70,15 @@
 				</div>
 
 				<div class="card-footer bg-transparent">
-					<form class="" action="/carrito/" method="get">
-						<input type="text" name="id" value="" style="display:none">
-						<input type="text" name="descripcion" value="{{ $product->id }}" style="display:none">
-						<input type="text" name="cantidad" value="1" style="display:none">
+					<form class="" action="/carrito method="get">
+						@csrf
+						<input type="hidden" name="id" value="{{ $product->id }}">
+						<label for="example-number-input" class="col-2 col-form-label row"><strong>Cantidad</strong></label>
+						<input class="form-control" type="number" name="quantity" value="1"><br>
 
-						<button class='btn btn-primary add-to-cart'>
-							<i class="fas fa-shopping-cart" style="font-size: 1em; margin-right: .5em"></i>Agregar<?php // echo ($auth->loginControl()) ? "Agregar" : "Comprar"?>
+						<button class='btn btn-primary add-to-cart' type="submit">
+							<i class="fas fa-shopping-cart" style="font-size: 1em; margin-right: .5em"></i>Agregar
+							{{-- echo ($auth->loginControl()) ? "Agregar" : "Comprar" --}}
 						</button>
 					</form>
 				</div>

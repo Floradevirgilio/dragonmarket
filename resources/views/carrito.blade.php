@@ -1,13 +1,9 @@
 @extends('componentes/layout')
 
-@section('title', 'Detalle del Carro Temporal - Dragon Market - Equipos y Componentes para Gamers')
+@section('title', 'Carrito - Dragon Market - Equipos y Componentes para Gamers')
 
 @section('content')
 	{{-- @php
-	require_once '../../app/Http/Controllers/loader.php';
-	require_once '../../app/Http/Controllers/DbMySQL.php';
-	require_once '../../app/Http/Controllers/CarroTemporal.php';
-
 	$action      = isset($_GET['action']) ? $_GET['action'] : '';
 	$descripcion = isset($_GET['descripcion']) ? $_GET['descripcion'] : '';
 
@@ -32,6 +28,6 @@
 				<center><i class="fas fa-shopping-cart" style="font-size: 2em; margin-left: 10px"></i></center>
 
 
-		{{ var_dump($product) }}
+		{{-- {{ var_dump($product) }} --}}
 
 @endsection
