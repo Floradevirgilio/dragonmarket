@@ -5,13 +5,13 @@
 @section('content')
   <div class="container">
 
-    <center><i class="fas fa-question-circle" style="font-size:2em; margin-right: 10px; margin-top: 20px"></i></center>
-    <div class="row justify-content-center" style="margin-top: 10px;">
-      <h3>PREGUNTAS FRECUENTES</h3>
-    </div>
+    <center><h2><i class="fas fa-question-circle" style="font-size:1em; margin-right: 10px; margin-top: 20px"></i>
+    <div style="margin-top: 10px; margin-bottom: 30px">
+      PREGUNTAS FRECUENTES</h2>
+    </div></center>
 
-    <div id="accordion" class="accordion">
-      <div class="border border-dark shadow mb-5 rounded card mb-0">
+    <center><div id="accordion" class="accordion">
+      <div class="border border-dark shadow mb-5 rounded card mb-0 col-8">
 
         <div class="card-header collapsed" data-toggle="collapse" href="#faq01">
           <a class="card-title">¿CUÁLES SON LAS FORMAS DE PAGO DISPONIBLES?</a>
@@ -106,6 +106,6 @@
         </div>
 
       </div>
-    </div>
+    </div></center>
   </div> <!-- Cierro container FAQ -->
 @endsection

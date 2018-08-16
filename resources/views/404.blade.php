@@ -9,6 +9,6 @@
 
   <br>
   <div class="row justify-content-center">
-    <a href="home">Volver a la página principal</a>
+    <a href="/home">Volver a la página principal</a>
   </div>
 @endsection
