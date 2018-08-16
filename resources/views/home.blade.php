@@ -30,7 +30,7 @@
 			Y además la filtra por los datos que el controller pidió en la búsqueda --}}
 		@foreach ($pcsArray as $key => $column) {{-- itero una tarjeta con cada resultado de pcs armadas --}}
 			<div class="card text-center col-sm-12 col-md-6 col-lg-3 shadow-sm p-3 mb-5 bg-white rounded" style="margin-top: 10px;">
-				<form class="" action="agregar.php" method="get">
+				<form class="" action="/carrito/{{ $id }}" method="get">
 					<img class="card-img-top" src="/images/{{$column['id']}}.jpg" alt=""> {{-- Laravel se para autom. en la carpeta public --}}
 
 					<div  class="card-body hover">
@@ -43,8 +43,8 @@
 
 					<div class="card-footer bg-transparent">
 						<input type="text" name="id" value="{{ $column['id'] }}" style="display:none">
-						<input type="text" name="descripcion" value="{{ $column['description'] }}" style="display:none">
-						<input type="text" name="cantidad" value="1" style="display:none">
+						<input type="text" name="description" value="{{ $column['description'] }}" style="display:none">
+						<input type="text" name="quantity" value="1" style="display:none">
 
 						<button class='btn btn-primary add-to-cart'>
 							<i class="fas fa-shopping-cart" style="font-size: 1em; margin-right: .5em"></i>Comprar<?php // // // echo ($auth->loginControl()) ? "Agregar" : "Comprar"?>
@@ -72,7 +72,7 @@
 				</div>
 
 				<div class="card-footer bg-transparent">
-					<form class="" action="agregar.php" method="get">
+					<form class="" action="/carrito/{{ $id }}" method="get">
 						<input type="text" name="id" value="" style="display:none">
 						<input type="text" name="descripcion" value="{{ $column['id'] }}" style="display:none">
 						<input type="text" name="cantidad" value="1" style="display:none">

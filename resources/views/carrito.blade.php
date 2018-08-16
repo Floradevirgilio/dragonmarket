@@ -31,94 +31,102 @@
 				</div>
 				<center><i class="fas fa-shopping-cart" style="font-size: 2em; margin-left: 10px"></i></center>
 
-				<?php
-				if ($action) {
-					echo "<center><div class='alert alert-info col-6'>";
-					echo "<strong>{$descripcion}</strong>";
-					switch ($action) {
-						case 'removed'         : echo 'fue eliminado del carrito!'; break;
-						case 'cantidad_updated': echo 'la cantidad ha sido actualizada!'; break;
-						case 'failed'          : echo 'no se pudo actualizar la cantidad!'; break;
-						case 'invalid_value'   : echo 'cantidad es inválida!'; break;
-					}
-					echo "</div></center>";
-				}
 
+				@if ($action) {
+					<center><div class='alert alert-info col-6'>
+					<strong>{$descripcion}</strong>
+					@switch($action)
+              @case('removed')
+                  {{ 'fue eliminado del carrito!' }}
+                  @break
 
-				if($num > 0) {
-					echo "<div class='row justify-content-center' style='margin-top: 50px;'>";
-						echo "<div class='table-responsive'>";
-							echo "<table class='table table-hover table-bordered'>";
-								echo "<thead class='thead-light'>";
-									echo "<tr>";
-										echo "<th class='textAlignLeft'>Descripción</th>";
-										echo "<th>Precio</th>";
-										echo "<th style='width:4em;'>Cantidad</th>";
-										echo "<th style='width:4em;'>Sub Total</th>";
-										echo "<th style='width:4em;'>Acciones</th>";
-										echo "</tr>";
-										echo "</thead>";
+              @case('cantidad_updated')
+                  {{ 'la cantidad ha sido actualizada!' }}
+                  @break
 
-										$total = 0;
+							@case('failed')
+		                {{ 'no se pudo actualizar la cantidad!' }}
+		                @break
+
+							@default
+				             {{ 'cantidad es inválida!' }}
+
+          @endswitch
+						</div></center>
+			    @endif
+
+				@if($num > 0)
+					<div class='row justify-content-center' style='margin-top: 50px;'>
+						<div class='table-responsive'>";
+						<table class='table table-hover table-bordered'>
+							<thead class='thead-light'>
+									<tr>
+									<th class='textAlignLeft'>Descripción</th>
+										<th>Precio</th>
+										<th style='width:4em;'>Cantidad</th>
+										<th style='width:4em;'>Sub Total</th>
+										<th style='width:4em;'>Acciones</th>
+										</tr>
+										</thead>
+
+										$total = 0
 										while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 											extract($row);
-
-											echo "<tr>";
-												echo "<td>";
-													echo "<div class='product-id' style='display:none;'>{$id}</div>";
-													echo "<div class='product-descripcion'>{$descripcion}</div>";
-													echo "</td>";
-													echo "<td>$ " . number_format($precio, 2, '.', ',') . "</td>";
-													echo "<td>";
-														echo "<div class='input-group'>";
-															echo "<input type='number' min='1' max='10'
+                    @foreach ($products as $product)
+											<tr>
+												<td>
+													<div class='product-id' style='display:none;'>{{ $product->$id }}</div>
+													<div class='product-descripcion'>{{ $product->$description }}</div>
+													</td>
+												  <td>{{'$'.number_format($product->$price, 2, '.', ',')}}</td>
+													<td>
+													<div class='input-group'>";
+															<input type='number' min='1' max='10'
 															descripcion='cantidad'
-															value='{$cantidad}'
-															class='form-control'>";
-															echo "<span class='input-group-btn'>";
-																echo "<button class='btn btn-info update-cantidad' type='button'>
-																	<i class='glyphicon glyphicon-refresh'></i> Actualizar</button>";
-																	echo "</span>";
-																	echo "</div>";
-																	echo "</td>";
-																	echo "<td>$ " . number_format($subtotal, 2, '.', ',') . "</td>";
-																	echo "<td>";
-																		echo "<a href='eliminar.php?id={$id}&descripcion={$descripcion}'
-																		class='btn btn-danger'>";
-																		echo "<span class='glyphicon glyphicon-remove'></span> Quitar del carrito";
-																		echo "</a>";
-																		echo "</td>";
-																		echo "</tr>";
+															value='{{ $product->$quantity }}'
+															class='form-control'>
+															<span class='input-group-btn'>
+																<button class='btn btn-info update-cantidad' type='button'>
+																	<i class='glyphicon glyphicon-refresh'></i> Actualizar </button>
+																	</span>
+																	</div>
+																	</td>
+																	<td>{{'$'.number_format($subtotal = $product->$quantity * $product->$price, 2, '.', ',')}}</td>
+																	<td>
+																		<a href=''	class='btn btn-danger'>
+																		<span class='glyphicon glyphicon-remove'></span> Quitar del carrito
+																		</a>
+																		</td>
+																		</tr>
 
-																		$total += $subtotal;
-																	}
+																	{{	$total += $subtotal }}
 
-																	echo "<tr>";
-																		echo "<td><b>Total</b></td>";
-																		echo "<td></td>";
-																		echo "<td></td>";
-																		echo "<td>$ " . number_format($total, 2, '.', ',') . "</td>";
-																		echo "<td>";
-																			echo "<a href='pagar.php?cli=$users_id' class='btn btn-success'>";
-																				echo "<span class='glyphicon glyphicon-shopping-cart'></span> Pagar";
-																				echo "</a>";
-																				echo "</td>";
-																				echo "</tr>";
+																	<tr>
+																		<td><b>Total</b></td>
+																		<td></td>
+																		<td></td>
+																		<td>{{'$'.number_format($subtotal, 2, '.', ',')}}</td>
+																		<td>
+																			<a href='' class='btn btn-success'>
+																				<span class='glyphicon glyphicon-shopping-cart'></span> Pagar
+																				</a>
+																				</td>
+																				</tr>
+                      @endforeach
+																				</table>
+																				</div>
+																				</div>
 
-																				echo "</table>";
-																				echo "</div>";
-																				echo "</div>";
-
-																			} else { ?>
+																			@else
 
 																				<center><div class='alert alert-danger col-4' style='margin-top: 50px;'>
 																					<strong>No se han encontrado productos</strong> en tu carrito!
 																				</div></center>
 
-																				<?php } ?>
+																			@endif
 
 																				<div class='row justify-content-center' style='margin-top: 75px;'>
-																					<a class='btn btn-primary' href='home.php'>Volver</a>
+																					<a class='btn btn-primary' href='{{ route('home') }}'>Volver</a>
 																				</div>
 
 																			</div>

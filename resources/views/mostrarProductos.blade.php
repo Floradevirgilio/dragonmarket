@@ -49,7 +49,7 @@
 				@endif
 
 				<center> {{-- el boton de volver al home se muestra siempre, con o sin resultados. Por eso está fuera del if --}}
-					<a class="btn btn-primary shadow-sm mb-5 rounded" href="home"><i class="fas fa-home" style="font-size: 1em; margin-right: .5em"></i>Volver al home</a>
+					<a class="btn btn-primary shadow-sm mb-5 rounded" href="{{ route('home') }}"><i class="fas fa-home" style="font-size: 1em; margin-right: .5em"></i>Volver al home</a>
 				</center>
 
 			</div>
