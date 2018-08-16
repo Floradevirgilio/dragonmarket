@@ -26,6 +26,9 @@
 					<h3>Contenido del Carrito Temporal</h3>
 				</div>
 				<center><i class="fas fa-shopping-cart" style="font-size: 2em; margin-left: 10px"></i></center>
+			</div>
+		</div>
+	</div>
 
 
 		{{-- {{ var_dump($product) }} --}}
