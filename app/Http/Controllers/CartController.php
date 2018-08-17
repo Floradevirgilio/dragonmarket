@@ -36,6 +36,19 @@ class CartController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+      $product = new Product;
+
+      $product->product_id = $request->product_id;
+      $product->quantity = $request->quantity;
+      $product->user_id = $request->user_id;
+      // $product->user_id = Auth::user()->id;
+
+      if ($product->save()) { // true = lo pudo guardar
+        return redirect('/home');
+      }
+      else { // no l o pudo guardar
+        return redirect('/faq');
+      }
     }
 
     /**

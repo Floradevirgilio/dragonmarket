@@ -39,15 +39,15 @@
 				</div>
 
 				<div class="card-footer bg-transparent">
+					<label for="example-number-input" class="col-2 col-form-label row"><strong>Cantidad</strong></label>
 					<form class="" action="/carrito" method="POST">
 						@csrf
-						<input type="hidden" name="id" value="{{ $pc->id }}">
-						<label for="example-number-input" class="col-2 col-form-label row"><strong>Cantidad</strong></label>
 						<input class="form-control" type="number" name="quantity" value="1"><br>
+						<input type="hidden" name="product_id" value="{{ $pc->id }}">
+						<input type="hidden" name="user_id" value="99">
 
 						<button class='btn btn-primary add-to-cart' type="submit">
 							<i class="fas fa-shopping-cart" style="font-size: 1em; margin-right: .5em"></i>Agregar
-							{{-- echo ($auth->loginControl()) ? "Agregar" : "Comprar" --}}
 						</button>
 					</form>
 				</div>
@@ -78,7 +78,6 @@
 
 						<button class='btn btn-primary add-to-cart' type="submit">
 							<i class="fas fa-shopping-cart" style="font-size: 1em; margin-right: .5em"></i>Agregar
-							{{-- echo ($auth->loginControl()) ? "Agregar" : "Comprar" --}}
 						</button>
 					</form>
 				</div>
