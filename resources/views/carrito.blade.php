@@ -22,10 +22,12 @@
 	<div id="wrap">
 		<div id="main" class="container">
 			<div class="container">
-				<div class="row justify-content-center" style="margin-top: 50px;">
-					<h3>Contenido del Carrito Temporal</h3>
+				<center><i class="fas fa-shopping-cart mt-4" style="font-size: 2em; "></i></center>
+				<div class="mt-3">
+					<center><h3>Contenido del Carrito Temporal</h3></center>
 				</div>
-				<center><i class="fas fa-shopping-cart" style="font-size: 2em; margin-left: 10px"></i></center>
+
+				{{ var_dump($_POST) }}
 			</div>
 		</div>
 	</div>

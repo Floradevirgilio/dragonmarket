@@ -39,7 +39,7 @@
 				</div>
 
 				<div class="card-footer bg-transparent">
-					<form class="" action="/carrito" method="get">
+					<form class="" action="/carrito" method="POST">
 						@csrf
 						<input type="hidden" name="id" value="{{ $pc->id }}">
 						<label for="example-number-input" class="col-2 col-form-label row"><strong>Cantidad</strong></label>
@@ -70,7 +70,7 @@
 				</div>
 
 				<div class="card-footer bg-transparent">
-					<form class="" action="/carrito method="get">
+					<form class="" action="/carrito" method="POST">
 						@csrf
 						<input type="hidden" name="id" value="{{ $product->id }}">
 						<label for="example-number-input" class="col-2 col-form-label row"><strong>Cantidad</strong></label>

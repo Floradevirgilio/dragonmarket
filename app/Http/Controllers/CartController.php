@@ -1,19 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Product;
 
-class CartController extends Controller
-{
+class CartController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function add($id)
-    {
+    public function add($id) {
       // if (
       //     !session()->has('products')
       //     || !in_array($id, session()->get('products'))
@@ -29,9 +26,7 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
     }
 
     /**
@@ -40,9 +35,7 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
     }
 
     /**
@@ -51,8 +44,7 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-     public function show($product)
-     {
+     public function show(Request $request) {
          // $product = [];
          //
          // if (session()->has('products')) {
@@ -60,7 +52,9 @@ class CartController extends Controller
          //     $products = \App\Models\Product::whereIn('id', $cart)->get();
          // }
 
-         return view('carrito', ['products' => $products]);
+         // return view('carrito', ['products' => $products]);
+         return view('carrito', [ 'cantidad' => $request->input('quantity') ]);
+         // return $request->input('quantity');
      }
 
     /**
@@ -69,9 +63,7 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
     }
 
     /**
@@ -81,9 +73,7 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
     }
 
     /**
@@ -92,8 +82,7 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-     public function destroy($id)
-     {
+     public function destroy($id) {
          session()->forget('products');
 
          return redirect('carrito');

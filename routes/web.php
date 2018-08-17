@@ -39,4 +39,5 @@ Route::get('{direccion?}/{id?}', 'Redirect'); //le manda el get a Redirect para 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/mostrarProductos/{id}', 'ProductController@show');
-Route::get('/carrito', 'CartController@show');
+// Route::get('/carrito', 'CartController@show');
+Route::post('/carrito', 'CartController@show');

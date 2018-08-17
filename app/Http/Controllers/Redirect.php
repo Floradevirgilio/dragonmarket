@@ -33,18 +33,18 @@ class Redirect extends Controller {
 
   protected function paginas() { // listado de las paginas de la web dragon-market
     $paginasPermitidas = [ //que tienen el mismo nombre que las views
-      // 'agregarCarrito',
       'faq',
-      // 'home', // ya la estamos usando arriba
-      'ingreso',
       'carrito',
+      'registro',
+      // 'ingreso',
+      // 'agregarCarrito',
+      // 'home', // ya la estamos usando arriba
       // 'auth/login',
       // 'logout',
       // 'passRecover',
       // 'productosBuscar',
       // 'productosInfo',
       // 'productosMostrar',
-      'registro',
     ];
 
     return $paginasPermitidas;
