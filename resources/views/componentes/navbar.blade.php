@@ -11,7 +11,7 @@
         <div class="container">
           <div class="d-flex justify-content-between align-items-center">
 
-            <div class="">
+            <div>
               <a class='navbar-brand' href='{{ route('home') }}'>
                 <img src='/images/DMHead.png' alt='Logo' style='width: 50px;'>
                 <img src='/images/DMText.png' alt='Logo' style='width: 200px;'>
@@ -19,7 +19,7 @@
             </div>
 
             {{-- <div class='navbar-collapse collapse justify-content-stretch' id='navbar5'> --}}
-            <div class="">
+            <div>
               <form class="form-inline flex-nowrap pt-3" action='/mostrarProductos' style="margin-left: auto;">
                 @csrf
                 <div class='md-form my-0'>

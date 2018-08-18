@@ -26,7 +26,7 @@
 						<table class="jumbotron table table-striped shadow p-3 mb-5 rounded" border="3">
 							<thead>
 								<tr>
-									@php $columnas = ['Id', 'Descripcion', 'Cantidad', 'Precio', 'Comprar']; @endphp {{-- El titulo de cada columna --}}
+									@php $columnas = ['Id', 'Descripcion', 'Cantidad', 'Precio', 'Agregar']; @endphp {{-- El titulo de cada columna --}}
 
 									@foreach ($columnas as $columna) {{-- foreacheo una fila de <th> (table head) con los titulos de las columnas --}}
 										<th><center> {{ $columna }} </center></th>

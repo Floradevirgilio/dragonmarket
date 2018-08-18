@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Product;
+// use App\Models\Product;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller {
     /**
@@ -36,7 +38,7 @@ class CartController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-      $product = new Product;
+      $product = new Cart;
 
       $product->product_id = $request->product_id;
       $product->quantity = $request->quantity;
@@ -46,7 +48,7 @@ class CartController extends Controller {
       if ($product->save()) { // true = lo pudo guardar
         return redirect('/home');
       }
-      else { // no l o pudo guardar
+      else { // no lo pudo guardar
         return redirect('/faq');
       }
     }
