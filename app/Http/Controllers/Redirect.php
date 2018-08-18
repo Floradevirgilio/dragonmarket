@@ -16,12 +16,14 @@ class Redirect extends Controller {
       }
 
       elseif (isset($_GET['txt'])) { // si llegó algo por el buscador de la navbar
-        return $this->searchResults(); // busca en la db qué hay con lo que escribieron
+        $search = '%'.trim($_GET['txt']).'%'; // trim para sacar posibles espacios, % como comodines para una búsqueda eficiente
+        $searchResults = ProductController::searchProducts($search); // le paso al controlador lo que el cliente quiere buscar
+        return view('/mostrarProductos', [ 'searchResults' => $searchResults ]); // muestro la view y le paso el resultado de la búsqueda
       }
     }
 
     elseif ($direccion == 'cart') {
-
+      return $this->cartProducts();
     }
 
     else
@@ -49,20 +51,19 @@ class Redirect extends Controller {
 
   private function home() {
     $categories = CategoryController::showCategories(); // pido el listado de categorias para el aside
-    $pcs = ProductController::showPcs(); // pide 3 pcs armadas para mostrar
-    $products = ProductController::showProducts(); // pide 6 productos para mostrar
+    $pcs = ProductController::showProducts()->where('category_id', '=', 7)->random(3); // pide al azar 3 pcs armadas para mostrar
+    $products = ProductController::showProducts()->where('category_id', '!=', 7)->random(6); // pide al azar 6 productos para mostrar
 
     return view('/home', [ 'pcs' => $pcs, 'categories' => $categories, 'products' => $products ]); // redirijo al home y paso los datos
   }
 
   private function categoryProducts($id) {
     $categoryProducts = ProductController::show($id); // busca productos con ese id de categoría
-    return view('mostrarProductos', ['categoryProducts' => $categoryProducts]); // devuelvo view mostrarProductos con los resultados
+    return view('/mostrarProductos', ['categoryProducts' => $categoryProducts]); // devuelvo view mostrarProductos con los resultados
   }
 
-  private function searchResults() {
-    $search = '%'.trim($_GET['txt']).'%'; // trim para sacar posibles espacios, % como comodines para una búsqueda eficiente
-    $searchResults = ProductController::searchProducts($search); // le paso al controlador lo que el cliente quiere buscar
-    return view('mostrarProductos', [ 'searchResults' => $searchResults ]); // muestro la view y le paso el resultado de la búsqueda
+  private function cartProducts() {
+    $cartProducts = CartController::showCartProducts(); // busca productos con ese id de categoría
+    return view('/cart', ['cartProducts' => $cartProducts]); // devuelvo view mostrarProductos con los resultados
   }
 }
