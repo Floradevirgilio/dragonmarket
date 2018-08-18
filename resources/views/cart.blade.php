@@ -8,6 +8,8 @@
 		<div id="main" class="container">
 			<div class="container">
 
+				{{ dd($cartProducts) }}
+
 				@php $products @endphp {{-- variable que voy a llenar con los resultados que me llegaron --}}
 
 				@if (isset($searchResults)) {{-- si me llegaron resultados desde el buscador de la navbar --}}
