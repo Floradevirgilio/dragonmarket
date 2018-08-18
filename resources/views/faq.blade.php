@@ -6,9 +6,7 @@
   <div class="container">
 
     <center><h2><i class="fas fa-question-circle" style="font-size:1em; margin-right: 10px; margin-top: 20px"></i>
-    <div style="margin-top: 10px; margin-bottom: 30px">
-      PREGUNTAS FRECUENTES</h2>
-    </div></center>
+    <div style="margin-top: 10px; margin-bottom: 30px">PREGUNTAS FRECUENTES </div></h2></center>
 
     <center><div id="accordion" class="accordion">
       <div class="border border-dark shadow mb-5 rounded card mb-0 col-8">

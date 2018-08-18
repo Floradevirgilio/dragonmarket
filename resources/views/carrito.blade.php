@@ -32,7 +32,4 @@
 		</div>
 	</div>
 
-
-		{{-- {{ var_dump($product) }} --}}
-
 @endsection

@@ -45,7 +45,7 @@
 <script src="libs/js/holder.js"></script>
 
 
-<script>
+{{-- <script>
 // Código traido de la web
 
 $(document).ready(function(){
@@ -73,7 +73,7 @@ $(document).ready(function(){
     window.location.href = "actualizar.php?id=" + id + "&descripcion=" + descripcion + "&cantidad=" + cantidad;
   });
 });
-</script>
+</script> --}}
 
 </body>
 </html>
