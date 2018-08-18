@@ -16,8 +16,8 @@ class CreateCartsTable extends Migration {
             $table->integer('product_id')->unsigned(); // en la clave foranea tiene que ir un unsigned para que no se rompa
             $table->foreign('product_id')->references('id')->on('products'); // establezco la relacion de la clave foreanea
             $table->integer('quantity');
-            $table->integer('user_id')->unsigned(); // en la clave foranea tiene que ir un unsigned para que no se rompa 
-            $table->foreign('user_id')->references('id')->on('users'); // establezco la relacion de la clave foreanea
+            $table->integer('user_id')->unsigned(); // en la clave foranea tiene que ir un unsigned para que no se rompa
+            // $table->foreign('user_id')->references('id')->on('users'); // establezco la relacion de la clave foreanea
             $table->timestamps();
         });
     }
