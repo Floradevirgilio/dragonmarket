@@ -73,7 +73,7 @@
 
 				<div class="card-footer bg-transparent">
 					<label><strong>Agregar al Carrito</strong></label>
-					<form class="" action="/carrito" method="POST">
+					<form action="/carrito" method="POST">
 						@csrf
 						<input type="hidden" name="product_id" value="{{ $product->id }}">
 						<input type="hidden" name="user_id" value="99">

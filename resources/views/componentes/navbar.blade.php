@@ -34,8 +34,15 @@
               </form>
             </div>
 
-            <div style='color: white;'>
+            <div class="d-flex justify-content-center" style='color: white'>
+              {{-- <div class="align-self-center" style="margin-right: 2em">
+                <i class="fas fa-shopping-cart" style="font-size: 1em"> (0)</i>
+              </div> --}}
+
               <ul class='navbar-nav'>
+                <li class='nav-item'>
+                  <a class='nav-link' href='/cart'><i class="fas fa-shopping-cart" style="font-size: 1em"></i> (0) </a>
+                </li>
                 <li class='nav-item'>
                   <a class='nav-link' href='{{ route('login') }}'><i class="fas fa-sign-in-alt" style="font-size: 1em"></i> Ingreso </a>
                 </li>
