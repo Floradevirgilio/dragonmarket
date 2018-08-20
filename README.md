@@ -4,6 +4,7 @@
 
 
 # me falta terminar el carrito
+# debería corregir el responsive de la navbar..
 # faltaría volver a agregar un avatar, y la pantalla de edición de datos.
 # falta todo el backend
 # FALTA JAVASCRIPT X_x
