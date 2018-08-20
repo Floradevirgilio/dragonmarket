@@ -10,34 +10,25 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Auth::routes(); // explicado en https://www.youtube.com/watch?v=coSV-njT1Gk
-// estas son las rutas que usa Auth::routes() en Router.php
-// de modo que podríamos cambiarlas para que vayan a un controlador que haga una validación adecuada a nuestro formulario en el caso del registro
 
-// // Authentication Routes...
-// $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
-// $this->post('login', 'Auth\LoginController@login');
-// $this->post('logout', 'Auth\LoginController@logout')->name('logout');
-//
-// // Registration Routes...
-// $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-// $this->post('register', 'Auth\RegisterController@register');
-//
-// // Password Reset Routes...
-// $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-// $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-// $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-// $this->post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::get('/', 'MainController@homeShowProducts'); // el home y el método que busca en la db los productos para mostrar
+Route::get('/mostrarProductos/{id?}', 'ProductController@showProducts'); // los productos a mostrar por buscador o por categoría
+Route::get('/faq', function() { return view('/faq'); });
 
-// si un controlador tiene una sola funcion la podemos llamar __invoke y la ejecuta automaticamente. No hace falta agregar controlador@funcion.
+Route::get('/register', function() { return view('/register'); }); // registro
+Route::post('/register', 'UserController@store');
 
-Route::get('{direccion?}/{id?}', 'Redirect'); //le manda el get a Redirect para que redirija a esa pagina
-// el '?' en {login?} es porque puede no haber get, por ej 'localhost:8000', lo cual equivaldría a mostrar el home.
+Route::get('/login', function() { return view('/login'); }); // login
+Route::post('/login', 'AuthController@login');
+Route::get('/logout', 'AuthController@logout'); // logout
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/mostrarProductos/{id}', 'ProductController@show');
-// Route::get('/carrito', 'CartController@show');
-Route::post('/carrito', 'CartController@store');
+
+Route::get('/cart', 'CartController@index'); // carrito
+Route::resource('cart_product', 'CartProductController', [ 'only' => [ 'store', 'destroy' ] ]); // - NO FUNCIONAL. Le faltan un par de boludeces
+
+// Auth::routes();
+// Route::get('/home', 'HomeController@index')->name('home');

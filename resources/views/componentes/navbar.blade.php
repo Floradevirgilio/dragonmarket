@@ -1,65 +1,81 @@
 <header>
-  <div class='container-fluid'>
-    <nav class='navbar navbar-expand-md fixed-top navbar-light navbar-custom'>
+    <div class='container-fluid'>
+        <nav class='navbar navbar-expand-md fixed-top navbar-light navbar-custom'>
 
-      {{-- <button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbar5'> --}}
-      <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbar5'>
-        <span class='navbar-toggler-icon'></span>
-      </button>
+            {{-- <button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbar5'> --}}
+            <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbar5'>
+                <span class='navbar-toggler-icon'></span>
+            </button>
 
-      <div class="container-fluid">
-        <div class="container">
-          <div class="d-flex justify-content-between align-items-center">
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="d-flex justify-content-between align-items-center">
 
-            <div>
-              <a class='navbar-brand' href='{{ route('home') }}'>
-                <img src='/images/DMHead.png' alt='Logo' style='width: 50px;'>
-                <img src='/images/DMText.png' alt='Logo' style='width: 200px;'>
-              </a>
-            </div>
+                        <div>
+                            <a class='navbar-brand' href='/'>
+                                <img src='/images/DMHead.png' alt='Logo' style='width: 50px;'>
+                                <img src='/images/DMText.png' alt='Logo' style='width: 200px;'>
+                            </a>
+                        </div>
 
-            {{-- <div class='navbar-collapse collapse justify-content-stretch' id='navbar5'> --}}
-            <div>
-              <form class="form-inline flex-nowrap pt-3" action='/mostrarProductos' style="margin-left: auto;">
-                @csrf
-                <div class='md-form my-0'>
-                  <input class='form-control mr-sm-2' name='txt' type='text' placeholder='Buscar ...' aria-label='Search'>
-                </div>
+                        {{-- <div class='navbar-collapse collapse justify-content-stretch' id='navbar5'> --}}
+                        <div>
+                            <form class="form-inline flex-nowrap pt-3" action='/mostrarProductos' style="margin-left: auto;">
+                                @csrf
+                                <div class='md-form my-0'>
+                                    <input class='form-control mr-sm-2' name='txt' type='text' placeholder='Buscar ...' aria-label='Search'>
+                                </div>
 
-                <div class="input-group-btn">
-                  <button type="submit" class="btn btn-outline-success">
-                    <i class="fas fa-search" style="font-size: 1.5em"></i>
-                  </button>
-                </div>
-              </form>
-            </div>
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-outline-success">
+                                        <i class="fas fa-search" style="font-size: 1.5em"></i>
+                                    </button>
+                                </span>
+                            </form>
+                        </div>
 
-            <div class="d-flex justify-content-center" style='color: white'>
-              {{-- <div class="align-self-center" style="margin-right: 2em">
-                <i class="fas fa-shopping-cart" style="font-size: 1em"> (0)</i>
-              </div> --}}
 
-              <ul class='navbar-nav'>
-                <li class='nav-item'>
-                  <a class='nav-link' href='/cart'><i class="fas fa-shopping-cart" style="font-size: 1em"></i> (0) </a>
-                </li>
-                <li class='nav-item'>
-                  <a class='nav-link' href='{{ route('login') }}'><i class="fas fa-sign-in-alt" style="font-size: 1em"></i> Ingreso </a>
-                </li>
-                <li class='nav-item'>
-                  <a class='nav-link' href='{{ route('register') }}'><i class="fas fa-user-edit" style="font-size: 1em"></i> Registro </a>
-                </li>
-                <li class='nav-item'>
-                  <a class='nav-link' href='faq'><i class="fas fa-question-circle" style="font-size: 1em"></i> FAQ</a>
-                </li>
-              </ul>
-            </div>
+                        <div class="d-flex justify-content-center" style='color: white'>
+                            {{-- <div class="align-self-center" style="margin-right: 2em">
+                            <i class="fas fa-shopping-cart" style="font-size: 1em"> (0)</i>
+                        </div> --}}
 
-          </div> {{-- cont between --}}
-        </div> {{-- container --}}
-      </div> {{-- container fluid --}}
-    </nav>
-  </div>
+                        <ul class='navbar-nav' style="padding-top: 1em">
+                            <li class='nav-item'>
+                                <a class='nav-link' href='/cart'><i class="fas fa-shopping-cart" style="font-size: 1em"></i> (0{{--{{ $productsCount }} --}}) </a>  {{-- Redirect me manda un objeto $cart, lo que me permite acceder a los métodos publicos del modelo Cart --}}
+                            </li>
+
+                            @if (auth()->user())
+                                <li class='nav-item'>
+                                    <p class="nav-link"><i class="fas fa-user" style="font-size: 1em"></i> {{ auth()->user()->first_name }}</p>
+                                </li>
+                                <li class='nav-item'>
+                                    <a class='nav-link' href='/register'><i class="fas fa-user-circle" style="font-size: 1em"></i> Datos Personales </a>
+                                </li>
+                                <li class='nav-item'>
+                                    <a class='nav-link' href='/logout'><i class="fas fa-sign-out-alt" style="font-size: 1em"></i> Cerrar Sesión</a>
+                                </li>
+                            @else
+                                <li class='nav-item'>
+                                    <a class='nav-link' href='/login'><i class="fas fa-sign-in-alt" style="font-size: 1em"></i> Ingreso </a>
+                                </li>
+                                <li class='nav-item'>
+                                    <a class='nav-link' href='/register'><i class="fas fa-user-edit" style="font-size: 1em"></i> Registro </a>
+                                </li>
+                                <li class='nav-item'>
+                                    <a class='nav-link' href='faq'><i class="fas fa-question-circle" style="font-size: 1em"></i> FAQ</a>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
+
+                </div> {{-- cont between --}}
+            </div> {{-- container --}}
+        </div> {{-- container fluid --}}
+
+    </div>
+</nav>
+</div>
 
 </header>
 {{-- @endif --}}

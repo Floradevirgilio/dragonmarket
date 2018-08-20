@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder {
     $this->TruncateTables([ 'categories', 'products' ]); // Vacío estas tablas antes de llenarlas. Explicado abajo qué hace ésto.
     $this->call(CategorySeeder::class); // agrego acá los seeders que voy creando para después ejecutarlos (pobrecitos. CUAC.)
     $this->call(ProductSeeder::class);
+    $this->call(UserSeeder::class);
   }
 
   protected function TruncateTables(array $tables) { // hint de que va a recibir un array con tablas a truncar

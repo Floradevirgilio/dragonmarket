@@ -1,4 +1,4 @@
-@extends('componentes/layout')
+@extends('layouts.app')
 
 @section('title', '404 - Pagina no encontrada')
 

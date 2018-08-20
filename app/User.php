@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'pass', 'avatar', 'active',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -24,10 +24,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'pass', 'remember_token',
+        'password', 'remember_token',
     ];
-
-    public function carritoTemporal() {
-      return $this->hasOne(CarritoTemporal::class);
-    }
 }

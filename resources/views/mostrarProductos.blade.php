@@ -36,10 +36,10 @@
 							<tbody>
 								@foreach ($products as $product) {{-- los resultados que me llegaron --}}
 									<tr>
-										<td><center> {{ $product->id }} </center></td>
-										<td><center> {{ $product->description }} </center></td>
+										<td><center> {{ $product['id'] }} </center></td>
+										<td><center> {{ $product['description'] }} </center></td>
 										<td> <input type='number' min='1' max='10' name='cantidad' value='1' class='form-control' /></td>
-										<td><center> ${{ $product->price }} </center></td>
+										<td><center> ${{ $product['price'] }} </center></td>
 										<td>
 											<center><button class='btn btn-info add-to-cart'><i class='fas fa-cart-plus' style='font-size: 1.1em'></i></button></center>
 										</td>
@@ -51,12 +51,13 @@
 
 				@else {{-- si no se encontraron resultados --}}
 					<center><div style="margin-top: 3em; margin-bottom: 2em">
-						<h3><i class="fas fa-frown" style="font-size: 1em; margin-right: .5em"></i>NO SE ENCONTRARON RESULTADOS</h3>
+                        <img src="images/no_results.png" alt="no_results"><br><br>
+                        <h3>NO SE ENCONTRARON RESULTADOS</h3>
 					</div></center>
 				@endif
 
 				<center> {{-- el boton de volver al home se muestra siempre, con o sin resultados. Por eso está fuera del if --}}
-					<a class="btn btn-primary shadow-sm mb-5 rounded" href="{{ route('home') }}"><i class="fas fa-home" style="font-size: 1em; margin-right: .5em"></i>Volver al home</a>
+					<a class="btn btn-primary shadow-sm mb-5 rounded" href="/"><i class="fas fa-home" style="font-size: 1em; margin-right: .5em"></i>Volver al home</a>
 				</center>
 			</div>
 		</div> {{-- Cierro container --}}
