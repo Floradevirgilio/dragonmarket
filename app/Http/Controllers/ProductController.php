@@ -8,7 +8,7 @@ use App\Models\Product;
 class ProductController extends Controller {
   public static function showProducts($id = null) {
           if ($id) { // si recibió un id de categoría..
-              return $this->categoryProducts($id); // busca los productos de la categoría y devuelve la view mostrarProductos con éstos
+              return ProductController::categoryProducts($id); // busca los productos de la categoría y devuelve la view mostrarProductos con éstos
           }
 
           elseif (isset($_GET['txt'])) { // si llegó algo por el buscador de la navbar
@@ -33,7 +33,7 @@ class ProductController extends Controller {
     // return view('/mostrarProductos', ['products' => $products]);
   }
 
-  public function categoryProducts($id) {
+  public static function categoryProducts($id) {
     $categoryProducts = ProductController::show($id); // busca productos con ese id de categoría
     return view('/mostrarProductos', ['categoryProducts' => $categoryProducts]); // devuelvo view mostrarProductos con los resultados
   }
