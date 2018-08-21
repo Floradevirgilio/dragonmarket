@@ -30,5 +30,11 @@ Route::get('/logout', 'AuthController@logout'); // logout
 Route::get('/cart', 'CartController@index'); // carrito
 Route::resource('cart_product', 'CartProductController', [ 'only' => [ 'store', 'destroy' ] ]); // - NO FUNCIONAL. Le faltan un par de boludeces
 
+
+Route::get('/product', 'ProductController@form');
+Route::post('/product', 'ProductController@edit');
+Route::post('/product', 'ProductController@destroy');
+Route::post('/product', 'ProductController@update');
+
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');

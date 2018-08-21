@@ -44,6 +44,16 @@
                             <li class='nav-item'>
                                 <a class='nav-link' href='/cart'><i class="fas fa-shopping-cart" style="font-size: 1em"></i> (0{{--{{ $productsCount }} --}}) </a>  {{-- Redirect me manda un objeto $cart, lo que me permite acceder a los métodos publicos del modelo Cart --}}
                             </li>
+                            <li class="nav-item dropdown">{{-- sólo le debería aparecer al admin --}}
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Producto</a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/product">Cargar</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/product">Editar</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/product">Eliminar</a>
+                              </div>
+                            </li>
 
                             @if (auth()->user())
                                 <li class='nav-item'>
@@ -55,6 +65,7 @@
                                 <li class='nav-item'>
                                     <a class='nav-link' href='/logout'><i class="fas fa-sign-out-alt" style="font-size: 1em"></i> Cerrar Sesión</a>
                                 </li>
+
                             @else
                                 <li class='nav-item'>
                                     <a class='nav-link' href='/login'><i class="fas fa-sign-in-alt" style="font-size: 1em"></i> Ingreso </a>

@@ -44,6 +44,12 @@ class ProductController extends Controller {
   *
   * @return \Illuminate\Http\Response
   */
+
+  public function form() {
+    return view('/product');
+  }
+
+
   public function index() {
   }
 
