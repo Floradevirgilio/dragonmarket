@@ -57,10 +57,7 @@
 
                             @if (auth()->user())
                                 <li class='nav-item'>
-                                    <p class="nav-link"><i class="fas fa-user" style="font-size: 1em"></i> {{ auth()->user()->first_name }}</p>
-                                </li>
-                                <li class='nav-item'>
-                                    <a class='nav-link' href='/register'><i class="fas fa-user-circle" style="font-size: 1em"></i> Datos Personales </a>
+                                    <a class="nav-link" href="datosPersonales"><span><i class="fas fa-user" style="font-size: 1em"></i> {{ auth()->user()->first_name }}</span></a>
                                 </li>
                                 <li class='nav-item'>
                                     <a class='nav-link' href='/logout'><i class="fas fa-sign-out-alt" style="font-size: 1em"></i> Cerrar Sesión</a>

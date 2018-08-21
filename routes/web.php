@@ -15,9 +15,12 @@
 //     return view('welcome');
 // });
 
+
+////////// PAGINAS SIN POST //////////
 Route::get('/', 'MainController@homeShowProducts'); // el home y el método que busca en la db los productos para mostrar
 Route::get('/mostrarProductos/{id?}', 'ProductController@showProducts'); // los productos a mostrar por buscador o por categoría
 Route::get('/faq', function() { return view('/faq'); });
+Route::get('/datosPersonales', function() { return view('/datosPersonales'); });
 
 Route::get('/register', function() { return view('/register'); }); // registro
 Route::post('/register', 'UserController@store');
