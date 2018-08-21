@@ -35,6 +35,10 @@ Route::resource('cart_product', 'CartProductController', [ 'only' => [ 'store', 
 
 
 Route::get('/product', 'ProductController@form');
+Route::get('/getCategories', 'FormController@getCategories'); //para js
+Route::get('/getProducts/{id}', 'FormController@getProducts'); //para js
+
+Route::post('/product', 'ProductController@show');
 Route::post('/product', 'ProductController@edit');
 Route::post('/product', 'ProductController@destroy');
 Route::post('/product', 'ProductController@update');

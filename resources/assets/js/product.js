@@ -1,27 +1,27 @@
 $(document).ready(function(){
   $.ajax({
     type: 'POST',
-    url: '/product.blade.php'
+    url: 'ProductController@form'
   })
-  .done(function(listas_rep){
-    $('#lista_reproduccion').html(listas_rep) //categorías
+  .done(function(categories){
+    $('#categories').html(categories) //categorías
   })
   .fail(function(){
-    alert('Hubo un errror al cargar las listas_rep')
+    alert('Hubo un errror al cargar las categorías')
   })
 
-  $('#lista_reproduccion').on('change', function(){
-    var id = $('#lista_reproduccion').val()
+  $('#categories').on('change', function(){
+    var id = $('#categories').val()
     $.ajax({
       type: 'POST',
-      url: 'php/cargar_videos.php', //productos
-      data: {'id': id}
+      url: '/product.blade.php', //productos
+      data: {'category_id': id}
     })
-    .done(function(listas_rep){
-      $('#videos').html(listas_rep)
+    .done(function(categories){
+      $('#products').html(products)
     })
     .fail(function(){
-      alert('Hubo un errror al cargar los vídeos')
+      alert('Hubo un errror al cargar los productos')
     })
   })
 

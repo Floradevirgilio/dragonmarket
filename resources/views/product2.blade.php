@@ -78,6 +78,8 @@
       </div> {{-- end container --}}
     </div> {{-- end main container --}}
   </div> {{-- end wrap --}}
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+  </script>
+  <script type="text/javascript" src="/assets/js/product.js"></script>
 
 @endsection
