@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Cart;
 use Auth;
 
 class UserController extends Controller {
@@ -21,13 +22,17 @@ class UserController extends Controller {
             'password-confirm' => 'required|same:password'
         ]);
 
-        User::create([ // crea un nuevo user con los datos que mandó
+        $user = User::create([ // crea un nuevo user con los datos que mandó
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
-            'avatar' => '1.jpg',
+            // 'avatar' => '1.jpg',
             // 'admin' => $data['admin'] // el admin lo creamos en el seeder
+        ]);
+
+        Cart::create([ // le creo un carrito
+            'user_id' => $user->id,
         ]);
 
         $datosParaLogear = request()->validate([ // toma los datos que necesita para logearlo

@@ -8,13 +8,13 @@ use App\Models\Product;
 class ProductController extends Controller {
   public static function showProducts($id = null) {
           if ($id) { // si recibió un id de categoría..
-              return ProductController::categoryProducts($id); // busca los productos de la categoría y devuelve la view mostrarProductos con éstos
+              return ProductController::categoryProducts($id); // busca los productos de la categoría y devuelve la view showProducts con éstos
           }
 
           elseif (isset($_GET['txt'])) { // si llegó algo por el buscador de la navbar
               $search = '%'.trim($_GET['txt']).'%'; // trim para sacar posibles espacios, % como comodines para una búsqueda eficiente
               $searchResults = ProductController::searchProducts($search); // le paso al controlador lo que el cliente quiere buscar
-              return view('/mostrarProductos', [ 'searchResults' => $searchResults ]); // muestro la view y le paso el resultado de la búsqueda
+              return view('/showProducts', [ 'searchResults' => $searchResults ]); // muestro la view y le paso el resultado de la búsqueda
           }
 
           else
@@ -30,12 +30,12 @@ class ProductController extends Controller {
   public static function show($id){
     $products = Product::where('category_id', '=', $id)->get(['id', 'description', 'price'])->toArray();
     return $products;
-    // return view('/mostrarProductos', ['products' => $products]);
+    // return view('/showProducts', ['products' => $products]);
   }
 
   public static function categoryProducts($id) {
     $categoryProducts = ProductController::show($id); // busca productos con ese id de categoría
-    return view('/mostrarProductos', ['categoryProducts' => $categoryProducts]); // devuelvo view mostrarProductos con los resultados
+    return view('/showProducts', ['categoryProducts' => $categoryProducts]); // devuelvo view showProducts con los resultados
   }
 
 
@@ -44,13 +44,6 @@ class ProductController extends Controller {
   *
   * @return \Illuminate\Http\Response
   */
-
-  public function form() {
-    return view('/product');
-  }
-
-
-
   public function index() {
   }
 

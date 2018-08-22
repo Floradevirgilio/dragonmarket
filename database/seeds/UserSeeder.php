@@ -11,7 +11,7 @@ class UserSeeder extends Seeder {
             'last_name' => 'Rodo',
             'email' => 'rodo@admin.com',
             'password' => '123456',
-            'avatar' => 'rodo.jpg'
+            // 'avatar' => 'rodo.jpg'
         ]);
     }
 }

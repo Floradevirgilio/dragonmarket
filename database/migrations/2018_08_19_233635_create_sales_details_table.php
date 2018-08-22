@@ -13,12 +13,13 @@ class CreateSalesDetailsTable extends Migration {
   public function up() {
     Schema::create('sales_details', function (Blueprint $table) {
       $table->increments('id');
-      $table->integer('cart_id')->unsigned(); // en la clave foranea tiene que ir un unsigned para que no se rompa
-      $table->foreign('cart_id')->references('id')->on('carts'); // establezco la relacion de la clave foreanea
+      $table->timestamps();
       $table->string('description', 75); // hasta 75 caracteres
       $table->integer('quantity');
       $table->decimal('price', 8, 2); // 8 enteros, 2 decimales
-      $table->timestamps();
+
+      $table->integer('cart_id')->unsigned(); // en la clave foranea tiene que ir un unsigned para que no se rompa
+      $table->foreign('cart_id')->references('id')->on('carts')->onDelete('cascade'); // establezco la relacion de la clave foreanea
     });
   }
 

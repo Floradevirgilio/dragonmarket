@@ -8,7 +8,7 @@
 		<div id="main" class="container">
 			<div class="container">
 
-				@if ($cartProducts) {{-- si Redirect nos mandó $cartProducts --}}
+				@if (isset($cartProducts)) {{-- si Redirect nos mandó $cartProducts --}}
 					<center><div style="margin-top: 3em; margin-bottom: 2em"> {{-- muestro titulo y tabla con resultados --}}
 						<h3><i class="fas fa-search-plus" style="font-size: 1em; margin-right: .5em"></i>RESULTADO DE LA BÚSQUEDA</h3>
 					</div></center>
@@ -57,8 +57,8 @@
 
 				@else {{-- si no se encontraron resultados --}}
 					<center><div style="margin-top: 3em; margin-bottom: 2em">
-                        <img src="images/empty_shopping_cart.png" alt="empty_cart">
                         <br><h3> EL CARRITO DE COMPRAS ESTÁ VACÍO</h3>
+                        <img src="images/empty_shopping_cart.png" alt="empty_cart">
 					</div></center>
 				@endif
 

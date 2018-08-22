@@ -8,25 +8,20 @@ use App\Models\CartProduct;
 
 class CartProductController extends Controller {
 
-  public function store(Request $request) {
-    $cart_id = \Session::get('cart_id'); // busco el id en la sesión, si lo encuentra trae el carrito. Si no devuelve null
-    $cart = Cart::findOrCreateBySessionId($cart_id); // busca o crea un carrito y lo guarda en la variable $cart
+    public static function store(Request $request) { // request me trae los datos del form
+        $cart = Cart::findCartByUserId()->get(['id'])->toArray(); // busco el carrito del usuario comprando, tomo el id y convierto a array
+        $cart_id = $cart[0]['id']; // me guardo el id del carrito
 
-    $response = CartProduct::create([ // guarda el item que el user agregó, a la table cart_product
-      'cart_id' => $cart->id, // obtengo el id del producto
-      'product_id' => $request->product_id // el id viene del form
-    ]);
 
-    if ($response) { //
-      return redirect('/home');
+        $response = CartProduct::create([ // guardo el producto enla tabla cart_product. Acá se almacenan todos los productos en carritos
+            'quantity' => $request->quantity, // la cantidad elegida
+            'cart_id'  => $cart_id, // id del carrito
+            'product_id'  => $request->product_id // id del producto que me llega del form
+        ]);
+
+        return redirect('/');
     }
 
-    else { //
-      return redirect('/faq');
+    public function destroy($id) {
     }
-  }
-
-  public function destroy($id) {
-
-  }
 }

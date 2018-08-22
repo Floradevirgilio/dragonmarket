@@ -13,9 +13,9 @@ class CreateCategoriesTable extends Migration {
     public function up() {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
+            $table->timestamps();
             $table->string('name')->unique(); // cada categoría es única, no deberían repetirse. Suena lógico(?)
             $table->tinyInteger('active')->default(1);
-            $table->timestamps();
         });
     }
 

@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="{{ asset('/css/estilos.css') }}">
 	<link rel="icon" type="image/png" href="/images/DMHeadIcon.png" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
 	<title> @yield('title') </title>
 </head>
 
