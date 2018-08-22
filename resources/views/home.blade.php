@@ -42,7 +42,7 @@
                         <form action="/cart" method="POST">
                             @csrf
                             <div class="d-flex justify-content-center">
-                                <input class="form-control col-4" type="number" name="quantity" value="1">
+                                <input class="form-control col-4" type="number" name="quantity" value="1" min='1' max='10'>
                                 <input type="hidden" name="product_id" value="{{ $pc->id }}">
 
                                 <button class='btn btn-info add-to-cart' type="submit">

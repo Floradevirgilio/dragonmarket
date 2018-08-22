@@ -1,5 +1,5 @@
-    <div class='container-fluid'>
-        <nav class='navbar navbar-expand-md fixed-top navbar-light navbar-custom'>
+    <div class='container-fluid shadow' style="margin-bottom: 7em">
+        <nav class='navbar navbar-expand-md fixed-top navbar-light navbar-custom shadow p-3 mb-5 bg rounded'>
 
             {{-- <button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbar5'> --}}
             <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbar5'>
@@ -40,11 +40,8 @@
                         </div> --}}
 
                         <ul class='navbar-nav' style="padding-top: 1em">
-                            <li class='nav-item'>
-                                <a class='nav-link' href='/cart'><i class="fas fa-shopping-cart" style="font-size: 1em"></i> (0{{--{{ $productsCount }} --}}) </a>  {{-- Redirect me manda un objeto $cart, lo que me permite acceder a los métodos publicos del modelo Cart --}}
-                            </li>
                             <li class="nav-item dropdown">{{-- sólo le debería aparecer al admin --}}
-                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Producto</a>
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
                               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/products">Cargar</a>
                                 <div class="dropdown-divider"></div>
@@ -66,7 +63,7 @@
                                 </li>
                             @else
                                 <li class='nav-item'>
-                                    <a class='nav-link' href='/logInToShop'><i class="fas fa-shopping-cart" style="font-size: 1em"></i> ( {{--{{$cart->productsQuantity() }}--}} {{--{{ $productsCount }}--}}) </a>
+                                    <a class='nav-link' href='/logInToShop'><i class="fas fa-shopping-cart" style="font-size: 1em"></i> (0)</a>
                                 </li>
                                 <li class='nav-item'>
                                     <a class='nav-link' href='/login'><i class="fas fa-sign-in-alt" style="font-size: 1em"></i> Ingreso </a>

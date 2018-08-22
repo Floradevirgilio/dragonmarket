@@ -26,7 +26,7 @@
 						<table class="jumbotron table table-striped shadow p-3 mb-5 rounded" border="3">
 							<thead>
 								<tr>
-									@php $columnas = ['Id', 'Descripcion', 'Cantidad', 'Precio', 'Agregar']; @endphp {{-- El titulo de cada columna --}}
+									@php $columnas = [ 'Descripcion', 'Cantidad', 'Precio', 'Agregar' ]; @endphp {{-- El titulo de cada columna --}}
 
 									@foreach ($columnas as $columna) {{-- foreacheo una fila de <th> (table head) con los titulos de las columnas --}}
 										<th><center> {{ $columna }} </center></th>
@@ -36,12 +36,14 @@
 							<tbody>
 								@foreach ($products as $product) {{-- los resultados que me llegaron --}}
 									<tr>
-										<td><center> {{ $product['id'] }} </center></td>
+                                        <form action="/cart" method="POST"> @csrf
 										<td><center> {{ $product['description'] }} </center></td>
-										<td> <input type='number' min='1' max='10' name='cantidad' value='1' class='form-control' /></td>
+										<td><input type='number' min='1' max='10' name='cantidad' value='1' class='form-control' /></td>
+                                            <input type="hidden" name="product_id" value="{{ $product['id'] }}">
 										<td><center> ${{ $product['price'] }} </center></td>
 										<td>
-											<center><button class='btn btn-info add-to-cart'><i class='fas fa-cart-plus' style='font-size: 1.1em'></i></button></center>
+											<center><button type="submit" class='btn btn-info add-to-cart'><i class='fas fa-cart-plus' style='font-size: 1.1em'></i></button></center>
+                                        </form>
 										</td>
 									</tr>
 								@endforeach
