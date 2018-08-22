@@ -46,33 +46,38 @@
 
 
 <script>
+
+	{!! Html::script('js/jquery-2.1.0.min.js') !!} //js
+	{!! Html::script('js/dropdown.js') !!} //para los select
+
+
 // Código traido de la web
 
-$(document).ready(function(){
-  $('.add-to-cart').click(function(){
-    var id          = $(this).closest('tr').find('.product-id').text();
-    var descripcion = $(this).closest('tr').find('.product-name').text();
-    var cantidad    = $(this).closest('tr').find('input').val();
-    if(cantidad < 1 || cantidad > 10 ) {
-      var message = 'Solo números, entre 1 y 10';
-      alert(message);
-      return true;
-    }
-    window.location.href = "agregar.php?id=" + id + "&descripcion=" + descripcion + "&cantidad=" + cantidad;
-  });
-
-  $('.update-cantidad').click(function(){
-    var id          = $(this).closest('tr').find('.product-id').text();
-    var descripcion = $(this).closest('tr').find('.product-name').text();
-    var cantidad    = $(this).closest('tr').find('input').val();
-    if(cantidad < 1 || cantidad > 10 ) {
-      var message = 'Solo números, entre 1 y 10';
-      alert(message);
-      return true;
-    }
-    window.location.href = "actualizar.php?id=" + id + "&descripcion=" + descripcion + "&cantidad=" + cantidad;
-  });
-});
+// $(document).ready(function(){
+//   $('.add-to-cart').click(function(){
+//     var id          = $(this).closest('tr').find('.product-id').text();
+//     var descripcion = $(this).closest('tr').find('.product-name').text();
+//     var cantidad    = $(this).closest('tr').find('input').val();
+//     if(cantidad < 1 || cantidad > 10 ) {
+//       var message = 'Solo números, entre 1 y 10';
+//       alert(message);
+//       return true;
+//     }
+//     window.location.href = "agregar.php?id=" + id + "&descripcion=" + descripcion + "&cantidad=" + cantidad;
+//   });
+//
+//   $('.update-cantidad').click(function(){
+//     var id          = $(this).closest('tr').find('.product-id').text();
+//     var descripcion = $(this).closest('tr').find('.product-name').text();
+//     var cantidad    = $(this).closest('tr').find('input').val();
+//     if(cantidad < 1 || cantidad > 10 ) {
+//       var message = 'Solo números, entre 1 y 10';
+//       alert(message);
+//       return true;
+//     }
+//     window.location.href = "actualizar.php?id=" + id + "&descripcion=" + descripcion + "&cantidad=" + cantidad;
+//   });
+// });
 </script>
 
 </body>

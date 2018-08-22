@@ -34,14 +34,13 @@ Route::get('/cart', 'CartController@index'); // carrito
 Route::resource('cart_product', 'CartProductController', [ 'only' => [ 'store', 'destroy' ] ]); // - NO FUNCIONAL. Le faltan un par de boludeces
 
 
-Route::get('/product', 'ProductController@form');
-Route::get('/getCategories', 'FormController@getCategories'); //para js
-Route::get('/getProducts/{id}', 'FormController@getProducts'); //para js
 
-Route::post('/product', 'ProductController@show');
-Route::post('/product', 'ProductController@edit');
-Route::post('/product', 'ProductController@destroy');
-Route::post('/product', 'ProductController@update');
+Route::resource('Category', 'CategoryController');
+Route::get('/products/{id}', 'CategoryController@getProducts'); //para js
+
+Route::post('/product', 'ProductController@edit'); //en proceso
+Route::post('/product', 'ProductController@destroy'); //en proceso
+Route::post('/product', 'ProductController@update'); //en proceso
 
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');

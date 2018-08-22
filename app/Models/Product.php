@@ -17,4 +17,9 @@ class Product extends Model {
     return $this->belongsTo(Cart::class); // la clase con la que hago la relación, y la tabla pivot
   }
 
+  public static function products($id){
+    return Product::where('category_id','=',$id)
+    ->get();
+  }
+
 }

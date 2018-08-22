@@ -47,11 +47,11 @@
                             <li class="nav-item dropdown">{{-- sólo le debería aparecer al admin --}}
                               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Producto</a>
                               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/product">Cargar</a>
+                                <a class="dropdown-item" href="/products">Cargar</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/product">Editar</a>
+                                <a class="dropdown-item" href="/products">Editar</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/product">Eliminar</a>
+                                <a class="dropdown-item" href="/products">Eliminar</a>
                               </div>
                             </li>
 
