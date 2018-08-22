@@ -39,52 +39,59 @@
                             <i class="fas fa-shopping-cart" style="font-size: 1em"> (0)</i>
                         </div> --}}
 
-                        <ul class='navbar-nav' style="padding-top: 1em">
-                            <li class="nav-item dropdown">{{-- sólo le debería aparecer al admin --}}
-                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
-                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/products">Cargar</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/products">Editar</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/products">Eliminar</a>
-                              </div>
-                            </li>
+                            <ul class='navbar-nav' style="padding-top: 1em">
+                                <li class="nav-item dropdown">{{-- sólo le debería aparecer al admin --}}
+                                  <a class="nav-link dropdown-toggle" 
+                                        href="#" id="navbarDropdown" role="button" 
+                                        data-toggle="dropdown" aria-haspopup="true" 
+                                        aria-expanded="false">Productos</a>
+                                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/products">Cargar</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/products">Editar</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/products">Eliminar</a>
+                                  </div>
+                                </li>
 
-                            @if (auth()->user())
-                                <li class='nav-item'>
-                                    <a class='nav-link' href='/cart'><i class="fas fa-shopping-cart" style="font-size: 1em"></i> ( {{ $productsCount }} ) </a>
-                                </li>
-                                <li class='nav-item'>
-                                    <a class="nav-link" href="datosPersonales"><span><i class="fas fa-user" style="font-size: 1em"></i> {{ auth()->user()->first_name }}</span></a>
-                                </li>
-                                <li class='nav-item'>
-                                    <a class='nav-link' href='/logout'><i class="fas fa-sign-out-alt" style="font-size: 1em"></i> Cerrar Sesión</a>
-                                </li>
-                            @else
-                                <li class='nav-item'>
-                                    <a class='nav-link' href='/logInToShop'><i class="fas fa-shopping-cart" style="font-size: 1em"></i> (0)</a>
-                                </li>
-                                <li class='nav-item'>
-                                    <a class='nav-link' href='/login'><i class="fas fa-sign-in-alt" style="font-size: 1em"></i> Ingreso </a>
-                                </li>
-                                <li class='nav-item'>
-                                    <a class='nav-link' href='/register'><i class="fas fa-user-edit" style="font-size: 1em"></i> Registro </a>
-                                </li>
-                                <li class='nav-item'>
-                                    <a class='nav-link' href='faq'><i class="fas fa-question-circle" style="font-size: 1em"></i> FAQ</a>
-                                </li>
-                            @endif
-                        </ul>
-                    </div>
-
-                </div> {{-- cont between --}}
-            </div> {{-- container --}}
-        </div> {{-- container fluid --}}
-
+                                @if (auth()->user())
+                                    <li class='nav-item'>
+                                        <a class='nav-link' href='/cart'><i 
+                                            class="fas fa-shopping-cart" style="font-size: 1em"></i> ( {{ $productsCount }} ) </a>
+                                    </li>
+                                    <li class='nav-item'>
+                                        <a class="nav-link" href="datosPersonales"><span><i 
+                                            class="fas fa-user" style="font-size: 1em"></i> {{ auth()->user()->first_name }}</span></a>
+                                    </li>
+                                    <li class='nav-item'>
+                                        <a class='nav-link' href='/logout'><i 
+                                            class="fas fa-sign-out-alt" style="font-size: 1em"></i> Cerrar Sesión</a>
+                                    </li>
+                                @else
+                                    <li class='nav-item'>
+                                        <a class='nav-link' href='/logInToShop'><i 
+                                            class="fas fa-shopping-cart" style="font-size: 1em"></i> (0)</a>
+                                    </li>
+                                    <li class='nav-item'>
+                                        <a class='nav-link' href='/login'><i 
+                                            class="fas fa-sign-in-alt" style="font-size: 1em"></i> Ingreso </a>
+                                    </li>
+                                    <li class='nav-item'>
+                                        <a class='nav-link' href='/register'><i 
+                                            class="fas fa-user-edit" style="font-size: 1em"></i> Registro </a>
+                                    </li>
+                                    <li class='nav-item'>
+                                        <a class='nav-link' href='faq'><i 
+                                            class="fas fa-question-circle" style="font-size: 1em"></i> FAQ</a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
+                    </div> {{-- cont between --}}
+                </div> {{-- container --}}
+            </div> {{-- container fluid --}}
+        </nav>
     </div>
-</nav>
-</div>
 
 </header>
 {{-- @endif --}}
