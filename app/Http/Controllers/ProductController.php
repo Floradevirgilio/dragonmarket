@@ -89,7 +89,30 @@ class ProductController extends Controller {
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function update(Request $request, $id) {
+  public function update(Request $request) {
+    request()->validate([
+        'description' => 'required|min:3|max:255|unique:products',
+        'awards' => 'integer',
+        'release_date' => 'date',
+        'banner' => 'image|max:2048|dimensions:ratio=16/9',
+    ], [
+        'title.required' => 'El título es obligatorio.'
+    ]);
+
+
+    if ($request->hasFile('banner')) {
+        $nombreImagen = str_slug($request->input('title')) . '.' . $request->file('banner')->extension();
+        $request->file('banner')->storeAs('images', $nombreImagen);
+    }
+
+    $movie = Movie::create(request()->all());
+    $movie->actors()->sync(request()->input('actors'));
+
+    return redirect('mostrar-imagen/' . $nombreImagen);
+
+
+
+    return 'bien';
   }
 
   /**
