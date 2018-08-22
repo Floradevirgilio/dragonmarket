@@ -19,11 +19,11 @@ class Cart extends Model {
         return $this->hasMany('App\Models\CartProduct'); // hasMany espera que CartProduct tenga una referencia a Cart
     }
 
-    public function product() {
+    public function products() {
         return $this->belongsToMany('App\Models\Product', 'cart_product'); // la clase con la que hago la relación, y la tabla pivot
     }
 
-    public function user() { // user_id
+    public function users() { // user_id
         return $this->belongsTo('App\Models\User'); // le pertenece a un user
     }
 
@@ -50,12 +50,20 @@ class Cart extends Model {
         if (auth()->user()) {
             $cart = Cart::findCartByUserId()->get(['id'])->toArray(); // busco el carrito del usuario comprando, tomo el id y convierto a array
             $cart_id = $cart[0]['id']; // me guardo el id del carrito
-            return CartProduct::where('cart_id', '=', $cart_id)->sum('quantity');
+            return CartProduct::where('cart_id', '=', $cart_id)->sum('quantity'); // sumo la columna quantity y devuelvo
         }
     }
 
-    public function total() { // siempre hacer las sumas a nivel sql
+    public static function totalPrice() { // siempre hacer las sumas a nivel sql
         return $this->products()->sum('price');
+    }
+
+    public static function cartProducts() {
+        if (auth()->user()) {
+            $cart = Cart::findCartByUserId()->get(['id'])->toArray(); // busco el carrito del usuario comprando, tomo el id y convierto a array
+            $cart_id = $cart[0]['id']; // me guardo el id del carrito
+            return CartProduct::all()->where('cart_id', '=', $cart_id)->get(['quantity', 'product_id']); // devuelvo el contenido
+        }
     }
 
     // public static function createWithoutSession() { // devuelve la creación de un carrito

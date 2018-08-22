@@ -8,6 +8,8 @@
 		<div id="main" class="container">
 			<div class="container">
 
+                {{ dd($products) }}
+
 				@if (isset($cartProducts)) {{-- si Redirect nos mandó $cartProducts --}}
 					<center><div style="margin-top: 3em; margin-bottom: 2em"> {{-- muestro titulo y tabla con resultados --}}
 						<h3><i class="fas fa-search-plus" style="font-size: 1em; margin-right: .5em"></i>RESULTADO DE LA BÚSQUEDA</h3>

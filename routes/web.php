@@ -33,8 +33,8 @@ Route::get('/logInToShop', function() { return view('/logInToShop'); }); // logI
 
 
 
-Route::get('/cart', function() { return view( '/cart' ); }); // carrito
-Route::post('cart', 'CartProductController@store'); // - NO FUNCIONAL. Le faltan un par de boludeces
+Route::get('/cart', 'CartController@index' ); // carrito
+Route::post('/cart', 'CartProductController@store'); // - NO FUNCIONAL. Le faltan un par de boludeces
 Route::resource('cart_product', 'CartProductController', [ 'only' => 'store', 'destroy' ]); // https://youtu.be/NfDKrVXc8_Y
 
 

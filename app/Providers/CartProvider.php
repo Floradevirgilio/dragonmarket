@@ -11,7 +11,6 @@ class CartProvider extends ServiceProvider {
         view()->composer('*', function($view) { // los composer nos permiten inyectar variables adentro de las vistas. Con * se le inyecto a TODAS las views lo que ejecuta la función
 
             $productsCount = Cart::productsQuantity();
-
             $view->with('productsCount', $productsCount); // enviar la cantidad de productos a todas las vistas
         });
     }
