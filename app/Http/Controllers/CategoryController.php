@@ -8,12 +8,13 @@ use App\Models\Product;
 
 class CategoryController extends Controller {
   public static function showCategories() {
-    $categories = Category::all()->pluck('name', 'id'); // busca en la tabla categories y filtro el 'name' y el 'id'
+    $categories = Category::orderBy('name')->pluck('name', 'id');
+    // busca en la tabla categories y filtro el 'name' y el 'id'
     return $categories;
   }
 
   public function index() {
-     $categories = Category::pluck('name', 'id');
+     $categories = Category::orderBy('name')->pluck('name', 'id');
      return view('/product', compact('categories'));
   }
 
