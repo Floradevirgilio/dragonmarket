@@ -15,7 +15,6 @@
             <div style='color: white;'>
                 <div class="d-flex justify-content-between align-items-center">
 
-
                         <div class="d-flex justify-content-center" style='color: white'>
                             {{-- <div class="align-self-center" style="margin-right: 2em">
                             <i class="fas fa-shopping-cart" style="font-size: 1em"> (0)</i>
@@ -33,8 +32,17 @@
                                     <a class="dropdown-item" href="/products">Editar</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="/products">Eliminar</a>
-                                  </div>
                                 </li>
+                                  {{-- </div> --}}
+
+                            <li class="nav-item dropdown">{{-- sólo le debería aparecer al admin --}}
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar</a>
+                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/admin">Nueva categoría</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/admin">Nuevo producto</a>
+                              </div>
+                            </li>
 
                                 @if (auth()->user())
                                     <li class='nav-item'>

@@ -38,13 +38,7 @@ Route::post('/cart', 'CartProductController@store'); // - NO FUNCIONAL. Le falta
 Route::resource('cart_product', 'CartProductController', [ 'only' => 'store', 'destroy' ]); // https://youtu.be/NfDKrVXc8_Y
 
 
-Route::resource('Category', 'CategoryController');
-Route::get('/products/{id}', 'CategoryController@getProducts'); //para js
-
-Route::post('/product', 'ProductController@edit'); //en proceso
-// Route::resource('product', 'ProductController'); // probá a ver si te funca esto en vez de las tres rutras
-Route::post('/product', 'ProductController@destroy'); //en proceso
-Route::post('/product', 'ProductController@update'); //en proceso
+Route::resource('admin', 'CategoryController');
 
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');

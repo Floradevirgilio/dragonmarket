@@ -8,7 +8,8 @@
 		<div id="main" class="container">
 			<div class="container">
 
-                {{ dd($products) }}
+				{{-- {{ dd($products) }} --}}
+        {{ dd($quantities) }}
 
 				@if (isset($cartProducts)) {{-- si Redirect nos mandó $cartProducts --}}
 					<center><div style="margin-top: 3em; margin-bottom: 2em"> {{-- muestro titulo y tabla con resultados --}}

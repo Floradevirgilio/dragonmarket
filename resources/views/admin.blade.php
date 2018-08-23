@@ -11,14 +11,14 @@
           <div class="jumbotron column col-xs-12 col-sm-12 col-md-10 col-lg-8 shadow p-4 mb-4 border {{ $errors->any() ? 'border-danger' : 'border-info' }}" style="margin-top: 50px;"> {{-- jumbotron --}}
 
             <div class="row justify-content-center" style="margin-top: 2em;">
-              <h2><h2><i class="fas fa-desktop" style="font-size: 1em; margin-right: .3em"></i>PRODUCTO</h2>
+              <h2><h2><i class="fas fa-desktop" style="font-size: 1em; margin-right: .3em"></i>ADMINISTRAR</h2>
             </div>
 
 
               <div class="container column col-xs-12 col-sm-12 col-md-12 col-lg-12">
                  {{--Form::model($user, ['route' => ['user.update', $user->id]])--}}
                  {{-- Form::open(array(['action' => ['ProductController@update', /* $user->id */'file' => true]], 'method' => 'post') --}}
-                {{ Form::open(['url' => '/product', 'method' => 'post'], ['class' =>'container column col-xs-12 col-sm-12 col-md-12 col-lg-12']) }}
+                {{ Form::open(['url' => '/admin', 'method' => 'post'], ['class' =>'container column col-xs-12 col-sm-12 col-md-12 col-lg-12']) }}
                     @csrf
                   <br>
 

@@ -15,8 +15,8 @@ class CartProductController extends Controller {
 
 
             $response = CartProduct::create([ // guardo el producto enla tabla cart_product. Acá se almacenan todos los productos en carritos
-                'quantity' => $request->quantity, // la cantidad elegida
-                'cart_id'  => $cart_id, // id del carrito
+                   'quantity' => $request->quantity, // la cantidad elegida
+                   'cart_id'  => $cart_id, // id del carrito
                 'product_id'  => $request->product_id // id del producto que me llega del form
             ]);
 
