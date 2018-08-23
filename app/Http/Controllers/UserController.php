@@ -45,6 +45,64 @@ class UserController extends Controller {
         }
     }
 
+    //Actualizar datos del Usuario
+    public function update(Request $request) {
+        if($request['email'] == auth()->user()->email) // Si no modifica el email,que no lo valide, ya que existe en la BD
+        {
+          $data = request()->validate([ // valido los datos que me llegan
+              // 'email' => 'required|email|unique:users,email', // esto ya chequea que no exista en la db
+              // 'email-confirm' => 'required|same:email',
+              'first_name' => 'required|min:4',
+              'last_name' => 'required',
+
+          ]);
+        } else {
+          $errors = request()->validate([ // valido los datos que me llegan
+              // 'email' => 'required|email|unique:users,email', // esto ya chequea que no exista en la db
+              // 'email-confirm' => 'required|same:email',
+              'first_name' => 'required|min:4',
+              'last_name' => 'required',
+          ]);
+        }
+
+        if(($request['password'])){
+          $errors = request()->validate([ // valido los datos que me llegan
+              'password' => 'min:6', // al menos seis caracteres
+              'password-confirm' => 'same:password'
+          ]);
+        }
+
+
+        $user = User::find(auth()->user()->id);
+        $user->first_name = $request['first_name'];
+        $user->last_name = $request['last_name'];
+        $user->email = $request['email'];
+        if(($request['password']) != ""){
+          $user->password = bcrypt($request['password']);
+        }
+        $user->save();
+        // $user = User::save([ // actualiza los datos que mandó
+        //         'first_name' => $request['first_name'],
+        //         'last_name' => $request['last_name'],
+        //         'email' => $request['email'],
+        //
+        //         // 'avatar' => '1.jpg',
+        //         // 'admin' => $data['admin'] // el admin lo creamos en el seeder
+        // ]);
+
+
+
+        // $datosParaLogear = request()->validate([ // toma los datos que necesita para logearlo
+        //     'email' => 'email|required',
+        //     'password' => 'required'
+        // ]);
+
+        // if (Auth::attempt($datosParaLogear)) { // logea
+            return redirect('/datosPersonales'); // ..y redirige a Mis Datos Personales(Agregarle un mensaje de Confirmacion de Cambio de Datos!)
+        // }
+    }
+
+
     /**
     * Display a listing of the resource.
     *
@@ -85,15 +143,15 @@ class UserController extends Controller {
     }
 
     /**
-    * Update the specified resource in storage.
+    * Update the specified resource in storage.    //comentada,porque se declaró al principio
     *
     * @param  \Illuminate\Http\Request  $request
     * @param  int  $id
     * @return \Illuminate\Http\Response
     */
-    public function update(Request $request, $id) {
-        //
-    }
+    // public function update(Request $request, $id) {
+    //     //
+    // }
 
     /**
     * Remove the specified resource from storage.
