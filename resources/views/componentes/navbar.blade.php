@@ -2,14 +2,16 @@
         <nav class='navbar navbar-expand-md fixed-top navbar-light navbar-custom shadow p-3 mb-5 bg rounded'>
 
             {{-- <button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse' data-target='#navbar5'> --}}
-            <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbar5'>
+            <button class='navbar-toggler' type='button' 
+                                           data-toggle='collapse' 
+                                           data-target='#navbar5'>
                 <span class='navbar-toggler-icon'></span>
             </button>
 
             <div class="container-fluid">
-                <div class="container">
+                {{-- <div class="container"> --}}
+                <div class='navbar-collapse collapse justify-content-stretch' id='navbar5'>
                     <div class="d-flex justify-content-between align-items-center">
-
                         <div>
                             <a class='navbar-brand' href='/'>
                                 <img src='/images/DMHead.png' alt='Logo' style='width: 50px;'>
@@ -18,21 +20,20 @@
                         </div>
 
                         {{-- <div class='navbar-collapse collapse justify-content-stretch' id='navbar5'> --}}
-                        <div>
-                            <form class="form-inline flex-nowrap pt-3" action='/showProducts' style="margin-left: auto;">
-                                @csrf
-                                <div class='md-form my-0'>
-                                    <input class='form-control mr-sm-2' name='txt' type='text' placeholder='Buscar ...' aria-label='Search'>
-                                </div>
+                            <div>
+                                <form class="form-inline flex-nowrap pt-3" action='/showProducts' style="margin-left: auto;">
+                                    @csrf
+                                    <div class='md-form my-0'>
+                                        <input class='form-control mr-sm-2' name='txt' type='text' placeholder='Buscar ...' aria-label='Search'>
+                                    </div>
 
-                                <span class="input-group-btn">
-                                    <button type="submit" class="btn btn-outline-success">
-                                        <i class="fas fa-search" style="font-size: 1.5em"></i>
-                                    </button>
-                                </span>
-                            </form>
-                        </div>
-
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-outline-success">
+                                            <i class="fas fa-search" style="font-size: 1.5em"></i>
+                                        </button>
+                                    </span>
+                                </form>
+                            </div>
 
                         <div class="d-flex justify-content-center" style='color: white'>
                             {{-- <div class="align-self-center" style="margin-right: 2em">
@@ -87,7 +88,7 @@
                                 @endif
                             </ul>
                         </div>
-                    </div> {{-- cont between --}}
+                    {{-- </div> cont between --}}
                 </div> {{-- container --}}
             </div> {{-- container fluid --}}
         </nav>
