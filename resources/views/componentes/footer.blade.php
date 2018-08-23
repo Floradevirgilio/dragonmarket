@@ -47,7 +47,7 @@
 
 <script>
 
-{!! Html::script('js/jquery-2.1.0.min.js') !!} {{-- js --}}
+{!! Html::script('js/jquery-2.1.0.min.js') !!}
 </script>
 
 </body>
