@@ -38,7 +38,8 @@ Route::post('/cart', 'CartProductController@store'); // - NO FUNCIONAL. Le falta
 Route::resource('cart_product', 'CartProductController', [ 'only' => 'store', 'destroy' ]); // https://youtu.be/NfDKrVXc8_Y
 
 
-Route::resource('admin', 'CategoryController');
+Route::resource('adminProduct', 'ProductController');
+Route::get('/adminCategory', 'CategoryController@newCategory' );
 
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');

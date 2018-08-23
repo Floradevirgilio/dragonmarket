@@ -45,10 +45,7 @@
 <script src="libs/js/holder.js"></script>
 
 
-<script>
-
-{!! Html::script('js/jquery-2.1.0.min.js') !!} {{-- js --}}
-</script>
+<script src="js/jquery-2.1.0.min.js"></script>
 
 </body>
 </html>

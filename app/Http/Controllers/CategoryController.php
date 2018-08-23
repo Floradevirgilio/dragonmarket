@@ -12,20 +12,9 @@ class CategoryController extends Controller {
     return $categories;
   }
 
-  public function index() {
-     $categories = Category::pluck('name', 'id');
-     return view('/admin', compact('categories'));
+
+ public function newCategory(){
+  return view('/adminCategory');
+ }
+
   }
-
-  public function getProducts(Request $request, $id){
-      if($request->ajax()){
-          $products = Product::products($id);
-          return response()->json($products);
-      }
-  }
-
-
-
-
-
-}
