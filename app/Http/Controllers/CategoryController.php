@@ -14,7 +14,7 @@ class CategoryController extends Controller {
 
   public function index() {
      $categories = Category::pluck('name', 'id');
-     return view('/product', compact('categories'));
+     return view('/admin', compact('categories'));
   }
 
   public function getProducts(Request $request, $id){

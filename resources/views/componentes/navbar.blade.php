@@ -41,13 +41,11 @@
 
                         <ul class='navbar-nav' style="padding-top: 1em">
                             <li class="nav-item dropdown">{{-- sólo le debería aparecer al admin --}}
-                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar</a>
                               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/products">Cargar</a>
+                                <a class="dropdown-item" href="/admin">Categorías</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/products">Editar</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/products">Eliminar</a>
+                                <a class="dropdown-item" href="/admin">Productos</a>
                               </div>
                             </li>
 
