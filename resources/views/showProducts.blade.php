@@ -36,14 +36,14 @@
 							<tbody>
 								@foreach ($products as $product) {{-- los resultados que me llegaron --}}
 									<tr>
-                                        <form action="/cart" method="POST"> @csrf
-										<td><center> {{ $product['description'] }} </center></td>
-										<td><input type='number' min='1' max='10' name='cantidad' value='1' class='form-control' /></td>
-                                            <input type="hidden" name="product_id" value="{{ $product['id'] }}">
-										<td><center> ${{ $product['price'] }} </center></td>
-										<td>
-											<center><button type="submit" class='btn btn-info add-to-cart'><i class='fas fa-cart-plus' style='font-size: 1.1em'></i></button></center>
-                                        </form>
+										<form action="/cart" method="POST"> @csrf
+											<td><center> {{ $product['description'] }} </center></td>
+											<td><input type='number' min='1' max='10' name='quantity' value='1' class='form-control' /></td>
+											<input type="hidden" name="product_id" value="{{ $product['id'] }}">
+											<td><center> ${{ $product['price'] }} </center></td>
+											<td>
+												<center><button type="submit" class='btn btn-info add-to-cart'><i class='fas fa-cart-plus' style='font-size: 1.1em'></i></button></center>
+											</form>
 										</td>
 									</tr>
 								@endforeach
@@ -53,8 +53,8 @@
 
 				@else {{-- si no se encontraron resultados --}}
 					<center><div style="margin-top: 3em; margin-bottom: 2em">
-                        <img src="images/no_results.png" alt="no_results"><br><br>
-                        <h3>NO SE ENCONTRARON RESULTADOS</h3>
+						<img src="images/no_results.png" alt="no_results"><br><br>
+						<h3>NO SE ENCONTRARON RESULTADOS</h3>
 					</div></center>
 				@endif
 
