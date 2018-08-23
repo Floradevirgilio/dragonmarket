@@ -44,11 +44,10 @@
 <script src="libs/js/bootstrap.min.js"></script>
 <script src="libs/js/holder.js"></script>
 
+{{-- Script para tratamiento img profile usr --}}
+<script src="js/image-profile.js"></script>
 
-<script>
-
-{!! Html::script('js/jquery-2.1.0.min.js') !!}
-</script>
+<script>{!! Html::script('js/jquery-2.1.0.min.js') !!}</script>
 
 </body>
 </html>

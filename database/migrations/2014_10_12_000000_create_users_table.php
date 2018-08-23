@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration {
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('avatar')->default('sin imagen');
+            $table->string('photo_extension')->nullable();
             $table->integer('active')->default(1);
 
             // $table->integer('cart_id')->unsigned(); // en la clave foranea tiene que ir un unsigned para que no se rompa

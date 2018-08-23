@@ -35,15 +35,17 @@ Route::post('/login', 'AuthController@login');
 
 Route::get('/logInToShop', function() { return view('/logInToShop'); }); // logInToShop
 
-
-
 Route::get('/cart', 'CartController@index' ); // carrito
 Route::post('/cart', 'CartProductController@store'); // - NO FUNCIONAL. Le faltan un par de boludeces
 Route::resource('cart_product', 'CartProductController', [ 'only' => 'store', 'destroy' ]); // https://youtu.be/NfDKrVXc8_Y
-
 
 Route::resource('adminProduct', 'ProductController');
 Route::get('/adminCategory', 'CategoryController@newCategory' );
 
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
+
+// Ruta para imagen del user
+Route::post('/perfil/foto', 'ProfileController@updatePhoto');
+
+
