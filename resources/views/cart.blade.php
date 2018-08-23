@@ -8,9 +8,10 @@
 		<div id="main" class="container">
 			<div class="container">
 
-                {{ dd($products) }}
+				{{-- {{ dd($products) }} --}}
+        {{-- {{ dd($quantities) }} --}}
 
-				@if (isset($cartProducts)) {{-- si Redirect nos mandó $cartProducts --}}
+				@if (count($products) > 0) {{-- si Redirect nos mandó $cartProducts --}}
 					<center><div style="margin-top: 3em; margin-bottom: 2em"> {{-- muestro titulo y tabla con resultados --}}
 						<h3><i class="fas fa-search-plus" style="font-size: 1em; margin-right: .5em"></i>RESULTADO DE LA BÚSQUEDA</h3>
 					</div></center>
@@ -20,19 +21,21 @@
 						<table class="jumbotron table table-striped shadow p-3 mb-5 rounded" border="3">
 							<thead>
 								<tr>
-									@php $columnas = ['Id', 'Descripcion', 'Cantidad', 'Actualizar', 'Eliminar', 'Precio']; @endphp {{-- El titulo de cada columna --}}
+									@php $columns = [ 'Descripcion', 'Cantidad', 'Actualizar', 'Eliminar', 'Precio', 'Total']; @endphp {{-- El titulo de cada columna --}}
 
-									@foreach ($columnas as $columna) {{-- foreacheo una fila de <th> (table head) con los titulos de las columnas --}}
-										<th><center> {{ $columna }} </center></th>
+									@foreach ($columns as $column) {{-- foreacheo una fila de <th> (table head) con los titulos de las columnas --}}
+										<th><center> {{ $column }} </center></th>
 									@endforeach
 								</tr>
 							</thead>
 							<tbody>
-								@foreach ($cartProducts as $product) {{-- los resultados que me llegaron --}}
+								@php $i = 0; @endphp
+								@php $quantity = $quantities[$i]->quantity; @endphp
+								@foreach ($products as $product) {{-- los resultados que me llegaron --}}
 									<tr>
-										<td><center> {{ $product['id'] }} </center></td>
 										<td><center> {{ $product['description'] }} </center></td>
-										<td> <input type='number' min='1' max='10' name='cantidad' value='1' class='form-control' /></td>
+										<td> <input type='number' min='1' max='10' name='cantidad'
+											value='{{ $quantity }}' class='form-control' /></td>
 										<td>
 											<center><button class='btn btn-info add-to-cart'><i class='fas fa-sync-alt' style='font-size: 1.1em'></i></button></center>
 										</td>
@@ -40,13 +43,13 @@
 											<center><button class='btn btn-danger add-to-cart'><i class='fas fa-minus-circle' style='font-size: 1.1em'></i></button></center>
 										</td>
 										<td><center> ${{ $product['price'] }} </center></td>
-										{{-- <td><center> ${{ $total }} </center></td> --}}
-
+										<td><center> ${{ $product['price'] * $quantity }} </center></td>
 									</tr>
+									@php $i++; @endphp
 								@endforeach
 								<tr>
 									<td colspan="5" class="text-right"><strong>TOTAL</strong></td>
-									<td><center><strong> ${{ $total }} </strong></center></td> {{-- $total nos la mandó redirect --}}
+									<td><center><strong> ${{--{{ $finalPrice }}--}} </strong></center></td> {{-- $total nos la mandó redirect --}}
 								</tr>
 								<tr>
 									<td colspan="6">

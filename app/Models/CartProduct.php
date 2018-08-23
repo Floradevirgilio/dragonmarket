@@ -11,4 +11,8 @@ class CartProduct extends Model {
   public function carts() {
       return $this->belongsToMany('');
   }
+
+  // public static function ProductQuantity($product_id) {
+  //   return CartProduct::where('product_id', '=', $product_id)->get(['quantity']);
+  // }
 }

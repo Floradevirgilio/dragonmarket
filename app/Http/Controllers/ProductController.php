@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Category;
 use App\Models\Product;
 
 class ProductController extends Controller {
@@ -45,8 +46,11 @@ class ProductController extends Controller {
   * @return \Illuminate\Http\Response
   */
   public function index() {
+    $categories = Category::pluck('name', 'id');
+    return view('/adminProduct', compact('categories'));
   }
 
+  
   /**
   * Show the form for creating a new resource.
   *
@@ -62,6 +66,26 @@ class ProductController extends Controller {
   * @return \Illuminate\Http\Response
   */
   public function store(Request $request) {
+    request()->validate([
+        'description' => 'required|min:3|max:255|unique:products',
+        'price' => 'required|max:22|regex:/^-?[0-9]+(?:\.[0-9]{1,2})?$/'
+        //'image' => 'image|max:2048|dimensions:ratio=16/9',
+    ], [
+        'description.required' => 'La descripción es obligatoria.',
+        'price.required' => 'El precio es obligatorio.'
+    ]);
+
+
+    // if ($request->hasFile('image')) {
+    //     $nombreImagen = str_slug($request->id) . '.' . $request->file('image')->extension();
+    //     $request->file('image')->storeAs('images', $nombreImagen);
+    // }
+
+    $producto = Product::create(request()->all());
+    //$producto->category()->sync(request()->input('category'));
+
+    return redirect('/home');
+
   }
 
   /**
@@ -90,29 +114,7 @@ class ProductController extends Controller {
   * @return \Illuminate\Http\Response
   */
   public function update(Request $request) {
-    request()->validate([
-        'description' => 'required|min:3|max:255|unique:products',
-        'awards' => 'integer',
-        'release_date' => 'date',
-        'banner' => 'image|max:2048|dimensions:ratio=16/9',
-    ], [
-        'title.required' => 'El título es obligatorio.'
-    ]);
 
-
-    if ($request->hasFile('banner')) {
-        $nombreImagen = str_slug($request->input('title')) . '.' . $request->file('banner')->extension();
-        $request->file('banner')->storeAs('images', $nombreImagen);
-    }
-
-    $movie = Movie::create(request()->all());
-    $movie->actors()->sync(request()->input('actors'));
-
-    return redirect('mostrar-imagen/' . $nombreImagen);
-
-
-
-    return 'bien';
   }
 
   /**

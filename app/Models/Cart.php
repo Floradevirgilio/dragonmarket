@@ -54,7 +54,7 @@ class Cart extends Model {
         }
     }
 
-    public static function totalPrice() { // siempre hacer las sumas a nivel sql
+    public static function finalPrice() { // siempre hacer las sumas a nivel sql
         return $this->products()->sum('price');
     }
 

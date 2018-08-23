@@ -13,11 +13,11 @@ class Product extends Model {
   }
 
   public function carts() {
-    return $this->belongsTo('App\Model\Cart'); // la clase con la que hago la relación, y la tabla pivot
+    return $this->belongsTo('App\Models\Cart'); // la clase con la que hago la relación, y la tabla pivot
   }
 
-  public static function products($id){
-    return Product::where('category_id','=',$id)
-    ->get();
-  }
+  // public static function products($id){
+  //   return Product::where('category_id','=',$id)
+  //   ->get();
+  // }
 }

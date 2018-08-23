@@ -20,8 +20,12 @@
 Route::get('/', 'MainController@homeShowProducts'); // el home y el método que busca en la db los productos para mostrar
 Route::get('/showProducts/{id?}', 'ProductController@showProducts'); // los productos a mostrar por buscador o por categoría
 Route::get('/faq', function() { return view('/faq'); });
-Route::get('/datosPersonales', function() { return view('/datosPersonales'); });
+
 Route::get('/logout', 'AuthController@logout'); // logout
+
+Route::get('/datosPersonales', function() { return view('/datosPersonales'); });
+Route::get('/actualizarDatosPersonales', function() { return view('/actualizarDatosPersonales'); });
+Route::post('/datosPersonales', 'UserController@update');  //controlador actualizar datos
 
 Route::get('/register', function() { return view('/register'); }); // registro
 Route::post('/register', 'UserController@store');
@@ -31,20 +35,17 @@ Route::post('/login', 'AuthController@login');
 
 Route::get('/logInToShop', function() { return view('/logInToShop'); }); // logInToShop
 
-
-
 Route::get('/cart', 'CartController@index' ); // carrito
 Route::post('/cart', 'CartProductController@store'); // - NO FUNCIONAL. Le faltan un par de boludeces
 Route::resource('cart_product', 'CartProductController', [ 'only' => 'store', 'destroy' ]); // https://youtu.be/NfDKrVXc8_Y
 
-
-Route::resource('Category', 'CategoryController');
-Route::get('/products/{id}', 'CategoryController@getProducts'); //para js
-
-Route::post('/product', 'ProductController@edit'); //en proceso
-// Route::resource('product', 'ProductController'); // probá a ver si te funca esto en vez de las tres rutras
-Route::post('/product', 'ProductController@destroy'); //en proceso
-Route::post('/product', 'ProductController@update'); //en proceso
+Route::resource('adminProduct', 'ProductController');
+Route::get('/adminCategory', 'CategoryController@newCategory' );
 
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
+
+// Ruta para imagen del user
+Route::post('/perfil/foto', 'ProfileController@updatePhoto');
+
+

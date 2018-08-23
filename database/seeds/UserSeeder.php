@@ -10,7 +10,8 @@ class UserSeeder extends Seeder {
             'first_name' => 'Admin',
             'last_name' => 'Rodo',
             'email' => 'rodo@admin.com',
-            'password' => '123456',
+            'password' => bcrypt('123456'),
+            'admin' => 1,
             // 'avatar' => 'rodo.jpg'
         ]);
     }
