@@ -50,7 +50,7 @@
                   </li>
                 @endif
                 <li class='nav-item'>
-                  <a class="nav-link" href="datosPersonales"><span><i
+                  <a class="nav-link" href="actualizarDatosPersonales"><span><i
                     class="fas fa-user" style="font-size: 1em"></i> {{ auth()->user()->first_name }}</span></a>
                   </li>
                   <li class='nav-item'>

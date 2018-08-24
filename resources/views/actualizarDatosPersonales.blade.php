@@ -70,7 +70,7 @@
                   </div></center>
                   <br>
                   <center><div>
-                    <a href="/datosPersonales" role="button" class="btn btn-danger" value="Actualizar">Volver</a>
+                    <a href="/index.php" role="button" class="btn btn-danger" value="Actualizar">Volver</a>
                     <input type="submit" class="btn btn-success" value="Actualizar">
                   </div></center>
               </div>

@@ -89,7 +89,9 @@ class UserController extends Controller {
           $user->password = bcrypt($request['password']);
         }
 
-        $user->avatar = $request->file('avatar')->store('public/users');
+        if(($request['avatar']) !="") {
+            $user->avatar = $request->file('avatar')->store('public/users');
+        }
 
         $user->save();
         // $user = User::save([ // actualiza los datos que mandó
@@ -109,7 +111,7 @@ class UserController extends Controller {
         // ]);
 
         // if (Auth::attempt($datosParaLogear)) { // logea
-            return redirect('/datosPersonales'); // ..y redirige a Mis Datos Personales(Agregarle un mensaje de Confirmacion de Cambio de Datos!)
+            return redirect('/'); // ..y redirige a Mis Datos Personales(Agregarle un mensaje de Confirmacion de Cambio de Datos!)
         // }
     }
 
