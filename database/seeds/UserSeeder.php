@@ -14,5 +14,13 @@ class UserSeeder extends Seeder {
             'admin' => 1,
             // 'avatar' => 'rodo.jpg'
         ]);
+
+        User::create([
+            'first_name' => 'Alancete',
+            'last_name' => 'Casal',
+            'email' => 'a@a.com',
+            'password' => bcrypt('123456'),
+            // 'avatar' => 'rodo.jpg'
+        ]);
     }
 }

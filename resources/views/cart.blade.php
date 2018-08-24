@@ -8,12 +8,9 @@
 		<div id="main" class="container">
 			<div class="container">
 
-				{{-- {{ dd($products) }} --}}
-        {{-- {{ dd($quantities) }} --}}
-
 				@if (count($products) > 0) {{-- si Redirect nos mandó $cartProducts --}}
-					<center><div style="margin-top: 3em; margin-bottom: 2em"> {{-- muestro titulo y tabla con resultados --}}
-						<h3><i class="fas fa-search-plus" style="font-size: 1em; margin-right: .5em"></i>RESULTADO DE LA BÚSQUEDA</h3>
+					<center><div style="margin-bottom: 2em"> {{-- muestro titulo y tabla con resultados --}}
+						<h2><i class="fas fa-shopping-cart" style="font-size:1em; margin: 10 20 20 0"></i><br>CARRITO DE COMPRAS</h2>
 					</div></center>
 
 					<center>
@@ -29,31 +26,49 @@
 								</tr>
 							</thead>
 							<tbody>
-								@php $i = 0; @endphp
-								@php $quantity = $quantities[$i]->quantity; @endphp
+								@php
+								$i = 0; $finalPrice = 0;
+								@endphp
 								@foreach ($products as $product) {{-- los resultados que me llegaron --}}
 									<tr>
 										<td><center> {{ $product['description'] }} </center></td>
-										<td> <input type='number' min='1' max='10' name='cantidad'
-											value='{{ $quantity }}' class='form-control' /></td>
+										<form action="{{route('cart.update', ['product_id' => $product['id']])}}" method="post">
+											@csrf @method('PATCH')
+											<td>
+												<input type='number' min='1' max='10' name='quantity' value='{{ $quantities[$i]->quantity }}' class='form-control'>
+											</td>
+											<td>
+												<center><button class='btn btn-info add-to-cart'>
+													<i class='fas fa-sync-alt' style='font-size: 1.1em'></i>
+												</button></center>
+											</td>
+										</form>
 										<td>
-											<center><button class='btn btn-info add-to-cart'><i class='fas fa-sync-alt' style='font-size: 1.1em'></i></button></center>
-										</td>
-										<td>
-											<center><button class='btn btn-danger add-to-cart'><i class='fas fa-minus-circle' style='font-size: 1.1em'></i></button></center>
+											<form action="{{route('cart.destroy', ['product_id' => $product['id']])}}" method="post">
+												@csrf @method('DELETE')
+												<center><button class='btn btn-danger add-to-cart'>
+													<i class='fas fa-minus-circle' style='font-size: 1.1em'></i>
+												</button></center>
+											</form>
 										</td>
 										<td><center> ${{ $product['price'] }} </center></td>
-										<td><center> ${{ $product['price'] * $quantity }} </center></td>
+										<td><center> ${{ $product['price'] * $quantities[$i]->quantity }} </center></td>
 									</tr>
-									@php $i++; @endphp
+									@php
+										$finalPrice +=  $product['price'] * $quantities[$i]->quantity;
+										$i++;
+									@endphp
 								@endforeach
 								<tr>
 									<td colspan="5" class="text-right"><strong>TOTAL</strong></td>
-									<td><center><strong> ${{--{{ $finalPrice }}--}} </strong></center></td> {{-- $total nos la mandó redirect --}}
+									<td><center><strong> ${{ $finalPrice }} </strong></center></td> {{-- $total nos la mandó redirect --}}
 								</tr>
 								<tr>
 									<td colspan="6">
+										<form action="/checkout" method="post"> @csrf
+										<input type="hidden" name="finalPrice" value="{{$finalPrice}}">
 										<center><button class='btn btn-success add-to-cart pull-right'><i class='fas fa-shopping-cart' style='font-size: 1.1em'></i> Comprar</button></center>
+									</form>
 									</td>
 								</tr>
 							</tbody>
@@ -62,8 +77,8 @@
 
 				@else {{-- si no se encontraron resultados --}}
 					<center><div style="margin-top: 3em; margin-bottom: 2em">
-                        <br><h3> EL CARRITO DE COMPRAS ESTÁ VACÍO</h3>
-                        <img src="images/empty_shopping_cart.png" alt="empty_cart">
+						<br><h3> EL CARRITO DE COMPRAS ESTÁ VACÍO</h3>
+						<img src="images/empty_shopping_cart.png" alt="empty_cart">
 					</div></center>
 				@endif
 

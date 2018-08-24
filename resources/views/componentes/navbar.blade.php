@@ -54,14 +54,14 @@
                     class="fas fa-shopping-cart" style="font-size: 1em"></i> ( {{ $productsCount }} ) </a>
                   </li>
                 @endif
+                <li class='nav-item'>
+                  <a class="nav-link" href="datosPersonales"><span><i
+                    class="fas fa-user" style="font-size: 1em"></i> {{ auth()->user()->first_name }}</span></a>
+                  </li>
                   <li class='nav-item'>
-                    <a class="nav-link" href="datosPersonales"><span><i
-                      class="fas fa-user" style="font-size: 1em"></i> {{ auth()->user()->first_name }}</span></a>
+                    <a class='nav-link' href='/logout'><i
+                      class="fas fa-sign-out-alt" style="font-size: 1em"></i> Cerrar Sesión</a>
                     </li>
-                    <li class='nav-item'>
-                      <a class='nav-link' href='/logout'><i
-                        class="fas fa-sign-out-alt" style="font-size: 1em"></i> Cerrar Sesión</a>
-                      </li>
                   @else
                     <li class='nav-item'> {{-- y la botonera para invitados no logeados --}}
                       <a class='nav-link' href='/logInToShop'><i
@@ -75,11 +75,11 @@
                           <a class='nav-link' href='/register'><i
                             class="fas fa-user-edit" style="font-size: 1em"></i> Registro </a>
                           </li>
+                          @endif
                           <li class='nav-item'>
                             <a class='nav-link' href='faq'><i
                               class="fas fa-question-circle" style="font-size: 1em"></i> FAQ</a>
                             </li>
-                          @endif
                         </ul>
                       </div>
 

@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProfileController extends Controller
-{
-    public function updatePhoto(Request $request)
-{
+class ProfileController extends Controller {
+  public function updatePhoto(Request $request)
+  {
     $this->validate($request, [
-        'photo' => 'required|image'
+      'photo' => 'required|image'
     ]);
 
     $file = $request->file('photo');
@@ -27,5 +26,5 @@ class ProfileController extends Controller
     $data['path'] = $user->getAvatarUrl() . '?' . uniqid();
 
     return $data;
-}
+  }
 }

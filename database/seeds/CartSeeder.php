@@ -9,5 +9,10 @@ class CartSeeder extends Seeder {
       'user_id' => '1',
       'status' => 'admin',
     ]);
+
+    Cart::create([
+      'user_id' => '2',
+      'status' => 'cliente',
+    ]);
   }
 }

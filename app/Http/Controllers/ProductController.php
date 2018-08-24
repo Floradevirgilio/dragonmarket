@@ -8,19 +8,19 @@ use App\Models\Product;
 
 class ProductController extends Controller {
   public static function showProducts($id = null) {
-          if ($id) { // si recibió un id de categoría..
-              return ProductController::categoryProducts($id); // busca los productos de la categoría y devuelve la view showProducts con éstos
-          }
+    if ($id) { // si recibió un id de categoría..
+      return ProductController::categoryProducts($id); // busca los productos de la categoría y devuelve la view showProducts con éstos
+    }
 
-          elseif (isset($_GET['txt'])) { // si llegó algo por el buscador de la navbar
-              $search = '%'.trim($_GET['txt']).'%'; // trim para sacar posibles espacios, % como comodines para una búsqueda eficiente
-              $searchResults = ProductController::searchProducts($search); // le paso al controlador lo que el cliente quiere buscar
-              return view('/showProducts', [ 'searchResults' => $searchResults ]); // muestro la view y le paso el resultado de la búsqueda
-          }
+    elseif (isset($_GET['txt'])) { // si llegó algo por el buscador de la navbar
+      $search = '%'.trim($_GET['txt']).'%'; // trim para sacar posibles espacios, % como comodines para una búsqueda eficiente
+      $searchResults = ProductController::searchProducts($search); // le paso al controlador lo que el cliente quiere buscar
+      return view('/showProducts', [ 'searchResults' => $searchResults ]); // muestro la view y le paso el resultado de la búsqueda
+    }
 
-          else
-            $products = Product::all(); // trae todos los productos de la tabla products. Pero seguramente la función que está llamando tiene algunos filtros (ver en Redirect)
-            return $products;
+    else
+    $products = Product::all(); // trae todos los productos de la tabla products. Pero seguramente la función que está llamando tiene algunos filtros (ver en Redirect)
+    return $products;
   }
 
   public static function searchProducts($buscar) { // los productos que se buscan por el buscador del navbar
@@ -50,7 +50,7 @@ class ProductController extends Controller {
     return view('/adminProduct', compact('categories'));
   }
 
-  
+
   /**
   * Show the form for creating a new resource.
   *
@@ -67,12 +67,12 @@ class ProductController extends Controller {
   */
   public function store(Request $request) {
     request()->validate([
-        'description' => 'required|min:3|max:255|unique:products',
-        'price' => 'required|max:22|regex:/^-?[0-9]+(?:\.[0-9]{1,2})?$/'
-        //'image' => 'image|max:2048|dimensions:ratio=16/9',
+    'description' => 'required|min:3|max:255|unique:products',
+    'price' => 'required|max:22|regex:/^-?[0-9]+(?:\.[0-9]{1,2})?$/'
+    //'image' => 'image|max:2048|dimensions:ratio=16/9',
     ], [
-        'description.required' => 'La descripción es obligatoria.',
-        'price.required' => 'El precio es obligatorio.'
+    'description.required' => 'La descripción es obligatoria.',
+    'price.required' => 'El precio es obligatorio.'
     ]);
 
 

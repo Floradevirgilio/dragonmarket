@@ -28,7 +28,7 @@
       @foreach ($pcs as $pc) {{-- itero una tarjeta con cada resultado de PCS ARMADAS --}}
         <div class="card text-center col-sm-12 col-md-6 col-lg-3 shadow-sm p-3 mb-5 bg-white rounded" style="margin-top: 10px;">
           <img class="card-img-top" src="/images/{{ $pc->id }}.jpg" alt=""> {{-- Laravel se para autom. en la carpeta public --}}
-          
+
           <div  class="card-body hover">
             <li> {{ $pc->description }} </li>
           </div>
@@ -74,7 +74,7 @@
             <form action="/cart" method="POST">
               @csrf
               <div class="d-flex justify-content-center">
-                <input class="form-control col-4" type="number" name="quantity" value="1">
+                <input class="form-control col-6" type="number" name="quantity" value="1">
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
 
                 <button class='btn btn-info add-to-cart' type="submit">

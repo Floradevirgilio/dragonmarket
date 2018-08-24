@@ -35,17 +35,23 @@ Route::post('/login', 'AuthController@login');
 
 Route::get('/logInToShop', function() { return view('/logInToShop'); }); // logInToShop
 
-Route::get('/cart', 'CartController@index' ); // carrito
-Route::post('/cart', 'CartProductController@store'); // - NO FUNCIONAL. Le faltan un par de boludeces
+Route::resource('cart', 'CartProductController'); // leer funcionamiento de rutas resource
+
 Route::resource('cart_product', 'CartProductController', [ 'only' => 'store', 'destroy' ]); // https://youtu.be/NfDKrVXc8_Y
 
 Route::resource('adminProduct', 'ProductController');
 Route::get('/adminCategory', 'CategoryController@newCategory' );
 
-// Auth::routes();
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/checkout', 'SaleController@store' );
 
-// Ruta para imagen del user
-Route::post('/perfil/foto', 'ProfileController@updatePhoto');
+Route::post('/perfil/foto', 'ProfileController@updatesarasa'); // Ruta para imagen del user
 
-
+// machete rutas resource
+// Verb	        Path	                 Action	   Route Name
+// GET	        /sarasa	               index	   sarasa.index
+// GET	        /sarasa/create	       create	   sarasa.create
+// POST	        /sarasa	               store	   sarasa.store
+// GET	        /sarasa/{sarasa}	     show	     sarasa.show
+// GET	        /sarasa/{sarasa}/edit  edit	     sarasa.edit
+// PUT/PATCH	  /sarasa/{sarasa}	     update	   sarasa.update
+// DELETE       /sarasa/{sarasa}	     destroy	 sarasa.destroy
