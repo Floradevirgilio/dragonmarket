@@ -3,11 +3,17 @@
 @section('title', 'COMPRASTE! - Dragon Market - Equipos y Componentes para Gamers')
 
 @section('content')
+<div class="container">
 
-  <center>COMPRASTE !</center>
+
+  <center><i class="fas fa-check-circle" style="color:green; font-size:4em; margin-right: 10px; margin-top: 20px"></i><h2>
+  <div style="margin-top: 10px; margin-bottom: 30px">
+    TU COMPRA ESTÁ SIENDO GESTIONADA</h2>
+  </div></center>
 
 
   <center><a href="{{url('/')}}">Volver al Home</a></center>
+</div>
 
   {{-- <div class="container">
     <div class="row justify-content-center">

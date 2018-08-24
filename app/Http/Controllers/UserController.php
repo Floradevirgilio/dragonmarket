@@ -8,17 +8,10 @@ use App\Models\Cart;
 use Auth;
 
 class UserController extends Controller {
-    /**
-    * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\Response
-    */
+
     public function store(Request $request) {
-        $data = request()->validate([ 
-            // valido los datos que me llegan
-            // esto ya chequea que no exista en la db
-            'email'            => 'required|email|unique:users,email', 
+        $data = request()->validate([ // valido los datos que me llegan y tambien que no exista en la db
+            'email'            => 'required|email|unique:users,email',
             'email-confirm'    => 'required|same:email',
             'password'         => 'required|min:6', // al menos seis caracteres
             'password-confirm' => 'required|same:password',
@@ -28,9 +21,7 @@ class UserController extends Controller {
         if ($request['avatar']==null) {
             $request['avatar'] = 'public/users/default.jpg';}
 
-        $user = User::create([ 
-
-            // crea un nuevo user con los datos que mandó
+        $user = User::create([ // crea un nuevo user con los datos que mandó
             'first_name' => $request['first_name'],
             'last_name'  => $request['last_name'],
             'email'      => $request['email'],
@@ -53,16 +44,16 @@ class UserController extends Controller {
         }
     }
 
-    //Actualizar datos del Usuario
-    public function update(Request $request)
+
+    public function update(Request $request) //Actualizar datos del Usuario
     {
-        if($request['email'] == auth()->user()->email) 
+        if($request['email'] == auth()->user()->email)
             // Si no modifica el email,que no lo valide
             // ya que existe en la BD
         {
-          $data = request()->validate([ 
-            // valido los datos que me llegan
-            // 'email' => 'required|email|unique:users,email', 
+          $data = request()->validate([ // valido los datos que me llegan
+
+            // 'email' => 'required|email|unique:users,email',
             // esto ya chequea que no exista en la db
             // 'email-confirm' => 'required|same:email',
               'first_name' => 'required|min:4',
@@ -71,9 +62,9 @@ class UserController extends Controller {
 
           ]);
         } else {
-          $errors = request()->validate([ 
-            // valido los datos que me llegan
-            // 'email' => 'required|email|unique:users,email', 
+          $errors = request()->validate([ // valido los datos que me llegan
+
+            // 'email' => 'required|email|unique:users,email',
             // esto ya chequea que no exista en la db
             // 'email-confirm' => 'required|same:email',
               'first_name' => 'required|min:4',
@@ -83,11 +74,9 @@ class UserController extends Controller {
         }
 
         if(($request['password'])){
-          $errors = request()->validate([ 
-                // valido los datos que me llegan
-              'password'         => 'min:6', 
-                // mínimo seis caracteres
-              'password-confirm' => 'same:password'
+          $errors = request()->validate([
+              'password'         => 'min:6', // valido los datos que me llegan
+              'password-confirm' => 'same:password' // mínimo seis caracteres
           ]);
         }
 
@@ -95,11 +84,11 @@ class UserController extends Controller {
         $user->first_name = $request['first_name'];
         $user->last_name  = $request['last_name'];
         $user->email      = $request['email'];
-        
+
         if(($request['password']) != ""){
           $user->password = bcrypt($request['password']);
         }
-        
+
         $user->avatar = $request->file('avatar')->store('public/users');
 
         $user->save();
@@ -124,64 +113,17 @@ class UserController extends Controller {
         // }
     }
 
-
-    /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
-    public function index() {
-        //
-    }
-
-    /**
-    * Show the form for creating a new resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
     public function create() {
-
     }
 
-
-    /**
-    * Display the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
     public function show($id) {
-        //
     }
 
-    /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
     public function edit($id) {
-        //
     }
 
-    /**
-    * Update the specified resource in storage.    //comentada,porque se declaró al principio
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
-    // public function update(Request $request, $id) {
-    //     //
-    // }
-
-    /**
-    * Remove the specified resource from storage.
-    *
-    * @param  int  $id
-    * @return \Illuminate\Http\Response
-    */
     public function destroy($id) {
-        //
     }
+    // public function update(Request $request, $id) { // ya hay un update en uso
+    // }
 }

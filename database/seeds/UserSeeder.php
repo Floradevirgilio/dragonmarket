@@ -6,7 +6,7 @@ use App\Models\User; // agrego el uso del modelo Category para hacerle consultas
 
 class UserSeeder extends Seeder {
     public function run() {
-        User::create([
+        User::create([ // user prueba admin
             'first_name' => 'Admin',
             'last_name' => 'Rodo',
             'email' => 'rodo@admin.com',
@@ -15,7 +15,7 @@ class UserSeeder extends Seeder {
             // 'avatar' => 'rodo.jpg'
         ]);
 
-        User::create([
+        User::create([ // user prueba cliente
             'first_name' => 'Alancete',
             'last_name' => 'Casal',
             'email' => 'a@a.com',
