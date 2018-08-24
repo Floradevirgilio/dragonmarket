@@ -39,32 +39,16 @@ class ProductController extends Controller {
     return view('/showProducts', ['categoryProducts' => $categoryProducts]); // devuelvo view showProducts con los resultados
   }
 
-
-  /**
-  * Display a listing of the resource.
-  *
-  * @return \Illuminate\Http\Response
-  */
   public function index() {
     $categories = Category::pluck('name', 'id');
-    return view('/adminProduct', compact('categories'));
+    return view('/adminNewProduct', compact('categories'));
   }
 
-
-  /**
-  * Show the form for creating a new resource.
-  *
-  * @return \Illuminate\Http\Response
-  */
-  public function create() {
+  public function products() {
+    $products = Product::pluck('description', 'id');
+    return view('/adminProduct', compact('products'));
   }
 
-  /**
-  * Store a newly created resource in storage.
-  *
-  * @param  \Illuminate\Http\Request  $request
-  * @return \Illuminate\Http\Response
-  */
   public function store(Request $request) {
     request()->validate([
     'description' => 'required|min:3|max:255|unique:products',
@@ -84,45 +68,18 @@ class ProductController extends Controller {
     $producto = Product::create(request()->all());
     //$producto->category()->sync(request()->input('category'));
 
-    return redirect('/home');
-
+    return redirect('/');
   }
 
-  /**
-  * Display the specified resource.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
-  // public function show($id) {
-  // }
+  public function create() {
+  }
 
-  /**
-  * Show the form for editing the specified resource.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
   public function edit($id) {
   }
 
-  /**
-  * Update the specified resource in storage.
-  *
-  * @param  \Illuminate\Http\Request  $request
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
   public function update(Request $request) {
-
   }
 
-  /**
-  * Remove the specified resource from storage.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
   public function destroy($id) {
   }
 }

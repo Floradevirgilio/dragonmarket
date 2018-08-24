@@ -1,22 +1,4 @@
 <?php
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-
-////////// PAGINAS SIN POST //////////
 Route::get('/', 'MainController@homeShowProducts'); // el home y el método que busca en la db los productos para mostrar
 Route::get('/showProducts/{id?}', 'ProductController@showProducts'); // los productos a mostrar por buscador o por categoría
 Route::get('/faq', function() { return view('/faq'); });
@@ -39,6 +21,7 @@ Route::resource('cart', 'CartProductController'); // leer funcionamiento de ruta
 
 Route::resource('cart_product', 'CartProductController', [ 'only' => 'store', 'destroy' ]); // https://youtu.be/NfDKrVXc8_Y
 
+<<<<<<< HEAD
 Route::resource('adminProduct', 'ProductController');
 Route::get('/adminCategory', 'CategoryController@newCategory' );
 
@@ -55,3 +38,19 @@ Route::post('/perfil/foto', 'ProfileController@updatesarasa'); // Ruta para imag
 // GET	        /sarasa/{sarasa}/edit  edit	     sarasa.edit
 // PUT/PATCH	  /sarasa/{sarasa}	     update	   sarasa.update
 // DELETE       /sarasa/{sarasa}	     destroy	 sarasa.destroy
+=======
+Route::resource('adminNewProduct', 'ProductController');
+Route::get('/adminNewCategory', 'CategoryController@newCategory' );
+Route::post('/adminNewProduct', 'CategoryController@store' );
+Route::post('/adminNewCategory', 'CategoryController@store' );
+
+Route::get('/adminProduct', 'ProductController@products');
+Route::get('/adminCategory', 'CategoryController@categories' );
+//Route::post('/adminProduct', 'CategoryController@update' );
+//Route::post('/adminCategory', 'CategoryController@update' );
+// Auth::routes();
+// Route::get('/home', 'HomeController@index')->name('home');
+
+// Ruta para imagen del user
+Route::post('/perfil/foto', 'ProfileController@updatePhoto');
+>>>>>>> ee8dcfb974a6c772eb85e027787c73ef63afe1fa

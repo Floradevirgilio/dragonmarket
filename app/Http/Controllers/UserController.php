@@ -15,19 +15,27 @@ class UserController extends Controller {
     * @return \Illuminate\Http\Response
     */
     public function store(Request $request) {
-        $data = request()->validate([ // valido los datos que me llegan
-            'email' => 'required|email|unique:users,email', // esto ya chequea que no exista en la db
-            'email-confirm' => 'required|same:email',
-            'password' => 'required|min:6', // al menos seis caracteres
-            'password-confirm' => 'required|same:password'
+        $data = request()->validate([ 
+            // valido los datos que me llegan
+            // esto ya chequea que no exista en la db
+            'email'            => 'required|email|unique:users,email', 
+            'email-confirm'    => 'required|same:email',
+            'password'         => 'required|min:6', // al menos seis caracteres
+            'password-confirm' => 'required|same:password',
+            'avatar'           => 'required|image' // Requerido y que sea imagenes
         ]);
 
-        $user = User::create([ // crea un nuevo user con los datos que mandó
+        if ($request['avatar']==null) {
+            $request['avatar'] = 'public/users/default.jpg';}
+
+        $user = User::create([ 
+
+            // crea un nuevo user con los datos que mandó
             'first_name' => $request['first_name'],
-            'last_name' => $request['last_name'],
-            'email' => $request['email'],
-            'password' => bcrypt($request['password']),
-            // 'avatar' => '1.jpg',
+            'last_name'  => $request['last_name'],
+            'email'      => $request['email'],
+            'password'   => bcrypt($request['password']),
+            'avatar'     => $request['avatar'],
             // 'admin' => $data['admin'] // el admin lo creamos en el seeder
         ]);
 
@@ -36,7 +44,7 @@ class UserController extends Controller {
         ]);
 
         $datosParaLogear = request()->validate([ // toma los datos que necesita para logearlo
-            'email' => 'email|required',
+            'email'    => 'email|required',
             'password' => 'required'
         ]);
 
@@ -46,40 +54,54 @@ class UserController extends Controller {
     }
 
     //Actualizar datos del Usuario
-    public function update(Request $request) {
-        if($request['email'] == auth()->user()->email) // Si no modifica el email,que no lo valide, ya que existe en la BD
+    public function update(Request $request)
+    {
+        if($request['email'] == auth()->user()->email) 
+            // Si no modifica el email,que no lo valide
+            // ya que existe en la BD
         {
-          $data = request()->validate([ // valido los datos que me llegan
-              // 'email' => 'required|email|unique:users,email', // esto ya chequea que no exista en la db
-              // 'email-confirm' => 'required|same:email',
+          $data = request()->validate([ 
+            // valido los datos que me llegan
+            // 'email' => 'required|email|unique:users,email', 
+            // esto ya chequea que no exista en la db
+            // 'email-confirm' => 'required|same:email',
               'first_name' => 'required|min:4',
-              'last_name' => 'required',
+              'last_name'  => 'required',
+              'avatar'     => 'image',
 
           ]);
         } else {
-          $errors = request()->validate([ // valido los datos que me llegan
-              // 'email' => 'required|email|unique:users,email', // esto ya chequea que no exista en la db
-              // 'email-confirm' => 'required|same:email',
+          $errors = request()->validate([ 
+            // valido los datos que me llegan
+            // 'email' => 'required|email|unique:users,email', 
+            // esto ya chequea que no exista en la db
+            // 'email-confirm' => 'required|same:email',
               'first_name' => 'required|min:4',
-              'last_name' => 'required',
+              'last_name'  => 'required',
+              'avatar'     => 'image',
           ]);
         }
 
         if(($request['password'])){
-          $errors = request()->validate([ // valido los datos que me llegan
-              'password' => 'min:6', // al menos seis caracteres
+          $errors = request()->validate([ 
+                // valido los datos que me llegan
+              'password'         => 'min:6', 
+                // mínimo seis caracteres
               'password-confirm' => 'same:password'
           ]);
         }
 
-
         $user = User::find(auth()->user()->id);
         $user->first_name = $request['first_name'];
-        $user->last_name = $request['last_name'];
-        $user->email = $request['email'];
+        $user->last_name  = $request['last_name'];
+        $user->email      = $request['email'];
+        
         if(($request['password']) != ""){
           $user->password = bcrypt($request['password']);
         }
+        
+        $user->avatar = $request->file('avatar')->store('public/users');
+
         $user->save();
         // $user = User::save([ // actualiza los datos que mandó
         //         'first_name' => $request['first_name'],

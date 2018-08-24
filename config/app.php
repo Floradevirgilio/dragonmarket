@@ -161,6 +161,9 @@ return [
     App\Providers\EventServiceProvider::class,
     App\Providers\RouteServiceProvider::class,
 
+    // Tratamiento de imagenes
+    Intervention\Image\ImageServiceProvider::class,
+
     ],
 
     /*
@@ -194,6 +197,7 @@ return [
         'Html' => 'Collective\Html\HtmlFacade',
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
+        'Image' => Intervention\Image\Facades\Image::class,
         'Lang' => Illuminate\Support\Facades\Lang::class,
         'Log' => Illuminate\Support\Facades\Log::class,
         'Mail' => Illuminate\Support\Facades\Mail::class,

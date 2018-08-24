@@ -23,29 +23,24 @@
         <ul class='navbar-nav' style="padding-top: 1em">
 
 
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-outline-success">
+                                            <i class="fas fa-search" style="font-size: 1.5em"></i>
+                                        </button>
+                                    </span>
+                                </form>
+                            </div>
 
           @if (auth()->check()) {{-- chequeo si hay un user autenticado  --}}
             @if (auth()->user()->admin == 1) {{-- si el user es admin --}}
-              <li class="nav-item dropdown">{{-- ... le muestro las opciones de admin --}}
-                <a class="nav-link dropdown-toggle"
-                href="#" id="navbarDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">Productos</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/Category">Cargar</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/products">Editar</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/products">Eliminar</a>
-                </li>
-                {{-- </div> --}}
-
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrar</a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/adminCategory">Nueva categoría</a>
+                    <a class="dropdown-item" href="/adminNewCategory">Nueva categoría</a>
+                    <a class="dropdown-item" href="/adminCategory">Editar categoría</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/adminProduct">Nuevo producto</a>
+                    <a class="dropdown-item" href="/adminNewProduct">Nuevo producto</a>
+                    <a class="dropdown-item" href="/adminProduct">Editar producto</a>
                   </div>
                 </li>
               @else

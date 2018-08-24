@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Editar producto - Dragon Market - Equipos y Componentes para Gamers')
+@section('title', 'Nuevo producto - Dragon Market - Equipos y Componentes para Gamers')
 
 @section('content')
 
@@ -11,23 +11,27 @@
           <div class="jumbotron column col-xs-12 col-sm-12 col-md-10 col-lg-8 shadow p-4 mb-4 border {{ $errors->any() ? 'border-danger' : 'border-info' }}" style="margin-top: 50px;"> {{-- jumbotron --}}
 
             <div class="row justify-content-center" style="margin-top: 2em;">
-              <h2><h2><i class="fas fa-desktop" style="font-size: 1em; margin-right: .3em"></i>EDITAR PRODUCTO</h2>
+              <h2><h2><i class="fas fa-desktop" style="font-size: 1em; margin-right: .3em"></i>NUEVO PRODUCTO</h2>
             </div>
 
-
+  
               <div class="container column col-xs-12 col-sm-12 col-md-12 col-lg-12">
                  {{--Form::model($user, ['route' => ['user.update', $user->id]])--}}
                  {{-- Form::open(array(['action' => ['ProductController@update', /* $user->id */'file' => true]], 'method' => 'post') --}}
-                {{ Form::open(['url' => '/adminProduct', 'method' => 'post'], ['class' =>'container column col-xs-12 col-sm-12 col-md-12 col-lg-12']) }}
+                {{ Form::open(['url' => '/adminNewProduct', 'method' => 'post'], ['class' =>'container column col-xs-12 col-sm-12 col-md-12 col-lg-12']) }}
                     @csrf
                   <br>
 
-                  <strong>{!!  Form::label('description', 'Producto:') !!}</strong>
+                  <strong>{!!  Form::label('category', 'Categoría:') !!}</strong>
                   <br>
-                    {!! Form::select('description',$products,null,['placeholder' => 'Seleccioná el producto','id'=>'description', 'class' => 'form-control column col-xs-10 col-sm-10 col-md-12 col-lg-12']) !!}
-                    {{--  {!! Form::text('product', null,['class' => 'form-control column col-xs-10 col-sm-10 col-md-12 col-lg-12','required placeholder'=>'Descripción del producto.']) !!} --}}
+                    {!! Form::select('category_id',$categories,null,['placeholder' => 'Seleccioná la categoría','id'=>'category', 'class' => 'form-control column col-xs-10 col-sm-10 col-md-12 col-lg-12']) !!}
                   <br>
-                    {!!  Form::hidden('category_id', '1') !!}
+
+                  <strong>{!!  Form::label('product', 'Producto:') !!}</strong>
+                  <br>
+                    {!! Form::text('description', null,['class' => 'form-control column col-xs-10 col-sm-10 col-md-12 col-lg-12','required placeholder'=>'Descripción del producto.']) !!}
+                  <br>
+
               {{--  Esto viene si es crear un producto nuevo  --}}
                <strong>{!!  Form::label('image', 'Imagen:') !!}</strong>
                 <br>
@@ -42,13 +46,13 @@
                   {{--  Esto viene si es crear un producto nuevo  EN LAS VALIDACIONES --> required|between:0,99.99
                 {!! Form::number('number', null, ['class' => 'form-control column col-xs- col-sm-1 col-md-2 col-lg-2', 'required placeholder' => '0.00']) !!} --}}
                 <br>
-                <strong>{!!  Form::label('number', 'En stock:') !!}</strong>
+                <strong>{!!  Form::label('stock', 'En stock:') !!}</strong>
                   {{--  Esto viene si es crear un producto nuevo --}}
                  {!! Form::number('stock', null, ['class' => 'form-control column col-xs- col-sm-1 col-md-2 col-lg-2', 'required placeholder' => 1]) !!}
                  {!!  Form::hidden('active', '1') !!}
               </div>
               <br>
-              <center><div> {!! Form::submit('Eliminar', ['class'=> 'btn btn-info']); !!} {!! Form::submit('Guardar', ['class'=> 'btn btn-info']); !!}</div></center>
+              <center><div> {!! Form::submit('Enviar', ['class'=> 'btn btn-info']); !!}</div></center>
               {!! Form::close() !!}
 
            </div>  {{-- end jumbotron --}}
