@@ -47,10 +47,14 @@ class ProductController extends Controller {
   */
   public function index() {
     $categories = Category::pluck('name', 'id');
-    return view('/adminProduct', compact('categories'));
+    return view('/adminNewProduct', compact('categories'));
   }
 
-  
+  public function products() {
+    $products = Product::pluck('description', 'id');
+    return view('/adminProduct', compact('products'));
+  }
+
   /**
   * Show the form for creating a new resource.
   *
@@ -84,7 +88,7 @@ class ProductController extends Controller {
     $producto = Product::create(request()->all());
     //$producto->category()->sync(request()->input('category'));
 
-    return redirect('/home');
+    return redirect('/');
 
   }
 

@@ -39,13 +39,17 @@ Route::get('/cart', 'CartController@index' ); // carrito
 Route::post('/cart', 'CartProductController@store'); // - NO FUNCIONAL. Le faltan un par de boludeces
 Route::resource('cart_product', 'CartProductController', [ 'only' => 'store', 'destroy' ]); // https://youtu.be/NfDKrVXc8_Y
 
-Route::resource('adminProduct', 'ProductController');
-Route::get('/adminCategory', 'CategoryController@newCategory' );
+Route::resource('adminNewProduct', 'ProductController');
+Route::get('/adminNewCategory', 'CategoryController@newCategory' );
+Route::post('/adminNewProduct', 'CategoryController@store' );
+Route::post('/adminNewCategory', 'CategoryController@store' );
 
+Route::get('/adminProduct', 'ProductController@products');
+Route::get('/adminCategory', 'CategoryController@categories' );
+//Route::post('/adminProduct', 'CategoryController@update' );
+//Route::post('/adminCategory', 'CategoryController@update' );
 // Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 
 // Ruta para imagen del user
 Route::post('/perfil/foto', 'ProfileController@updatePhoto');
-
-
