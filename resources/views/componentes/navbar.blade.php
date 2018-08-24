@@ -1,4 +1,3 @@
-
 <div class='container-fluid shadow' style="margin-bottom: 7em">
   <nav class='navbar navbar-expand-md fixed-top navbar-light navbar-custom'>
     <button class='navbar-toggler navbar-toggler-right'
@@ -7,7 +6,7 @@
     data-target='#navbar5'>
     <span class='navbar-toggler-icon'></span>
   </button>
-  <a class='navbar-brand' href='index.php'>
+  <a class='navbar-brand' href='/'>
     <img src='../images/DMHead.png' alt='Logo' style='width: 50px;'>
   </a>
 
@@ -50,7 +49,7 @@
                   </li>
                 @endif
                 <li class='nav-item'>
-                  <a class="nav-link" href="actualizarDatosPersonales"><span><i
+                  <a class="nav-link" href="{{route('actualizarDatosPersonales.show', ['user_id' => auth()->user()->id])}}"><span><i
                     class="fas fa-user" style="font-size: 1em"></i> {{ auth()->user()->first_name }}</span></a>
                   </li>
                   <li class='nav-item'>
