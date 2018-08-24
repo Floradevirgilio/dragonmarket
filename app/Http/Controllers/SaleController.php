@@ -34,7 +34,8 @@ class SaleController extends Controller {
 
   CartProduct::emptyCart($cart_id); // LIMPIO EL CARRITO
 
-  return view('/checkout');
+  $saleDetail = Sale::find($sale_id)->sales_details->toArray();
+  return view('/checkout', [ 'saleDetail' => $saleDetail ]);
 }
 
 // public function index() {

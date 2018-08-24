@@ -14,7 +14,6 @@
 					</div></center>
 
 					<center>
-
 						<table class="jumbotron table table-striped shadow p-3 mb-5 rounded" border="3">
 							<thead>
 								<tr>
