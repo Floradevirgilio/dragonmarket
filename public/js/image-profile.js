@@ -14,6 +14,7 @@ $(function () {
     });
 });
 
+
 $avatarInput.on('change', function () {
     var formData = new FormData();
     formData.append('photo', $avatarInput[0].files[0]);

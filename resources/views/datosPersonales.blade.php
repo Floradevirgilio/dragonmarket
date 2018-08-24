@@ -49,6 +49,8 @@
               value="******">
             </div>
 
+            <img width="100px;" src="{{ Storage::url(auth()->user()->avatar) }}">
+
             <div class="row justify-content-center">
               <a href="/actualizarDatosPersonales" role="button" class="btn btn-info" value="Actualizar">Editar</a>
             </div>

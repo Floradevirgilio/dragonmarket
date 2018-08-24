@@ -21,9 +21,16 @@
 
                 <label for="first_name"><strong>Nombre</strong></label>
                 <input type="text" class="form-control" id="first_name" name="first_name" value="{{ old('first_name') }}" required autofocus placeholder="Nombre">
+                @if ($errors->has('first_name'))
+                    <li class="form-control-feedback" style="color: red">Nombre debe tener al menos cuatro caracteres<</li>
+                @endif
+
                 <br>
                 <label for="last_name"><strong>Apellido</strong></label>
                 <input type="text" class="form-control" id="last_name" name="last_name" value="{{ old('last_name') }}" required autofocus placeholder="Apellido">
+                @if ($errors->has('last_name'))
+                    <li class="form-control-feedback" style="color: red">Apellido debe tener al menos cuatro caracteres<</li>
+                @endif
 
                 <br>
                 <label for="email"><strong>Email</strong></label>
@@ -58,23 +65,21 @@
                 <br>
               </div>
 
-              {{-- Form oculto para la imágen
-              si estoy dando el alta, viene vacía
-               --}}
-              <form action="{{ url('perfil/foto') }}"
-                    method="post"
-                    style="display: none"
-                    id="avatarForm">
-                    {{ csrf_field() }}
-                    <input type="file" id="avatarInput" name="photo">
-              </form>
-              <img src="{{ auth()->user()->getAvatarUrl() }}" id="avatarImage">
-
-
-
-
-
               <br>
+              <div>
+                  {{-- Cargar avatar --}}
+                  <p><label for="avatar">
+                      <input type="file" name="avatar">
+                  </label></p>
+
+                  {{--
+                    @if ($errors->has('avatar'))
+                      $avatar = "/storage/users/default.jpg";
+                    @endif 
+                  --}}
+
+              </div>
+              
               <div class="form-group">
                 <div class="row justify-content-center">
                   <div class="checkbox">

@@ -10,7 +10,8 @@ class CreateUsersTable extends Migration {
      *
      * @return void
      */
-    public function up() {
+    public function up()
+    {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
@@ -19,7 +20,7 @@ class CreateUsersTable extends Migration {
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('photo_extension')->nullable();
+            $table->string('avatar')->default('public/users/default.jpg');
             $table->integer('active')->default(1);
 
             // $table->integer('cart_id')->unsigned(); // en la clave foranea tiene que ir un unsigned para que no se rompa
@@ -32,7 +33,8 @@ class CreateUsersTable extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down()
+    {
         Schema::dropIfExists('users');
     }
 }
