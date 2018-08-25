@@ -113,7 +113,8 @@ class UserController extends Controller {
         // ]);
         // if (Auth::attempt($datosParaLogear)) { // logea
         $orderHistory = Sale::where('user_id', '=', auth()->user()->id)->get([ 'id', 'created_at', 'total', 'status' ]);
-        return view('/actualizarDatosPersonales', [ 'orderHistory' => $orderHistory ]);
+        // return view('/actualizarDatosPersonales', [ 'orderHistory' => $orderHistory ]);
+        return redirect('/');
              // ..y redirige a Mis Datos Personales(Agregarle un mensaje de Confirmacion de Cambio de Datos!)
         // }
     }
