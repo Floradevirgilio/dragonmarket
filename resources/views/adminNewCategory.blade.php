@@ -14,6 +14,16 @@
               <h2><h2><i class="fas fa-desktop" style="font-size: 1em; margin-right: .3em"></i>NUEVA CATEGORÍA</h2>
             </div>
 
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                Hay problemas con los datos ingresados.<br />
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
 
               <div class="container column col-xs-12 col-sm-12 col-md-12 col-lg-12">
                  {{--Form::model($user, ['route' => ['user.update', $user->id]])--}}
@@ -24,7 +34,7 @@
 
                   <strong>{!!  Form::label('name', 'Nombre:') !!}</strong>
                   <br>
-                  {!! Form::text('name', null,['class' => 'form-control column col-xs-10 col-sm-10 col-md-12 col-lg-12','required placeholder'=>'Nombre de la categoría.']) !!}
+                  {!! Form::text('name', null,['class' => 'form-control column col-xs-10 col-sm-10 col-md-12 col-lg-12' . ($errors->has('name') ? ' is-invalid' : ''),'required placeholder'=>'Nombre de la categoría.']) !!}
                   <br>
                   {!!  Form::hidden('active', '1') !!}
               </div>

@@ -24,15 +24,17 @@ Route::post('/checkout', 'SaleController@store' ); // cuando el user compra
 Route::resource('cart_product', 'CartProductController', [ 'only' => 'store', 'destroy' ]); // https://youtu.be/NfDKrVXc8_Y
 
 
-Route::resource('adminNewProduct', 'ProductController');
-Route::get('/adminNewCategory', 'CategoryController@newCategory' );
-Route::post('/adminNewProduct', 'CategoryController@store' );
-Route::post('/adminNewCategory', 'CategoryController@store' );
+Route::get('/adminProduct', 'ProductController@products'); // view ver productos
+Route::resource('adminNewProduct', 'ProductController'); // elige categoría y carga nuevo producto
+Route::post('/adminNewProduct', 'ProductController@store' ); // guarda nuevo producto
 
-Route::get('/adminProduct', 'ProductController@products');
-Route::get('/adminCategory', 'CategoryController@categories' );
-//Route::post('/adminProduct', 'CategoryController@update' );
-//Route::post('/adminCategory', 'CategoryController@update' );
+Route::get('/adminCategory', 'CategoryController@categories' ); // view ver categorías
+Route::get('/adminNewCategory', 'CategoryController@newCategory' ); // generar categoría
+Route::post('/adminNewCategory', 'CategoryController@store' ); // guarda nueva categoría
+
+Route::post('/adminCategory', 'CategoryController@update'); // edita/inactiva categoria
+Route::post('/adminProduct', 'ProductController@update'); // edita inactiva producto
+
 Route::post('/perfil/foto', 'ProfileController@updatePhoto'); // Ruta para imagen del user
 
 // Auth::routes(); // rutas que generó el php artisan make:auth

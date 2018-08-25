@@ -34,6 +34,7 @@ class ProductController extends Controller {
     // return view('/showProducts', ['products' => $products]);
   }
 
+
   public static function categoryProducts($id) {
     $categoryProducts = ProductController::show($id); // busca productos con ese id de categoría
     return view('/showProducts', ['categoryProducts' => $categoryProducts]); // devuelvo view showProducts con los resultados
@@ -45,21 +46,19 @@ class ProductController extends Controller {
   }
 
   public function products() {
-    $products = Product::pluck('description', 'id');
-    return view('/adminProduct', compact('products'));
+    $products = Product::where('active', '=', 1)->orderBy('description')->get(['description', 'id', 'price', 'stock']);
+    return view('/adminProduct', ['products' => $products]);
   }
 
   public function store(Request $request) {
     request()->validate([
-    'description' => 'required|min:3|max:255|unique:products',
-    'price' => 'required|max:22|regex:/^-?[0-9]+(?:\.[0-9]{1,2})?$/'
+    'description' => 'required|min:3|max:75|unique:products',
+    'price' => 'required|numeric|max:22|regex:/^-?[0-9]+(?:\.[0-9]{1,2})?$/'
     //'image' => 'image|max:2048|dimensions:ratio=16/9',
     ], [
     'description.required' => 'La descripción es obligatoria.',
     'price.required' => 'El precio es obligatorio.'
     ]);
-
-
     // if ($request->hasFile('image')) {
     //     $nombreImagen = str_slug($request->id) . '.' . $request->file('image')->extension();
     //     $request->file('image')->storeAs('images', $nombreImagen);
@@ -67,7 +66,6 @@ class ProductController extends Controller {
 
     $producto = Product::create(request()->all());
     //$producto->category()->sync(request()->input('category'));
-
     return redirect('/');
   }
 
@@ -85,6 +83,36 @@ class ProductController extends Controller {
   }
 
   public function update(Request $request) {
+
+    if(isset($request['editar'])){
+      // request()->validate([
+      // 'description' => 'required|min:3|max:75|unique:products',
+      // 'price' => 'required|numeric|max:22|regex:/^-?[0-9]+(?:\.[0-9]{1,2})?$/'
+      // //'image' => 'image|max:2048|dimensions:ratio=16/9',
+      //
+      // ], [
+      // 'description.required' => 'La descripción es obligatoria.',
+      // 'price.required' => 'El precio es obligatorio.'
+      // ]);
+
+      $product = Product::find($request['id']);
+      $product->description = $request['description'];
+      $product->price = $request['price'];
+      $product->stock = $request['stock'];
+
+
+      $product->save();
+
+      return redirect('/');
+    } else {
+      $product = Product::find($request['id']);
+      $product->active = 0;
+
+      $product->save();
+
+      return redirect('/');
+    }
+
   }
 
   public function destroy($id) {
