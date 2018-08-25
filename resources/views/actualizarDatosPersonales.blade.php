@@ -6,8 +6,8 @@
   <div id="wrap">
     <div id="main" class="container">
       <div class="container">
-        <div class="row justify-content-around">
-          <div class="jumbotron column col-xs-5 col-sm-5 col-md-6 col-lg-6 shadow p-4 mb-4 border {{ $errors->any() ? 'border-danger' : 'border-info' }}" style="margin-top: 50px;">
+        <div class="row justify-content-between">
+          <div class="jumbotron column col-xs-5 col-sm-5 col-md-5 col-lg-5 shadow p-4 mb-4 border {{ $errors->any() ? 'border-danger' : 'border-info' }}" style="margin-top: 50px;">
             <div class="row justify-content-center">
 
             </div>
@@ -41,7 +41,8 @@
                 @endif
 
                 <br>
-                <label for="password"><strong>Contraseña (debe tener al menos seis caracteres)</strong></label>
+                <label for="password"><strong>Contraseña</strong></label>
+                <p style="font-size: .8em">(debe tener al menos seis caracteres)</p>
                 <input type="password" class="form-control {{ $errors->has('password') ? ' border border-danger' : '' }}" id="password" name="password" placeholder="******" >
                 @if ($errors->has('password'))
                   <li class="form-control-feedback" style="color: red">La contraseña debe tener al menos seis caracteres</li>
@@ -77,8 +78,8 @@
           </div> {{-- cierra jumbotron --}}
 
 
-          <div> {{-- HISTORIAL DE COMPRAS --}}
-            <table class="jumbotron table table-striped shadow p-3 mb-5 rounded" border="3">
+          <div style="margin-top: 50px"> {{-- HISTORIAL DE COMPRAS --}}
+            <table class="jumbotron table table-striped col-xs-5 col-sm-5 col-md-5 col-lg-5 shadow p-4 mb-4" border="3">
               <thead>
                 <center><tr><th colspan="4"><center>Historial de Compras</center></th></tr></center>
                 @php $columns = [ 'ID de Compra', 'Fecha de compra', 'Estado', 'Total']; @endphp {{-- El titulo de cada columna --}}
