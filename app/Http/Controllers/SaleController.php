@@ -38,14 +38,15 @@ class SaleController extends Controller {
   return view('/checkout', [ 'saleDetail' => $saleDetail ]);
 }
 
+// public function show($id) {
+// }
+//
 // public function index() {
 // }
 //
 // public function create() {
 // }
 //
-// public function show($id) {
-// }
 //
 // public function edit($id) {
 // }

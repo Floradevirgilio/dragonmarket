@@ -5,28 +5,30 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Cart;
+use App\Models\Sale;
 use Auth;
 
 class UserController extends Controller {
 
+
     public function store(Request $request) {
+
         $data = request()->validate([ // valido los datos que me llegan y tambien que no exista en la db
+            'first_name' => 'required|min:4',
+            'last_name'  => 'required|min:4',
             'email'            => 'required|email|unique:users,email',
             'email-confirm'    => 'required|same:email',
             'password'         => 'required|min:6', // al menos seis caracteres
             'password-confirm' => 'required|same:password',
-            'avatar'           => 'required|image' // Requerido y que sea imagenes
+            'avatar'           => 'image' // Que sea imágen - viene imagen por default de la migracion
         ]);
-
-        if ($request['avatar']==null) {
-            $request['avatar'] = 'public/users/default.jpg';}
 
         $user = User::create([ // crea un nuevo user con los datos que mandó
             'first_name' => $request['first_name'],
             'last_name'  => $request['last_name'],
             'email'      => $request['email'],
             'password'   => bcrypt($request['password']),
-            'avatar'     => $request['avatar'],
+            // 'avatar'     => $request['avatar'],
             // 'admin' => $data['admin'] // el admin lo creamos en el seeder
         ]);
 
@@ -51,24 +53,24 @@ class UserController extends Controller {
             // Si no modifica el email,que no lo valide
             // ya que existe en la BD
         {
-          $data = request()->validate([ // valido los datos que me llegan
-
+          $data = request()->validate([
+            // valido los datos que me llegan
             // 'email' => 'required|email|unique:users,email',
             // esto ya chequea que no exista en la db
             // 'email-confirm' => 'required|same:email',
               'first_name' => 'required|min:4',
-              'last_name'  => 'required',
+              'last_name'  => 'required|min:4',
               'avatar'     => 'image',
 
           ]);
         } else {
           $errors = request()->validate([ // valido los datos que me llegan
 
-            // 'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users,email',
             // esto ya chequea que no exista en la db
             // 'email-confirm' => 'required|same:email',
               'first_name' => 'required|min:4',
-              'last_name'  => 'required',
+              'last_name'  => 'required|min:4',
               'avatar'     => 'image',
           ]);
         }
@@ -89,8 +91,8 @@ class UserController extends Controller {
           $user->password = bcrypt($request['password']);
         }
 
-        if(($request['avatar']) !="") {
-            $user->avatar = $request->file('avatar')->store('public/users');
+        if($request->hasFile('avatar')) {
+            $user->avatar = $request->file('avatar')->store('/public/users');
         }
 
         $user->save();
@@ -109,23 +111,26 @@ class UserController extends Controller {
         //     'email' => 'email|required',
         //     'password' => 'required'
         // ]);
-
         // if (Auth::attempt($datosParaLogear)) { // logea
-            return redirect('/'); // ..y redirige a Mis Datos Personales(Agregarle un mensaje de Confirmacion de Cambio de Datos!)
+        $orderHistory = Sale::where('user_id', '=', auth()->user()->id)->get([ 'id', 'created_at', 'total', 'status' ]);
+        return view('/actualizarDatosPersonales', [ 'orderHistory' => $orderHistory ]);
+             // ..y redirige a Mis Datos Personales(Agregarle un mensaje de Confirmacion de Cambio de Datos!)
         // }
     }
 
-    public function create() {
+    public function show(Request $request) {
+      $orderHistory = Sale::where('user_id', '=', auth()->user()->id)->get([ 'id', 'created_at', 'total', 'status' ]);
+      return view('/actualizarDatosPersonales', [ 'orderHistory' => $orderHistory ]);
     }
 
-    public function show($id) {
-    }
-
-    public function edit($id) {
-    }
-
-    public function destroy($id) {
-    }
+    // public function create() {
+    // }
+    //
+    // public function edit($id) {
+    // }
+    //
+    // public function destroy($id) {
+    // }
     // public function update(Request $request, $id) { // ya hay un update en uso
     // }
 }
