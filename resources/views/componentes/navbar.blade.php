@@ -46,7 +46,7 @@
               @endif
                   <li class='nav-item'>
                       <a class="nav-link"
-                          href="/actualizarDatosPersonales">
+                          href="{{route('actualizarDatosPersonales.show', ['user_id' => auth()->user()->id])}}">
                           <span>{{ auth()->user()->first_name }}</span>
                           <img src='{{ Storage::url(auth()->user()->avatar) }}'
                                alt='avatar' style='width: 60px; border-radius: 50%;'>
