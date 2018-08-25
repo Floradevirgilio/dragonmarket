@@ -12,6 +12,8 @@ class UserController extends Controller {
 
     public function store(Request $request) {
         $data = request()->validate([ // valido los datos que me llegan y tambien que no exista en la db
+            'first_name' => 'required|min:4',
+            'last_name'  => 'required|min:4',
             'email'            => 'required|email|unique:users,email',
             'email-confirm'    => 'required|same:email',
             'password'         => 'required|min:6', // al menos seis caracteres
@@ -58,18 +60,18 @@ class UserController extends Controller {
             // esto ya chequea que no exista en la db
             // 'email-confirm' => 'required|same:email',
               'first_name' => 'required|min:4',
-              'last_name'  => 'required',
+              'last_name'  => 'required|min:4',
               'avatar'     => 'image',
 
           ]);
         } else {
           $errors = request()->validate([ // valido los datos que me llegan
 
-            // 'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users,email',
             // esto ya chequea que no exista en la db
             // 'email-confirm' => 'required|same:email',
               'first_name' => 'required|min:4',
-              'last_name'  => 'required',
+              'last_name'  => 'required|min:4',
               'avatar'     => 'image',
           ]);
         }

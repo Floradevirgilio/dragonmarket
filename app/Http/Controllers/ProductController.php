@@ -71,6 +71,13 @@ class ProductController extends Controller {
     return redirect('/');
   }
 
+  public static function descriptionProduct($id) {
+    $product = Product::where('id', '=', $id)->get(['id', 'description', 'price', 'category_id'])->toArray();
+    $products = ProductController::showProducts()->where('category_id', '!=', 7)->random(6)->toArray();
+    return view('product', [ 'product' => $product, 'products' => $products ]);
+}
+
+
   public function create() {
   }
 

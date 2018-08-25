@@ -22,7 +22,7 @@
                 <label for="first_name"><strong>Nombre</strong></label>
                 <input type="text" class="form-control" id="first_name" name="first_name" value="{{ old('first_name') }}" required autofocus placeholder="Nombre">
                 @if ($errors->has('first_name'))
-                    <li class="form-control-feedback" style="color: red">Nombre debe tener al menos cuatro caracteres<</li>
+                    <li class="form-control-feedback" style="color: red">Nombre debe tener al menos cuatro caracteres</li>
                 @endif
 
                 <br>
@@ -37,7 +37,7 @@
                 <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email"
                     value="{{ old('email') }}" required placeholder="Email">
                 @if ($errors->has('email'))
-                    <li class="form-control-feedback" style="color: red">El email ya existe en nuestra base de datos</li>
+                    <li class="form-control-feedback" style="color: red">El email ya existe en nuestra base de datos o su formato es incorrecto</li>
                 @endif
 
                 <br>
@@ -75,11 +75,11 @@
                   {{--
                     @if ($errors->has('avatar'))
                       $avatar = "/storage/users/default.jpg";
-                    @endif 
+                    @endif
                   --}}
 
               </div>
-              
+
               <div class="form-group">
                 <div class="row justify-content-center">
                   <div class="checkbox">
