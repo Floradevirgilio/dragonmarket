@@ -14,6 +14,10 @@
               <h2><h2><i class="fas fa-desktop" style="font-size: 1em; margin-right: .3em"></i>EDITAR CATEGORÍA</h2>
             </div>
 
+            @if ($errors->any())
+              <div><center><li style="color:red">{{$errors->first()}}</li></center></div> 
+            @endif
+
 
             <center>
 

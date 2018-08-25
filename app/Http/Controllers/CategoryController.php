@@ -53,8 +53,11 @@ class CategoryController extends Controller {
 
     $category->save();
 
+    return Redirect::back()->withErrors(['msg', 'Roma hablá más bajo']);
+
     return redirect('/');
-  } else {
+  }
+  else {
     $category = Category::find($request['id']);
     $category->active = 0;
 
