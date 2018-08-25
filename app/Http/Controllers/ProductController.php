@@ -29,7 +29,7 @@ class ProductController extends Controller {
   }
 
   public static function show($id){
-    $products = Product::where('category_id', '=', $id)->get(['id', 'description', 'price'])->toArray();
+    $products = Product::where('category_id', '=', $id)->orderBy('description')->get(['id', 'description', 'price'])->toArray();
     return $products;
     // return view('/showProducts', ['products' => $products]);
   }
