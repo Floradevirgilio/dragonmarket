@@ -5,7 +5,7 @@
 @section('content')
   <div id="wrap">
     <div id="main" class="container">
-      <div class="container">
+      <div class="container" style="margin-top:120px;">
         <div class="row justify-content-between">
           <div class="jumbotron column col-xs-5 col-sm-5 col-md-5 col-lg-5 shadow p-4 mb-4 border {{ $errors->any() ? 'border-danger' : 'border-info' }}" style="margin-top: 50px;">
             {{-- <div class="row justify-content-center"></div> --}}
@@ -115,6 +115,6 @@
           </div>
         </div> {{-- row content around --}}
       </div> {{-- container --}}
-    </div> {{-- main container --}}
-  </div> {{-- wrap --}}
+</div>
+</div>
 @endsection

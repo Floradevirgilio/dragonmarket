@@ -24,7 +24,7 @@ class ProductController extends Controller {
   }
 
   public static function searchProducts($buscar) { // los productos que se buscan por el buscador del navbar
-    $searchResults = Product::where('description', 'like', $buscar)->get(['id', 'price', 'description'])->toArray();
+    $searchResults = Product::where('description', 'like', $buscar)->orderBy('description')->get(['id', 'price', 'description'])->toArray();
     return $searchResults;
   }
 
@@ -56,7 +56,7 @@ class ProductController extends Controller {
   public function store(Request $request) {
     request()->validate([
     'description' => 'required|min:3|max:75|unique:products',
-    'price' => 'required|numeric|max:22|regex:/^-?[0-9]+(?:\.[0-9]{1,2})?$/'
+    'price' => 'required|numeric|max:99999|regex:/^-?[0-9]+(?:\.[0-9]{1,2})?$/'
     //'image' => 'image|max:2048|dimensions:ratio=16/9',
     ], [
     'description.required' => 'La descripción es obligatoria.',

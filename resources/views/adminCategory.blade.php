@@ -34,10 +34,7 @@
                   @foreach ($categories as $category) {{-- los resultados que me llegaron --}}
                     <tr>
                       <form action="" method="POST"> @csrf
-<<<<<<< HEAD
-                        <td>
-                        <input type="text" name="{{$category['id']}}" value="{{ $category['name'] }}" class="form-control column col-xs-6 col-sm-6 col-md-10 col-lg-10">
-=======
+
                           <td>
                             <input type="text"
                                    name="name"
@@ -57,7 +54,7 @@
                                              style='font-size: 1.1em'></i>
                                   </button>
                             </center>
->>>>>>> 845394a4a1c308ffbac26236eb31ef11d4d05877
+
                         </td>
                         <td>
                             <center>
