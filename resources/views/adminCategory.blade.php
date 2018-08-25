@@ -13,28 +13,23 @@
             <div class="row justify-content-center" style="margin-top: 2em;">
                 <h2><i class="fas fa-desktop" style="font-size: 1em; margin-right: .3em"></i>EDITAR CATEGORÍA</h2>
             </div>
-
             @if ($errors->any())
-              <div><center><li style="color:red">{{$errors->first()}}</li></center></div>
+                <div><center><li style="color:red">{{$errors->first()}}</li></center></div>
             @endif
-
             <center>
               <table class="jumbotron table table-striped shadow p-3 mb-5 rounded" border="3">
                 <thead>
                   <tr>
                     @php $columnas = [ 'Nombre', 'Editar', 'Estado' ]; @endphp {{-- El titulo de cada columna --}}
-
                     @foreach ($columnas as $columna) {{-- foreacheo una fila de <th> (table head) con los titulos de las columnas --}}
                       <th><center> {{ $columna }} </center></th>
                     @endforeach
                   </tr>
                 </thead>
                 <tbody>
-
                   @foreach ($categories as $category) {{-- los resultados que me llegaron --}}
                     <tr>
                       <form action="" method="POST"> @csrf
-
                           <td>
                             <input type="text"
                                    name="name"
@@ -54,21 +49,20 @@
                                              style='font-size: 1.1em'></i>
                                   </button>
                             </center>
-
                         </td>
                         <td>
                             <center>
-                              <button type="submit"
+                                  <button type="submit"
                                           name="activo"
                                           value="activo"
-                                @if($category['active']=='1')
-                                          class='btn btn-success'>
-                                          <i class="fas fa-minus"
-                                @else
-                                          class='btn btn-danger'>
-                                          <i class="fas fa-plus"
-                                @endif
-                                             style='font-size: 1.1em'></i>
+                                      @if($category['active']=='1')
+                                            class='btn btn-success'>
+                                            <i class="fas fa-check"
+                                      @else
+                                            class='btn btn-danger'>
+                                            <i class="fas fa-times"
+                                      @endif
+                                          style='font-size: 1.1em'></i>
                                   </button>
                             </center>
                         </td>
@@ -83,6 +77,5 @@
       </div> {{-- end container --}}
     </div> {{-- end main container --}}
   </div> {{-- end wrap --}}
-
 
 @endsection

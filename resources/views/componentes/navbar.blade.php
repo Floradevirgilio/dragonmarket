@@ -1,6 +1,6 @@
 {{-- <div class='container-fluid shadow' style="margin-bottom: 7em"> --}}
-<div class='container-fluid'>
-    <nav class='navbar navbar-expand-md fixed-top navbar-light navbar-custom'>
+<div class='container-fluid' style="margin-bottom: 100px;">
+    <nav class='navbar navbar-expand-md fixed-top navbar-light navbar-custom' >
       <button class='navbar-toggler navbar-toggler-right'
               type='button'
               data-toggle='collapse'

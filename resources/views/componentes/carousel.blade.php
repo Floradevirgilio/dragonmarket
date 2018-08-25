@@ -1,4 +1,4 @@
-<div id="demo" class="carousel slide" data-ride="carousel">
+<div id="demo" class="carousel slide" data-ride="carousel" style="margin-top:100px;">
   <div class="carousel-inner">
     @for ($i=1; $i <= 3; $i++)
       @php echo $i == 1 ? "<div class='carousel-item active'>" : "<div class='carousel-item'>" @endphp

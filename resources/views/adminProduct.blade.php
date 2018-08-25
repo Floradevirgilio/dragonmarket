@@ -19,9 +19,9 @@
                   <thead>
                     <tr>
                       @php $columnas = [ 'Producto', 'Precio', 'Stock', 'Editar', 'Estado' ]; @endphp {{-- El titulo de cada columna --}}
-                      @foreach ($columnas as $columna) {{-- foreacheo una fila de <th> (table head) con los titulos de las columnas --}}
-                        <th><center> {{ $columna }} </center></th>
-                      @endforeach
+                          @foreach ($columnas as $columna) {{-- foreacheo una fila de <th> (table head) con los titulos de las columnas --}}
+                            <th><center> {{ $columna }} </center></th>
+                          @endforeach
                     </tr>
                   </thead>
                   <tbody>
@@ -68,10 +68,10 @@
                                         value="editar"
                                         @if($product['active']=='1')
                                           class='btn btn-success'>
-                                          <i class="fas fa-minus"
+                                          <i class="fas fa-check"
                                         @else
                                           class='btn btn-danger'>
-                                          <i class="fas fa-plus"
+                                          <i class="fas fa-times"
                                         @endif
                                           style='font-size: 1.1em'></i>
                                 </button>

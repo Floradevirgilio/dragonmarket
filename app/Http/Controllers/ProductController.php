@@ -24,12 +24,18 @@ class ProductController extends Controller {
   }
 
   public static function searchProducts($buscar) { // los productos que se buscan por el buscador del navbar
-    $searchResults = Product::where('description', 'like', $buscar)->orderBy('description')->get(['id', 'price', 'description'])->toArray();
+    $searchResults = Product::where('description', 'like', $buscar)
+                      ->orderBy('description')
+                      ->get(['id', 'price', 'description'])
+                      ->toArray();
     return $searchResults;
   }
 
   public static function show($id){
-    $products = Product::where('category_id', '=', $id)->orderBy('description')->get(['id', 'description', 'price'])->toArray();
+    $products = Product::where('category_id', '=', $id)
+                  ->orderBy('description')
+                  ->get(['id', 'description', 'price'])
+                  ->toArray();
     return $products;
     // return view('/showProducts', ['products' => $products]);
   }
@@ -56,11 +62,11 @@ class ProductController extends Controller {
   public function store(Request $request) {
     request()->validate([
     'description' => 'required|min:3|max:75|unique:products',
-    'price' => 'required|numeric|max:99999|regex:/^-?[0-9]+(?:\.[0-9]{1,2})?$/'
+    'price'       => 'required|numeric|max:99999|regex:/^-?[0-9]+(?:\.[0-9]{1,2})?$/'
     //'image' => 'image|max:2048|dimensions:ratio=16/9',
     ], [
     'description.required' => 'La descripción es obligatoria.',
-    'price.required' => 'El precio es obligatorio.'
+    'price.required'       => 'El precio es obligatorio.'
     ]);
     // if ($request->hasFile('image')) {
     //     $nombreImagen = str_slug($request->id) . '.' . $request->file('image')->extension();
@@ -73,11 +79,14 @@ class ProductController extends Controller {
   }
 
   public static function descriptionProduct($id) {
-    $product = Product::where('id', '=', $id)->get(['id', 'description', 'price', 'category_id'])->toArray();
-    $products = ProductController::showProducts()->where('category_id', '!=', 7)->random(6)->toArray();
+    $product = Product::where('id', '=', $id)
+                ->get(['id', 'description', 'price', 'category_id'])
+                ->toArray();
+    $products = ProductController::showProducts()
+                ->where('category_id', '!=', 7)
+                ->random(6)->toArray();
     return view('product', [ 'product' => $product, 'products' => $products ]);
 }
-
 
   public function create() {
   }
@@ -98,13 +107,12 @@ class ProductController extends Controller {
       // 'price.required' => 'El precio es obligatorio.'
       // ]);
 
-      $product = Product::find($request['id']);
+      $product              = Product::find($request['id']);
       $product->description = $request['description'];
-      $product->price = $request['price'];
-      $product->stock = $request['stock'];
+      $product->price       = $request['price'];
+      $product->stock       = $request['stock'];
 
       $product->save();
-
       return redirect('/');
     }
 

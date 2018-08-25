@@ -48,8 +48,11 @@
 									</tr>
 								@endforeach
 							</tbody>
+
 						</table>
+
 					</center>
+
 
 				@else {{-- si no se encontraron resultados --}}
 					<center><div style="margin-top: 3em; margin-bottom: 2em">
