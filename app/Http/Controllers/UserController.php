@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Cart;
+use App\Models\Sale;
 use Auth;
 
 class UserController extends Controller {
@@ -109,23 +110,26 @@ class UserController extends Controller {
         //     'email' => 'email|required',
         //     'password' => 'required'
         // ]);
-
         // if (Auth::attempt($datosParaLogear)) { // logea
-            return redirect('/'); // ..y redirige a Mis Datos Personales(Agregarle un mensaje de Confirmacion de Cambio de Datos!)
+        $orderHistory = Sale::where('user_id', '=', auth()->user()->id)->get([ 'id', 'created_at', 'total', 'status' ]);
+        return view('/actualizarDatosPersonales', [ 'orderHistory' => $orderHistory ]);
+             // ..y redirige a Mis Datos Personales(Agregarle un mensaje de Confirmacion de Cambio de Datos!)
         // }
     }
 
-    public function create() {
+    public function show(Request $request) {
+      $orderHistory = Sale::where('user_id', '=', auth()->user()->id)->get([ 'id', 'created_at', 'total', 'status' ]);
+      return view('/actualizarDatosPersonales', [ 'orderHistory' => $orderHistory ]);
     }
 
-    public function show($id) {
-    }
-
-    public function edit($id) {
-    }
-
-    public function destroy($id) {
-    }
+    // public function create() {
+    // }
+    //
+    // public function edit($id) {
+    // }
+    //
+    // public function destroy($id) {
+    // }
     // public function update(Request $request, $id) { // ya hay un update en uso
     // }
 }

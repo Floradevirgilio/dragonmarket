@@ -38,10 +38,8 @@ class SaleController extends Controller {
   return view('/checkout', [ 'saleDetail' => $saleDetail ]);
 }
 
-public function show($user_id) {
-  $orderHistory = Sale::where('user_id', '=', $user_id)->get([ 'id', 'created_at', 'total', 'status' ]);
-  return view('/actualizarDatosPersonales', [ 'orderHistory' => $orderHistory ]);
-}
+// public function show($id) {
+// }
 //
 // public function index() {
 // }

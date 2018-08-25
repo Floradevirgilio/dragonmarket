@@ -12,11 +12,10 @@
 
             </div>
             <div class="row justify-content-center" style="margin-top: 2em;">
-              <h2><h2><i class="fas fa-user-edit" style="font-size: 1em; margin-right: .3em"></i>ACTUALIZAR DATOS</h2>
+              <h3><i class="fas fa-user-edit" style="font-size: 1em; margin-right: .3em"></i>ACTUALIZAR DATOS</h3>
             </div>
             <br>
-            <form method="POST" action="datosPersonales" enctype="multipart/form-data">
-              @csrf
+            <form method="POST" action="{{route('actualizarDatosPersonales.update', ['email' => auth()->user()->email])}}" enctype="multipart/form-data"> @csrf @method('PATCH')
               <div class="container column col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                 <label for="first_name"><strong>Nombre</strong></label>
@@ -71,7 +70,7 @@
               </div></center>
               <br>
               <center><div>
-                <a href="/index.php" role="button" class="btn btn-danger" value="Actualizar">Volver</a>
+                <a href="/" role="button" class="btn btn-danger" value="Actualizar">Volver</a>
                 <input type="submit" class="btn btn-success" value="Actualizar">
               </div></center>
             </form>
@@ -81,8 +80,9 @@
           <div style="margin-top: 50px"> {{-- HISTORIAL DE COMPRAS --}}
             <table class="jumbotron table table-striped col-xs-5 col-sm-5 col-md-5 col-lg-5 shadow p-4 mb-4" border="3">
               <thead>
-                <center><tr><th colspan="4"><center>Historial de Compras</center></th></tr></center>
-                @php $columns = [ 'ID de Compra', 'Fecha de compra', 'Estado', 'Total']; @endphp {{-- El titulo de cada columna --}}
+                <center><tr><th colspan="4"><center>
+                <i class="fas fa-shopping-bag" style="font-size: 1em; margin-right: .3em"></i>             Historial de Compras</center></th></tr></center>
+                @php $columns = [ '', 'Fecha de compra', 'Estado', 'Total']; @endphp {{-- El titulo de cada columna --}}
 
                 @if (count($orderHistory) > 0)
                   @foreach ($columns as $column) {{-- foreacheo una fila de <th> (table head) con los titulos de las columnas --}}
@@ -95,7 +95,7 @@
                       <td><center><a href="{{route('orderHistory.show', ['sale_id' => $order->id])}}">{{'ver detalle'}}</a></center></td>  {{-- saco el id de venta del foreach --}}
                       <td><center>{{$order->created_at}}</center></td>
                       <td><center>{{$order->status}}</center></td>
-                      <td><center>{{$order->total}}</center></td>
+                      <td><center>${{$order->total}}</center></td>
                     </tr>
                   @endforeach
                 @else

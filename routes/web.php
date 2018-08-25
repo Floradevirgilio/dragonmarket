@@ -4,7 +4,7 @@ Route::get('/showProducts/{id?}', 'ProductController@showProducts'); // los prod
 Route::get('/faq', function() { return view('/faq'); });
 
 // Route::get('/actualizarDatosPersonales', function() { return view('/actualizarDatosPersonales'); });
-Route::resource('actualizarDatosPersonales', 'SaleController', [ 'only' =>  'show' ]);
+Route::resource('actualizarDatosPersonales', 'UserController');
 Route::resource('orderHistory', 'SaleDetailController', [ 'only' =>  'show' ]);
 
 Route::get('/register', function() { return view('/register'); }); // registro
