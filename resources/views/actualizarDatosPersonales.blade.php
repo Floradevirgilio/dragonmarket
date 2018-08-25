@@ -36,8 +36,8 @@
                 <label for="email"><strong>Email</strong></label>
                 <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" name="email"
                 value="{{ auth()->user()->email }}" required >
-                @if ($errors->has('mail'))
-                  <li class="form-control-feedback" style="color: red">Formato inválido de mail o existente en la base</li>
+                @if ($errors->has('email'))
+                  <li class="form-control-feedback" style="color: red">El email ya existe en nuestra base de datos o su formato es incorrecto</li>
                 @endif
 
                 <br>

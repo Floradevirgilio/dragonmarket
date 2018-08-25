@@ -71,7 +71,7 @@
                           </li>
                           @endif
                           <li class='nav-item'>
-                            <a class='nav-link' href='faq'><i
+                            <a class='nav-link' href='/faq'><i
                               class="fas fa-question-circle" style="font-size: 1em"></i> FAQ</a>
                             </li>
                         </ul>

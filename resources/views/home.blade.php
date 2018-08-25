@@ -27,7 +27,7 @@
 
       @foreach ($pcs as $pc) {{-- itero una tarjeta con cada resultado de PCS ARMADAS --}}
         <div class="card text-center col-sm-12 col-md-6 col-lg-3 shadow-sm p-3 mb-5 bg-white rounded" style="margin-top: 10px;">
-          <img class="card-img-top" src="/images/{{ $pc->id }}.jpg" alt=""> {{-- Laravel se para autom. en la carpeta public --}}
+          <a href="/product/{{ $pc->id }}"><img class="card-img-top" src="/images/{{ $pc->id }}.jpg" alt=""></a> {{-- Laravel se para autom. en la carpeta public --}}
 
           <div  class="card-body hover">
             <li> {{ $pc->description }} </li>
@@ -61,7 +61,7 @@
         <div class="card text-center col-sm-6 col-md-4 col-lg-2 shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem; margin-top: 10px;">
 
           <div class="card-header bg-transparent">
-            <img src="/images/{{ $product->id }}.jpg" class="img06" alt="Video01"> {{-- Laravel se para autom. en la carpeta public --}}
+            <a href="/product/{{ $product->id }}"><img src="/images/{{ $product->id }}.jpg" class="img06" alt="Video01"></a> {{-- Laravel se para autom. en la carpeta public --}}
           </div>
 
           <div class="card-body">
