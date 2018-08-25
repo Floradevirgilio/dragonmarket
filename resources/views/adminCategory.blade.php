@@ -15,12 +15,10 @@
             </div>
 
             @if ($errors->any())
-              <div><center><li style="color:red">{{$errors->first()}}</li></center></div> 
+              <div><center><li style="color:red">{{$errors->first()}}</li></center></div>
             @endif
 
-
             <center>
-
               <table class="jumbotron table table-striped shadow p-3 mb-5 rounded" border="3">
                 <thead>
                   <tr>
@@ -37,7 +35,7 @@
                     <tr>
                       <form action="" method="POST"> @csrf
                         <td>
-                        <input type="text" name="name" value="{{ $category['name'] }}" class="form-control column col-xs-6 col-sm-6 col-md-10 col-lg-10">
+                        <input type="text" name="{{$category['id']}}" value="{{ $category['name'] }}" class="form-control column col-xs-6 col-sm-6 col-md-10 col-lg-10">
                         </td>
                         <input type="hidden" name="id" value="{{ $category['id'] }}">
                         <td>

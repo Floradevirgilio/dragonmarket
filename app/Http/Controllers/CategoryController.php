@@ -53,7 +53,7 @@ class CategoryController extends Controller {
 
     $category->save();
 
-    return Redirect::back()->withErrors(['msg', 'Roma hablá más bajo']);
+    return Redirect::back()->withErrors(['msg', 'Daro volvé']);
 
     return redirect('/');
   }
