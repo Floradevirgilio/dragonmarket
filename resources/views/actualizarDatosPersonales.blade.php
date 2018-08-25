@@ -47,18 +47,6 @@
                   <li class="form-control-feedback" style="color: red">La contraseña debe tener al menos seis caracteres</li>
                 @endif
 
-<<<<<<< HEAD
-                  <br>
-                  <label for="password-confirm"><strong>Confirmá la contraseña</strong></label>
-                  <input type="password"
-                          class="form-control{{ $errors->has('password-confirm') ? ' is-invalid' : '' }}"
-                          id="password-confirm" name="password-confirm" placeholder="******" >
-                  @if ($errors->has('password-confirm'))
-                      <li class="form-control-feedback" style="color: red">No coincide la contraseña</li>
-                  @endif
-                  <br>
-                </div>
-=======
                 <br>
                 <label for="password-confirm"><strong>Confirmá la contraseña</strong></label>
                 <input type="password" class="form-control{{ $errors->has('password-confirm') ? ' is-invalid' : '' }}" id="password-confirm" name="password-confirm" placeholder="******" >
@@ -67,7 +55,6 @@
                 @endif
                 <br>
               </div>
->>>>>>> 5c83f7c2d91002ea9eeb1955b9521f98362a86bc
 
               <center><div>
                 {{-- Cargar avatar --}}
@@ -80,24 +67,13 @@
                   <li class="form-control-feedback" style="color: red">Debe ser una imágen</li>
                 @endif
 
-<<<<<<< HEAD
-                  </div></center>
-                  <br>
-                  <center><div>
-                    <a href="/index.php" role="button"
-                                         class="btn btn-danger"
-                                         value="Actualizar">Volver</a>
-                    <input type="submit" class="btn btn-success" value="Actualizar">
-                  </div></center>
-              </div>
-=======
               </div></center>
               <br>
               <center><div>
                 <a href="/" role="button" class="btn btn-danger" value="Actualizar">Volver</a>
                 <input type="submit" class="btn btn-success" value="Actualizar">
               </div></center>
->>>>>>> 5c83f7c2d91002ea9eeb1955b9521f98362a86bc
+
             </form>
           </div> {{-- cierra jumbotron --}}
 
