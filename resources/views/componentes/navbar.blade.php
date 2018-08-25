@@ -1,4 +1,3 @@
-
 <div class='container-fluid shadow' style="margin-bottom: 7em">
   <nav class='navbar navbar-expand-md fixed-top navbar-light navbar-custom'>
     <button class='navbar-toggler navbar-toggler-right'
@@ -7,7 +6,9 @@
     data-target='#navbar5'>
     <span class='navbar-toggler-icon'></span>
   </button>
-  <a class='navbar-brand' href='/index.php'>
+
+  <a class='navbar-brand' href='/'>
+
     <img src='../images/DMHead.png' alt='Logo' style='width: 50px;'>
   </a>
 
@@ -51,16 +52,15 @@
               </ul>
               @endif
                 <li class='nav-item'>
-                    <a class="nav-link" href="/actualizarDatosPersonales">
-                      <span><i class="fas fa-user" style="font-size: 1em"></i>
-                        {{ auth()->user()->first_name }}</span>
-                    </a>
-                </li>
-                <li class='nav-item'>
-                    <a class='nav-link' href='/logout'>
-                        <i class="fas fa-sign-out-alt" style="font-size: 1em"></i>Cerrar Sesión
-                    </a>
-                </li>
+
+                  <a class="nav-link" href="{{route('actualizarDatosPersonales.show', ['user_id' => auth()->user()->id])}}"><span><i
+                    class="fas fa-user" style="font-size: 1em"></i> {{ auth()->user()->first_name }}</span></a>
+                  </li>
+                  <li class='nav-item'>
+                    <a class='nav-link' href='/logout'><i
+                      class="fas fa-sign-out-alt" style="font-size: 1em"></i> Cerrar Sesión</a>
+                    </li>
+
                   @else
                     <li class='nav-item'> {{-- y la botonera para invitados no logeados --}}
                       <a class='nav-link' href='/logInToShop'><i
@@ -78,11 +78,12 @@
                         </li>
                           @endif
                           <li class='nav-item'>
-                            <a class='nav-link' href='faq'>
-                              <i class="fas fa-question-circle" style="font-size: 1em"></i>FAQ
-                            </a>
-                          </li>
-                    {{-- </ul> --}}
+
+                            <a class='nav-link' href='/faq'><i
+                              class="fas fa-question-circle" style="font-size: 1em"></i> FAQ</a>
+                            </li>
+                        </ul>
+
                       </div>
 
                       <div>

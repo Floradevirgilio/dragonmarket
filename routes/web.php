@@ -3,9 +3,11 @@ Route::get('/', 'MainController@homeShowProducts'); // el home y el método que 
 Route::get('/showProducts/{id?}', 'ProductController@showProducts'); // los productos a mostrar por buscador o por categoría
 Route::get('/faq', function() { return view('/faq'); });
 
-Route::get('/datosPersonales', function() { return view('/datosPersonales'); });
-Route::get('/actualizarDatosPersonales', function() { return view('/actualizarDatosPersonales'); });
-Route::post('/datosPersonales', 'UserController@update');  //controlador actualizar datos
+Route::get('product/{id?}', 'ProductController@descriptionProduct'); // Vista detalle de un producto
+
+// Route::get('/actualizarDatosPersonales', function() { return view('/actualizarDatosPersonales'); });
+Route::resource('actualizarDatosPersonales', 'UserController');
+Route::resource('orderHistory', 'SaleDetailController', [ 'only' =>  'show' ]);
 
 Route::get('/register', function() { return view('/register'); }); // registro
 Route::post('/register', 'UserController@store');

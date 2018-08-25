@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Cart;
+use App\Models\Sale;
 use Auth;
 
 class UserController extends Controller {
@@ -13,6 +14,8 @@ class UserController extends Controller {
     public function store(Request $request) {
 
         $data = request()->validate([ // valido los datos que me llegan y tambien que no exista en la db
+            'first_name' => 'required|min:4',
+            'last_name'  => 'required|min:4',
             'email'            => 'required|email|unique:users,email',
             'email-confirm'    => 'required|same:email',
             'password'         => 'required|min:6', // al menos seis caracteres
@@ -56,18 +59,18 @@ class UserController extends Controller {
             // esto ya chequea que no exista en la db
             // 'email-confirm' => 'required|same:email',
               'first_name' => 'required|min:4',
-              'last_name'  => 'required',
+              'last_name'  => 'required|min:4',
               'avatar'     => 'image',
 
           ]);
         } else {
           $errors = request()->validate([ // valido los datos que me llegan
 
-            // 'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users,email',
             // esto ya chequea que no exista en la db
             // 'email-confirm' => 'required|same:email',
               'first_name' => 'required|min:4',
-              'last_name'  => 'required',
+              'last_name'  => 'required|min:4',
               'avatar'     => 'image',
           ]);
         }
@@ -108,23 +111,26 @@ class UserController extends Controller {
         //     'email' => 'email|required',
         //     'password' => 'required'
         // ]);
-
         // if (Auth::attempt($datosParaLogear)) { // logea
-            return redirect('/'); // ..y redirige a Mis Datos Personales(Agregarle un mensaje de Confirmacion de Cambio de Datos!)
+        $orderHistory = Sale::where('user_id', '=', auth()->user()->id)->get([ 'id', 'created_at', 'total', 'status' ]);
+        return view('/actualizarDatosPersonales', [ 'orderHistory' => $orderHistory ]);
+             // ..y redirige a Mis Datos Personales(Agregarle un mensaje de Confirmacion de Cambio de Datos!)
         // }
     }
 
-    public function create() {
+    public function show(Request $request) {
+      $orderHistory = Sale::where('user_id', '=', auth()->user()->id)->get([ 'id', 'created_at', 'total', 'status' ]);
+      return view('/actualizarDatosPersonales', [ 'orderHistory' => $orderHistory ]);
     }
 
-    public function show($id) {
-    }
-
-    public function edit($id) {
-    }
-
-    public function destroy($id) {
-    }
+    // public function create() {
+    // }
+    //
+    // public function edit($id) {
+    // }
+    //
+    // public function destroy($id) {
+    // }
     // public function update(Request $request, $id) { // ya hay un update en uso
     // }
 }
