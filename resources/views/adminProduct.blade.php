@@ -8,54 +8,59 @@
     <div id="main" class="container"> {{-- main container --}}
       <div class="container"> {{-- container --}}
         <div class="row justify-content-around"> {{-- row --}}
-          <div class="jumbotron column col-xs-12 col-sm-12 col-md-10 col-lg-8 shadow p-4 mb-4 border {{ $errors->any() ? 'border-danger' : 'border-info' }}" style="margin-top: 50px;"> {{-- jumbotron --}}
+          <div class="jumbotron column col-xs-10 col-sm-10 col-md-12 col-lg-12 shadow p-4 mb-4 border" style="margin-top: 50px;"> {{-- jumbotron --}}
 
             <div class="row justify-content-center" style="margin-top: 2em;">
               <h2><h2><i class="fas fa-desktop" style="font-size: 1em; margin-right: .3em"></i>EDITAR PRODUCTO</h2>
             </div>
 
 
-              <div class="container column col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                 {{--Form::model($user, ['route' => ['user.update', $user->id]])--}}
-                 {{-- Form::open(array(['action' => ['ProductController@update', /* $user->id */'file' => true]], 'method' => 'post') --}}
-                {{ Form::open(['url' => '/adminProduct', 'method' => 'post'], ['class' =>'container column col-xs-12 col-sm-12 col-md-12 col-lg-12']) }}
-                    @csrf
-                  <br>
+                        <center>
 
-                  <strong>{!!  Form::label('description', 'Producto:') !!}</strong>
-                  <br>
-                    {!! Form::select('description',$products,null,['placeholder' => 'Seleccioná el producto','id'=>'description', 'class' => 'form-control column col-xs-10 col-sm-10 col-md-12 col-lg-12']) !!}
-                    {{--  {!! Form::text('product', null,['class' => 'form-control column col-xs-10 col-sm-10 col-md-12 col-lg-12','required placeholder'=>'Descripción del producto.']) !!} --}}
-                  <br>
-                    {!!  Form::hidden('category_id', '1') !!}
-              {{--  Esto viene si es crear un producto nuevo  --}}
-               <strong>{!!  Form::label('image', 'Imagen:') !!}</strong>
-                <br>
-                  {!! Form::file('image'); !!}
-              {{--  ---> poner la carga de fotografía --}}
-                <br>
-                  <br>
+                          <table class="jumbotron table table-striped shadow p-3 mb-5 rounded" border="3">
+                            <thead>
+                              <tr>
+                                @php $columnas = [ 'Producto', 'Precio', 'Stock', 'Editar', 'Eliminar' ]; @endphp {{-- El titulo de cada columna --}}
 
+                                @foreach ($columnas as $columna) {{-- foreacheo una fila de <th> (table head) con los titulos de las columnas --}}
+                                  <th><center> {{ $columna }} </center></th>
+                                @endforeach
+                              </tr>
+                            </thead>
+                            <tbody>
 
-                <strong>{!!  Form::label('price', 'Precio:') !!}</strong>
-                {!! Form::number('price', null, ['class' => 'form-control column col-xs- col-sm-2 col-md-3 col-lg-3', 'required placeholder' => '0,00', 'step' => '0.1']) !!}
-                  {{--  Esto viene si es crear un producto nuevo  EN LAS VALIDACIONES --> required|between:0,99.99
-                {!! Form::number('number', null, ['class' => 'form-control column col-xs- col-sm-1 col-md-2 col-lg-2', 'required placeholder' => '0.00']) !!} --}}
-                <br>
-                <strong>{!!  Form::label('number', 'En stock:') !!}</strong>
-                  {{--  Esto viene si es crear un producto nuevo --}}
-                 {!! Form::number('stock', null, ['class' => 'form-control column col-xs- col-sm-1 col-md-2 col-lg-2', 'required placeholder' => 1]) !!}
-                 {!!  Form::hidden('active', '1') !!}
-              </div>
-              <br>
-              <center><div> {!! Form::submit('Eliminar', ['class'=> 'btn btn-info']); !!} {!! Form::submit('Guardar', ['class'=> 'btn btn-info']); !!}</div></center>
-              {!! Form::close() !!}
+                              @foreach ($products as $product) {{-- los resultados que me llegaron --}}
+                                <tr>
+                                  <form action="" method="POST"> @csrf
+                                    <td>
+                                    <input type="text" name="description" value="{{ $product['description'] }}" class="form-control column col-xs-6 col-sm-6 col-md-12 col-lg-12">
+                                    </td>
+                                    <input type="hidden" name="id" value="{{ $product['id'] }}">
+                                    <td>
+                                    <input type="number" name="price" value="{{ $product['price'] }}" class="form-control column col-xs- col-sm-4 col-md-6 col-lg-6">
+                                    </td>
+                                    <td>
+                                    <input type="number" name="stock" value="{{ $product['stock'] }}" class="form-control column col-xs- col-sm-2 col-md-4 col-lg-4">
+                                    </td>
+                                    <td>
+                                    <center><button type="submit" name="editar" value="editar" class='btn btn-success'><i class="fas fa-edit" style='font-size: 1.1em'></i></button></center>
+
+                                    </td>
+                                    <td>
+                                    <center><button type="submit" name="borrar" value="editar" class='btn btn-danger'><i class="fas fa-trash-alt" style='font-size: 1.1em'></i></button></center>
+                                  </td>
+                                  </form>
+                                </tr>
+                              @endforeach
+                            </tbody>
+                          </table>
+                        </center>
+
 
            </div>  {{-- end jumbotron --}}
         </div> {{-- end row --}}
       </div> {{-- end container --}}
     </div> {{-- end main container --}}
   </div> {{-- end wrap --}}
-
 
 @endsection

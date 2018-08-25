@@ -17,8 +17,8 @@ class CategoryController extends Controller {
   }
 
   public function categories() {
-    $categories = Category::pluck('name', 'id');
-    return view('/adminCategory', compact('categories'));
+    $categories = Category::where('active', '=', 1)->orderBy('name')->get(['name', 'id']);
+    return view('/adminCategory', ['categories' => $categories]);
   }
 
   public function store(Request $request) {
@@ -39,18 +39,38 @@ class CategoryController extends Controller {
 
   public function update(Request $request) {
 
-      $data = request()->validate([
-          'name' => 'required|min:3|max:100|unique:categories'
+    if(isset($request['editar'])){
+      request()->validate([
+          'name' => 'required|min:3|max:100|unique:categories',
+      ], [
+          'name.required' => 'El nombre es obligatorio.',
+          'name.unique' => 'El nombre ya existe.',
       ]);
 
-    $category = Category::find(category()->id);
+    $category = Category::find($request['id']);
     $category->name = $request['name'];
-    $category->active = $request['active'];
+    // $category->active = $request['active'];
+
+    $category->save();
+
+    return redirect('/');
+  } else {
+    $category = Category::find($request['id']);
+    $category->active = 0;
 
     $category->save();
 
     return redirect('/');
   }
+
+}
+
+
+  // public function show(Request $request){
+  //  $category = Category::find($request);
+  //  return view('/editCategory', ['category' => $category]);
+  // }
+
 
   // public function getProducts(Request $request, $id){
   //     if($request->ajax()){

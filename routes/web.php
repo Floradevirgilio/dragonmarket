@@ -24,13 +24,14 @@ Route::resource('cart_product', 'CartProductController', [ 'only' => 'store', 'd
 
 Route::resource('adminNewProduct', 'ProductController');
 Route::get('/adminNewCategory', 'CategoryController@newCategory' );
-Route::post('/adminNewProduct', 'CategoryController@store' );
+Route::post('/adminNewProduct', 'ProductController@store' );
 Route::post('/adminNewCategory', 'CategoryController@store' );
 
 Route::get('/adminProduct', 'ProductController@products');
 Route::get('/adminCategory', 'CategoryController@categories' );
-//Route::post('/adminProduct', 'CategoryController@update' );
-//Route::post('/adminCategory', 'CategoryController@update' );
+
+Route::post('/adminCategory', 'CategoryController@update');
+Route::post('/adminProduct', 'ProductController@update');
 Route::post('/perfil/foto', 'ProfileController@updatePhoto'); // Ruta para imagen del user
 
 // Auth::routes(); // rutas que generó el php artisan make:auth
