@@ -6,7 +6,7 @@
 
 	<div id="wrap">
 		<div id="main" class="container">
-			<div class="container">
+			<div class="container" style="margin-top: 120px;">
 
 				@if (count($products) > 0) {{-- si Redirect nos mandó $cartProducts --}}
 					<center><div style="margin-bottom: 2em"> {{-- muestro titulo y tabla con resultados --}}

@@ -7,7 +7,7 @@
     <div id="main" class="container">
       <div class="container">
         <div class="row justify-content-around">
-          <div class="jumbotron column col-xs-5 col-sm-5 col-md-6 col-lg-6 shadow p-4 mb-4 border {{ $errors->any() ? 'border-danger' : 'border-info' }}" style="margin-top: 50px;">
+          <div class="jumbotron column col-xs-5 col-sm-5 col-md-6 col-lg-6 shadow p-4 mb-4 border {{ $errors->any() ? 'border-danger' : 'border-info' }}" style="margin-top: 120px;">
             <div class="row justify-content-center">
 
             </div>

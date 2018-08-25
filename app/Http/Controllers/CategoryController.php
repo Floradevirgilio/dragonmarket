@@ -8,7 +8,9 @@ use App\Models\Product;
 
 class CategoryController extends Controller {
   public static function showCategories() {
-    $categories = Category::orderBy('name')->pluck('name', 'id'); // busca en la tabla categories y filtro el 'name' y el 'id'
+    $categories = Category::where('active', 1)
+                            ->orderBy('name')
+                            ->pluck('name', 'id'); // busca en la tabla categories y filtro el 'name' y el 'id'
     return $categories;
   }
 
@@ -17,7 +19,8 @@ class CategoryController extends Controller {
   }
 
   public function categories() {
-    $categories = Category::where('active', '=', 1)->orderBy('name')->get(['name', 'id']);
+    // $categories = Category::where('active', '=', 1)->orderBy('name')->get(['name', 'id']);
+    $categories = Category::orderBy('name')->get(['name', 'id', 'active']);
     return view('/adminCategory', ['categories' => $categories]);
   }
 
@@ -57,17 +60,18 @@ class CategoryController extends Controller {
 
     return redirect('/');
   }
-  else {
-    $category = Category::find($request['id']);
-    $category->active = 0;
 
+  if(isset($request['activo'])){
+      $category = Category::find($request['id']);
+      if($category->active == 1){
+        $category->active = 0;
+      } else {
+        $category->active = 1;
+      }
     $category->save();
-
-    return redirect('/');
   }
-
-}
-
+    return redirect('adminCategory');
+  }
 
   // public function show(Request $request){
   //  $category = Category::find($request);

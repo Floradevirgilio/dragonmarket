@@ -46,7 +46,10 @@ class ProductController extends Controller {
   }
 
   public function products() {
-    $products = Product::where('active', '=', 1)->orderBy('description')->get(['description', 'id', 'price', 'stock']);
+    // $products = Product::where('active', '=', 1)->orderBy('description')->get(['description', 'id', 'price', 'stock']);
+    $products = Product::orderBy('description')
+                         ->get(['description', 'id', 'price', 'stock', 'active']);
+
     return view('/adminProduct', ['products' => $products]);
   }
 
@@ -100,20 +103,22 @@ class ProductController extends Controller {
       $product->price = $request['price'];
       $product->stock = $request['stock'];
 
-
-      $product->save();
-
-      return redirect('/');
-    } else {
-      $product = Product::find($request['id']);
-      $product->active = 0;
-
       $product->save();
 
       return redirect('/');
     }
 
-  }
+    if(isset($request['activo'])){
+      $product = Product::find($request['id']);
+      if($product->active == 1){
+        $product->active = 0;
+      } else {
+        $product->active = 1;
+      }
+    $product->save();
+    }
+      return redirect('adminProduct');
+    }
 
   public function destroy($id) {
   }

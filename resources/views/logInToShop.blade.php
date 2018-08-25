@@ -8,7 +8,7 @@
         <div id="main" class="container">
             <div class="container">
 
-                <center><div style="margin-top: 3em; margin-bottom: 2em">
+                <center><div style="margin-top: 75px;">
                     <br>
                     <h3>
                         <img src="images/DMHead.png" alt="Logo" style="width: 1em"> ¡BIENVENIDO A DRAGON MARKET!
