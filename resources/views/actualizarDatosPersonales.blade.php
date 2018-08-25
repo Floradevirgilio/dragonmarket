@@ -24,7 +24,7 @@
                   @if ($errors->has('first_name'))
                       <li class="form-control-feedback" style="color: red">Nombre debe tener al menos 4 caracteres</li>
                   @endif
-                  
+
                   <br>
                   <label for="last_name"><strong>Apellido</strong></label>
                   <input type="text" class="form-control" id="last_name" name="last_name" value="{{ auth()->user()->last_name }}" required autofocus >
@@ -38,7 +38,7 @@
                       value="{{ auth()->user()->email }}" required >
                    @if ($errors->has('mail'))
                       <li class="form-control-feedback" style="color: red">Formato inválido de mail o existente en la base</li>
-                  @endif   
+                  @endif
 
                   <br>
                   <label for="password"><strong>Contraseña (debe tener al menos seis caracteres)</strong></label>
@@ -49,7 +49,9 @@
 
                   <br>
                   <label for="password-confirm"><strong>Confirmá la contraseña</strong></label>
-                  <input type="password" class="form-control{{ $errors->has('password-confirm') ? ' is-invalid' : '' }}" id="password-confirm" name="password-confirm" placeholder="******" >
+                  <input type="password"
+                          class="form-control{{ $errors->has('password-confirm') ? ' is-invalid' : '' }}"
+                          id="password-confirm" name="password-confirm" placeholder="******" >
                   @if ($errors->has('password-confirm'))
                       <li class="form-control-feedback" style="color: red">No coincide la contraseña</li>
                   @endif
@@ -70,7 +72,9 @@
                   </div></center>
                   <br>
                   <center><div>
-                    <a href="/index.php" role="button" class="btn btn-danger" value="Actualizar">Volver</a>
+                    <a href="/index.php" role="button"
+                                         class="btn btn-danger"
+                                         value="Actualizar">Volver</a>
                     <input type="submit" class="btn btn-success" value="Actualizar">
                   </div></center>
               </div>

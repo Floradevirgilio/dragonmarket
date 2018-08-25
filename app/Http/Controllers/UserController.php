@@ -9,24 +9,23 @@ use Auth;
 
 class UserController extends Controller {
 
+
     public function store(Request $request) {
+
         $data = request()->validate([ // valido los datos que me llegan y tambien que no exista en la db
             'email'            => 'required|email|unique:users,email',
             'email-confirm'    => 'required|same:email',
             'password'         => 'required|min:6', // al menos seis caracteres
             'password-confirm' => 'required|same:password',
-            'avatar'           => 'required|image' // Requerido y que sea imagenes
+            'avatar'           => 'image' // Que sea imágen - viene imagen por default de la migracion
         ]);
-
-        if ($request['avatar']==null) {
-            $request['avatar'] = 'public/users/default.jpg';}
 
         $user = User::create([ // crea un nuevo user con los datos que mandó
             'first_name' => $request['first_name'],
             'last_name'  => $request['last_name'],
             'email'      => $request['email'],
             'password'   => bcrypt($request['password']),
-            'avatar'     => $request['avatar'],
+            // 'avatar'     => $request['avatar'],
             // 'admin' => $data['admin'] // el admin lo creamos en el seeder
         ]);
 
@@ -51,8 +50,8 @@ class UserController extends Controller {
             // Si no modifica el email,que no lo valide
             // ya que existe en la BD
         {
-          $data = request()->validate([ // valido los datos que me llegan
-
+          $data = request()->validate([
+            // valido los datos que me llegan
             // 'email' => 'required|email|unique:users,email',
             // esto ya chequea que no exista en la db
             // 'email-confirm' => 'required|same:email',
@@ -89,8 +88,8 @@ class UserController extends Controller {
           $user->password = bcrypt($request['password']);
         }
 
-        if(($request['avatar']) !="") {
-            $user->avatar = $request->file('avatar')->store('public/users');
+        if($request->hasFile('avatar')) {
+            $user->avatar = $request->file('avatar')->store('/public/users');
         }
 
         $user->save();

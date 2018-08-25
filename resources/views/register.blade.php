@@ -15,7 +15,10 @@
               <h2><h2><i class="fas fa-user-edit" style="font-size: 1em; margin-right: .3em"></i>REGISTRO</h2>
             </div>
 
-            <form method="POST" action="register" aria-label="Register" enctype="multipart/form-data">
+            <form method="POST"
+                  action="register"
+                  aria-label="Register"
+                  enctype="multipart/form-data">
                 @csrf
               <div class="container column col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
@@ -71,15 +74,8 @@
                   <p><label for="avatar">
                       <input type="file" name="avatar">
                   </label></p>
-
-                  {{--
-                    @if ($errors->has('avatar'))
-                      $avatar = "/storage/users/default.jpg";
-                    @endif 
-                  --}}
-
               </div>
-              
+
               <div class="form-group">
                 <div class="row justify-content-center">
                   <div class="checkbox">
