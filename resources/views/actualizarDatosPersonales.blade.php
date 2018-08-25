@@ -8,20 +8,24 @@
       <div class="container">
         <div class="row justify-content-between">
           <div class="jumbotron column col-xs-5 col-sm-5 col-md-5 col-lg-5 shadow p-4 mb-4 border {{ $errors->any() ? 'border-danger' : 'border-info' }}" style="margin-top: 50px;">
-            <div class="row justify-content-center">
-
-            </div>
+            {{-- <div class="row justify-content-center"></div> --}}
             <div class="row justify-content-center" style="margin-top: 2em;">
               <h3><i class="fas fa-user-edit" style="font-size: 1em; margin-right: .3em"></i>ACTUALIZAR DATOS</h3>
             </div>
             <br>
-            <form method="POST" action="{{route('actualizarDatosPersonales.update', ['email' => auth()->user()->email])}}" enctype="multipart/form-data"> @csrf @method('PATCH')
+            <form method="POST"
+                  action="{{route('actualizarDatosPersonales.update', ['email' => auth()->user()->email])}}"
+                  enctype="multipart/form-data"> @csrf @method('PATCH')
               <div class="container column col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                 <label for="first_name"><strong>Nombre</strong></label>
-                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ auth()->user()->first_name }}" required autofocus >
+                <input type="text"
+                       class="form-control"
+                       id="first_name"
+                       name="first_name"
+                       value="{{ auth()->user()->first_name }}" required autofocus >
                 @if ($errors->has('first_name'))
-                  <li class="form-control-feedback" style="color: red">Nombre debe tener al menos 4 caracteres</li>
+                    <li class="form-control-feedback" style="color: red">Nombre debe tener al menos 4 caracteres</li>
                 @endif
 
                 <br>
