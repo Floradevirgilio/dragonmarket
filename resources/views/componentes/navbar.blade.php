@@ -19,7 +19,7 @@
               <ul class='navbar-nav'>
               @if (auth()->check()) {{-- chequeo si hay un user autenticado  --}}
                   @if (auth()->user()->admin == 1) {{-- si el user es admin --}}
-                  <li class="nav-item dropdown" style="padding-top: 0.65em;">
+                  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle"
                         href="#"
                         id="navbarDropdown"
@@ -30,61 +30,62 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="/adminNewCategory">Nueva categoría</a>
-                      <a class="dropdown-item" href="/adminCategory">Editar categoría</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="/adminNewProduct">Nuevo producto</a>
-                      <a class="dropdown-item" href="/adminProduct">Editar producto</a>
+                      <a class="dropdown-item" href="/adminCategory">ABM Categorías</a>
+                      <a class="dropdown-item" href="/adminProduct">ABM Productos</a>
+                      <a class="dropdown-item" href="/adminProduct">ABM Usuarios</a>
                     </div>
                   </li>
               @else
                   <li class='nav-item'> {{-- estas dos opciones se muestran para admins y clientes --}}
                       <a class='nav-link' href='/cart'>
-                        <i class="fas fa-shopping-cart" style="padding-top: 0.75em;"></i>({{ $productsCount }})
+                        <i class="fas fa-shopping-cart"></i>({{ $productsCount }})
                       </a>
                   </li>
               @endif
                   <li class='nav-item'>
-                      <a class="nav-link"
+                    <a class="nav-link"
                           href="{{route('actualizarDatosPersonales.show', ['user_id' => auth()->user()->id])}}">
                           <span>{{ auth()->user()->first_name }}</span>
-                          <img src='{{ Storage::url(auth()->user()->avatar) }}'
-                               alt='avatar' style='width: 60px; border-radius: 50%;'>
-                      </a>
+                    </a>
+                  </li>
+                  <li>
+                    <div class="avatar">
+                         <img class="img-fluid mx-auto d-block"
+                              src='{{ Storage::url(auth()->user()->avatar) }}' alt='avatar' >
+                    </div>
                   </li>
                   <li class='nav-item'>
                       <a class='nav-link' href='/logout'>
-                        <i class="fas fa-sign-out-alt" style="padding-top: 0.75em;"></i>Cerrar Sesión
+                        <i class="fas fa-sign-out-alt"></i>Cerrar Sesión
                       </a>
                   </li>
               @else
                   <li class='nav-item'> {{-- y la botonera para invitados no logeados --}}
                       <a class='nav-link' href='/logInToShop'>
-                        <i class="fas fa-shopping-cart" style="padding-top: 0.75em;"></i>(0)
+                        <i class="fas fa-shopping-cart"></i>(0)
                       </a>
                   </li>
                   <li class='nav-item'>
                       <a class='nav-link' href='/login'>
-                        <i class="fas fa-sign-in-alt" style="padding-top: 0.75em;"></i>Ingreso
+                        <i class="fas fa-sign-in-alt"></i>Ingreso
                       </a>
                   </li>
                   <li class='nav-item'>
                       <a class='nav-link' href='/register'>
-                        <i class="fas fa-user-edit" style="padding-top: 0.75em;"></i>Registro
+                        <i class="fas fa-user-edit"></i>Registro
                       </a>
                   </li>
                @endif
                   <li class='nav-item'>
                       <a class='nav-link' href='/faq'>
-                        <i class="fas fa-question-circle"
-                           style="padding-top: 0.75em;"></i> FAQ
+                        <i class="fas fa-question-circle"></i> FAQ
                       </a>
                   </li>
               </ul>
       </div>
       <form class="form-inline"
               action='/showProducts'
-              style="margin-left: auto; padding-top: 0.85em;">
+              style="margin-left: auto;">
               @csrf
             <div class='md-form my-0'>
                 <input class='form-control mr-sm-2'

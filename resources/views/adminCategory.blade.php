@@ -12,7 +12,7 @@
         <div class="jumbotron column col-xs-12 col-sm-12 col-md-10 col-lg-8 shadow p-4 mb-4 border"
               style="margin-top: 50px;"> 
           <div class="row justify-content-center">
-              <h4>EDITAR CATEGORÍA</h4>
+              <h4>ABM CATEGORÍAS</h4>
           </div>
           @if ($errors->any())
               <div style="text-align: center;">
@@ -21,14 +21,10 @@
           @endif
           <div style="text-align: center;">
 
-
-
-
           {{-- 
           link para ver el tema de Admin (para cualquier tabla !!!
           https://styde.net/paginacion-con-laravel-5/ --}}
 
-          
               <table class="jumbotron table table-striped shadow p-3 mb-5 rounded" border="2">
                 <thead>
                     <tr>

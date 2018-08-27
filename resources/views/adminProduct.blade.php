@@ -10,12 +10,11 @@
         <div class="row justify-content-around"> {{-- row --}}
           <div class="jumbotron column col-xs-10 col-sm-10 col-md-12 col-lg-12 shadow p-4 mb-4 border"
                style="margin-top: 50px;"> {{-- jumbotron --}}
-              <div class="row justify-content-center" style="margin-top: 2em;">
-                  <h2><i class="fas fa-desktop"
-                         style="font-size: 1em; margin-right: .3em"></i>EDITAR PRODUCTO</h2>
+              <div class="row justify-content-center">
+                  <h4>ABM PRODUCTOS</h4>
               </div>
               {{-- <center> --}}
-                <table class="jumbotron table table-striped shadow p-3 mb-5 rounded" border="3">
+                <table class="jumbotron table table-striped shadow p-3 mb-5 rounded" border="2">
                   <thead>
                     <tr>
                       @php $columnas = [ 'Producto', 'Precio', 'Stock', 'Editar', 'Estado' ]; @endphp {{-- El titulo de cada columna --}}
