@@ -48,7 +48,7 @@
                         <td colspan="4" class="text-right"><strong>TOTAL</strong></td>
                         {{-- $total que acumulo recorriendo el foreach --}}
                         <td style="text-align: center;">
-                            <strong> ${{ number_format($total), 2, ',', '.') }} </strong>
+                            <strong> ${{ number_format(($total), 2, ',', '.') }} </strong>
                         </td>
                     </tr>
                 </tbody>
