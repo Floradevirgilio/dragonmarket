@@ -20,6 +20,15 @@
               </div>
           @endif
           <div style="text-align: center;">
+
+
+
+
+          {{-- 
+          link para ver el tema de Admin (para cualquier tabla !!!
+          https://styde.net/paginacion-con-laravel-5/ --}}
+
+          
               <table class="jumbotron table table-striped shadow p-3 mb-5 rounded" border="2">
                 <thead>
                     <tr>
