@@ -43,10 +43,10 @@ Route::post('/perfil/foto', 'ProfileController@updatePhoto'); // Ruta para image
 
 // machete rutas resource
 // Verb	        Path	                 Action	   Route Name
-// GET	        /sarasa	               index	   sarasa.index
-// GET	        /sarasa/create	       create	   sarasa.create
-// POST	        /sarasa	               store	   sarasa.store
-// GET	        /sarasa/{sarasa}	     show	     sarasa.show
-// GET	        /sarasa/{sarasa}/edit  edit	     sarasa.edit
-// PUT/PATCH	  /sarasa/{sarasa}	     update	   sarasa.update
-// DELETE       /sarasa/{sarasa}	     destroy	 sarasa.destroy
+// GET	        /sarasa	                 index	   sarasa.index
+// GET	        /sarasa/create	         create	   sarasa.create
+// POST	        /sarasa	                 store	   sarasa.store
+// GET	        /sarasa/{sarasa}	     show	   sarasa.show
+// GET	        /sarasa/{sarasa}/edit    edit	   sarasa.edit
+// PUT/PATCH	/sarasa/{sarasa}	     update	   sarasa.update
+// DELETE       /sarasa/{sarasa}	     destroy   sarasa.destroy
