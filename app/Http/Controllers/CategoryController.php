@@ -20,7 +20,7 @@ class CategoryController extends Controller {
 
   public function categories() {
     // $categories = Category::where('active', '=', 1)->orderBy('name')->get(['name', 'id']);
-    $categories = Category::orderBy('name')->get(['name', 'id', 'active'])->paginate(5);
+    $categories = Category::orderBy('name')->get(['name', 'id', 'active']);
     return view('/adminCategory', ['categories' => $categories]);
   }
 
