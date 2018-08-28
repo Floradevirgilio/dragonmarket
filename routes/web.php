@@ -29,11 +29,14 @@ Route::get('/adminProduct', 'ProductController@products'); // view ver productos
 Route::resource('adminNewProduct', 'ProductController'); // elige categoría y carga nuevo producto
 Route::post('/adminNewProduct', 'ProductController@store' ); // guarda nuevo producto
 
-Route::get('/adminCategory', 'CategoryController@categories' ); // view ver categorías
-Route::get('/adminNewCategory', 'CategoryController@newCategory' ); // generar categoría
-Route::post('/adminNewCategory', 'CategoryController@store' ); // guarda nueva categoría
+// Route::get('/adminCategory', 'CategoryController@categories' ); // view ver categorías
+// Route::get('/adminNewCategory', 'CategoryController@newCategory' ); // generar categoría
+// Route::post('/adminNewCategory', 'CategoryController@store' ); // guarda nueva categoría
 
-Route::post('/adminCategory', 'CategoryController@update'); // edita/inactiva categoria
+Route::resource('adminCategory', 'CategoryController');
+
+
+// Route::post('/adminCategory', 'CategoryController@update'); // edita/inactiva categoria
 Route::post('/adminProduct', 'ProductController@update'); // edita inactiva producto
 
 Route::post('/perfil/foto', 'ProfileController@updatePhoto'); // Ruta para imagen del user

@@ -14,14 +14,21 @@ class CategoryController extends Controller {
     return $categories;
   }
 
-  public function newCategory() {
-        return view('/adminNewCategory');
-  }
+  // public function newCategory() {
+  //       return view('/adminNewCategory');
+  // }
 
-  public function categories() {
-    // $categories = Category::where('active', '=', 1)->orderBy('name')->get(['name', 'id']);
-    $categories = Category::orderBy('name')->get(['name', 'id', 'active']);
-    return view('/adminCategory', ['categories' => $categories]);
+  // public function categories() {
+  //   // $categories = Category::where('active', '=', 1)->orderBy('name')->get(['name', 'id']);
+  //   $categories = Category::orderBy('name')->get(['name', 'id', 'active'])->paginate(10);
+  //   return view('/adminCategory', ['categories' => $categories]);
+  // }
+
+  public function index()
+  {
+    $categories = Category::orderBy('name')->paginate(6);
+
+    return view('/adminCategory', compact('categories'));
   }
 
   public function store(Request $request) {
