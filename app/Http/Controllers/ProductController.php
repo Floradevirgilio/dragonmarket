@@ -46,9 +46,11 @@ class ProductController extends Controller {
     return view('/showProducts', ['categoryProducts' => $categoryProducts]); // devuelvo view showProducts con los resultados
   }
 
-  public function index() {
-    $categories = Category::pluck('name', 'id');
-    return view('/adminNewProduct', compact('categories'));
+  public function index() 
+  {
+    $products = Product::orderBy('description')->paginate(8);
+    
+    return view('/abmProduct', compact('products'));
   }
 
   public function products() {

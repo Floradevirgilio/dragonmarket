@@ -24,11 +24,24 @@ class CategoryController extends Controller {
   //   return view('/adminCategory', ['categories' => $categories]);
   // }
 
+//   public function show($id)
+// {
+//     $products = Item::find($id)->products;
+
+//     $categories = Item::all();
+
+//     return view('category.index', compact(['categories', 'products']));
+// }
+
+
+
+
+
   public function index()
   {
     $categories = Category::orderBy('name')->paginate(6);
 
-    return view('/adminCategory', compact('categories'));
+    return view('abmCategory', compact('categories'));
   }
 
   public function store(Request $request) {

@@ -11,6 +11,14 @@ use Auth;
 class UserController extends Controller {
 
 
+  public function index()
+  {
+    $users = User::orderBy('first_name')->paginate(6);
+
+    return view('abmUser', compact('users'));
+  }
+
+
     public function store(Request $request) {
 
         $data = request()->validate([ // valido los datos que me llegan y tambien que no exista en la db

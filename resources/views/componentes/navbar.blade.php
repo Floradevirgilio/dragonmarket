@@ -30,9 +30,9 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="/adminCategory">ABM Categorías</a>
-                      <a class="dropdown-item" href="/adminProduct">ABM Productos</a>
-                      <a class="dropdown-item" href="/adminProduct">ABM Usuarios</a>
+                      <a class="dropdown-item" href="/abmCategory">ABM Categorías</a>
+                      <a class="dropdown-item" href="/abmProduct">ABM Productos</a>
+                      <a class="dropdown-item" href="/abmUser">ABM Usuarios</a>
                     </div>
                   </li>
               @else
