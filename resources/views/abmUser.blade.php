@@ -21,19 +21,38 @@
                   <tr>
                     <th>#</th>
                     <th>Nombre</th>
-                    <th>email</th>
-                    <th>Jerarquía</th>
-                    <th>Acciones</th>
+                    <th style="text-align: left;">email</th>
+                    <th style="text-align: center;">Jerarquía</th>
+                    <th colspan="2" style="text-align: center;">Acciones</th>
                   </tr>
                   @foreach ($users as $user)
                   <tr>
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->first_name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->admin }}</td>
-                    <td>
-                        <a href="">Editar</a>
-                        <a href="">Activo</a>
+                    <td style="text-align: left;">{{ $user->email }}</td>
+                    <td style="text-align: center;">{{ $user->admin }}</td>
+                    <td style="text-align: center;">
+                        <button type="submit"
+                                name="editar"
+                                value="editar"
+                                class='btn btn-primary'>
+                            <i class="fas fa-edit"
+                               style='font-size: 1.1em'></i>
+                         </button>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="submit"
+                                name="activo"
+                                value="activo"
+                           @if($user['active']=='1')
+                             class='btn btn-success'>
+                             <i class="fas fa-check"
+                           @else
+                             class='btn btn-danger'>
+                             <i class="fas fa-times"
+                           @endif
+                           style='font-size: 1.1em'></i>
+                        </button>
                     </td>
                   </tr>
                   @endforeach

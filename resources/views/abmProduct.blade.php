@@ -21,17 +21,36 @@
                   <tr>
                     <th>#</th>
                     <th>Descripción</th>
-                    <th>Precio</th>
-                    <th>Acciones</th>
+                    <th style="text-align: center;">Precio</th>
+                    <th colspan="2" style="text-align: center;">Acciones</th>
                   </tr>
                   @foreach ($products as $product)
                   <tr>
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->description }}</td>
-                    <td>{{ $product->price }}</td>
-                    <td>
-                        <a href="">Editar</a>
-                        <a href="">Activo</a>
+                    <td style="text-align: right;">${{ number_format(($product->price), 2, ',', '.') }}</td>
+                    <td style="text-align: center;">
+                        <button type="submit"
+                                name="editar"
+                                value="editar"
+                                class='btn btn-primary'>
+                            <i class="fas fa-edit"
+                               style='font-size: 1.1em'></i>
+                         </button>
+                    </td>
+                    <td style="text-align: center;">
+                        <button type="submit"
+                                name="activo"
+                                value="activo"
+                           @if($product['active']=='1')
+                             class='btn btn-success'>
+                             <i class="fas fa-check"
+                           @else
+                             class='btn btn-danger'>
+                             <i class="fas fa-times"
+                           @endif
+                           style='font-size: 1.1em'></i>
+                        </button>
                     </td>
                   </tr>
                   @endforeach

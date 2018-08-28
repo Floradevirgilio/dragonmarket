@@ -27,10 +27,10 @@
 				       <tr>
                             {{-- Título de cada columna --}}
 							@php $columnas = [ 'Descripcion',
-                                               'Cantidad',
-                                               'Precio',
-                                               'Comprar' ];
-                            @endphp
+                                 'Cantidad',
+                                 'Precio',
+                                 'Comprar' ];
+              @endphp
 
                             {{-- Completo la fila columnas
                                 con los datos que definí en $columnas --}}
