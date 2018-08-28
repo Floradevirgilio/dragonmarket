@@ -8,28 +8,26 @@ use App\Models\Cart;
 use App\Models\Sale;
 use Auth;
 
-class UserController extends Controller {
+class UserController extends Controller
+{
+    public function index()
+    {
+        $users = User::orderBy('first_name')->paginate(6);
 
+        return view('abmUser', compact('users'));
+    }
 
-  public function index()
-  {
-    $users = User::orderBy('first_name')->paginate(6);
-
-    return view('abmUser', compact('users'));
-  }
-
-
-    public function store(Request $request) {
-
+    public function store(Request $request)
+    {
         $data = request()->validate([ // valido los datos que me llegan y tambien que no exista en la db
-            'first_name' => 'required|min:4',
-            'last_name'  => 'required|min:4',
-            'email'            => 'required|email|unique:users,email',
-            'email-confirm'    => 'required|same:email',
-            'password'         => 'required|min:6', // al menos seis caracteres
-            'password-confirm' => 'required|same:password',
-            'avatar'           => 'image' // Que sea imágen - viene imagen por default de la migracion
-        ]);
+        'first_name' => 'required|min:4',
+        'last_name'  => 'required|min:4',
+        'email'            => 'required|email|unique:users,email',
+        'email-confirm'    => 'required|same:email',
+        'password'         => 'required|min:6', // al menos seis caracteres
+        'password-confirm' => 'required|same:password',
+        'avatar'           => 'image' // Que sea imágen - viene imagen por default de la migracion
+    ]);
 
         $user = User::create([ // crea un nuevo user con los datos que mandó
             'first_name' => $request['first_name'],
