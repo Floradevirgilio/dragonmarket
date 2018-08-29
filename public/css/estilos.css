@@ -73,6 +73,8 @@ header { margin-top: 4.95rem; }
   background: rgba(0,0,0,0.25);
 }
 
+
+/* Le doy formato al espacio y la imágen del usuario */
 .avatar
 {
   width: 50px;
@@ -94,6 +96,7 @@ header { margin-top: 4.95rem; }
   position: relative;
   z-index: 998;
 }
+/* Fin formato avatar del usuario */
 
 div.container
 {
@@ -175,10 +178,22 @@ p.card-text { font-size: 1em; }
   background: rgba(13, 36, 67, 0.20);
 }
 
-#wrap { min-height: 78%; }
+#wrap { min-height: 70%; }
 
 #main
 {
   overflow:auto;
   padding-bottom:150px; /* this needs to be bigger than footer height*/
 }
+
+/* Configuración barra Buscar en el navbar */
+.form-control-buscar {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+.form-control {
+  padding-left: 35px!important;
+}
+/* Fin configuración barra buscar navbar */
